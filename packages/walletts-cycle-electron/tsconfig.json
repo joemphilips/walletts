@@ -4,13 +4,13 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
+    "jsxFactory": "Snabbdom.createElement",
     "lib": [
       "dom",
       "es6",
       "dom.iterable",
       "scripthost"
     ],
-    "types": [],
 
     "alwaysStrict": true,
     "strictNullChecks": true,
@@ -18,6 +18,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
+    "strictFunctionTypes": true,
     
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -27,9 +28,10 @@
     "outDir": "dist"
   },
   "files": [
-    "app/index.tsx"
+    "app/index.ts"
   ],
   "include": [
+    "./custom-typings.d.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
     "test/**/*.ts",

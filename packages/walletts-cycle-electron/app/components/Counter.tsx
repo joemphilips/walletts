@@ -1,43 +1,71 @@
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
+import xs, { Stream } from "xstream";
+import { button, div, h2, span, VNode, DOMSource } from "@cycle/dom";
+import { StateSource } from "cycle-onionify";
 
-let styles = require('./Counter.scss');
+import { BaseSources, BaseSinks } from "../interfaces";
+import { HistoryAction } from "cyclic-router";
 
-export interface IProps extends RouteComponentProps<any> {
-  increment(): void,
-  incrementIfOdd(): void,
-  incrementAsync(): void,
-  decrement(): void,
-  counter: number
+// Types
+export interface Sources extends BaseSources {
+  readonly onion: StateSource<State>;
+}
+export interface Sinks extends BaseSinks {
+  readonly onion?: Stream<Reducer>;
 }
 
-export class Counter extends React.Component<IProps> {
-  render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
-    return (
-      <div>
-        <div className={styles.backButton} data-tid="backButton">
-          <Link to="/">
-            <i className="fa fa-arrow-left fa-3x" />
-          </Link>
-        </div>
-        <div className={`counter ${styles.counter}`} data-tid="counter">
-          {counter}
-        </div>
-        <div className={styles.btnGroup}>
-          <button className={styles.btn} onClick={increment} data-tclass="btn">
-            <i className="fa fa-plus" />
-          </button>
-          <button className={styles.btn} onClick={decrement} data-tclass="btn">
-            <i className="fa fa-minus" />
-          </button>
-          <button className={styles.btn} onClick={incrementIfOdd} data-tclass="btn">odd</button>
-          <button className={styles.btn} onClick={() => incrementAsync()} data-tclass="btn">async</button>
-        </div>
-      </div>
-    );
-  }
+// State
+export interface State {
+  readonly count: number;
+}
+export const defaultState: State = {
+  count: 30
+};
+export type Reducer = (prev: State) => State | undefined;
+
+export function Counter({ DOM, onion }: Sources): Sinks {
+  const action$: Stream<Reducer> = intent(DOM);
+  const vdom$: Stream<VNode> = view(onion.state$);
+
+  const routes$ = DOM.select('[data-action="navigate"]')
+    .events("click")
+    .mapTo("/p2") as Stream<HistoryAction>;
+
+  return {
+    DOM: vdom$,
+    onion: action$,
+    router: routes$
+  };
 }
 
-export default Counter;
+function intent(DOM: DOMSource): Stream<Reducer> {
+  const init$ = xs.of<Reducer>(
+    prevState => (prevState === undefined ? defaultState : prevState)
+  );
+
+  const add$: Stream<Reducer> = DOM.select(".add")
+    .events("click")
+    .mapTo<Reducer>(state => ({ ...state, count: state.count + 1 }));
+
+  const subtract$: Stream<Reducer> = DOM.select(".subtract")
+    .events("click")
+    .mapTo<Reducer>(state => ({ ...state, count: state.count - 1 }));
+
+  return xs.merge(init$, add$, subtract$);
+}
+
+function view(state$: Stream<State>): Stream<VNode> {
+  return state$.map(({ count }) =>
+    div([
+      h2("My Awesome Cycle.js app - Page 1"),
+      span("Counter: " + count),
+      button({ props: { className: "add" } }, "Increase"),
+      button({ props: { className: "subtract" } }, "Decrease"),
+      button(
+        {
+          attrs: { "data-action": "navigate" }
+        },
+        "Page 2"
+      )
+    ])
+  );
+}

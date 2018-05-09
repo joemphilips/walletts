@@ -14,7 +14,6 @@ module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
 
   entry: [
-    'react-hot-loader/patch',
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`,
     './app/index'
   ],
@@ -153,7 +152,8 @@ module.exports = merge(baseConfig, {
 
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'global.GENTLY': false
     }),
 
     new webpack.LoaderOptionsPlugin({
