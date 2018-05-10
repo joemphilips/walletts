@@ -1,8 +1,8 @@
-import { DOMSource, input, li, VNode } from '@cycle/dom';
-import isolate from '@cycle/isolate';
-import { StateSource } from 'cycle-onionify';
-import xs, { Stream } from 'xstream';
-import { BaseSinks, BaseSources, Component } from '../../interfaces';
+import { DOMSource, div, input, li, VNode, label } from "@cycle/dom";
+import isolate from "@cycle/isolate";
+import { StateSource } from "cycle-onionify";
+import xs, { Stream } from "xstream";
+import { BaseSinks, BaseSources, Component } from "../../interfaces";
 
 interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
@@ -18,7 +18,7 @@ export interface State {
 
 const defaultState: State = {
   id: 0,
-  onelineExplanation: 'this is default tutorial',
+  onelineExplanation: "this is default tutorial",
   isChecked: false
 };
 
@@ -43,8 +43,8 @@ export const model = (dom$: DOMSource): Stream<Reducer> => {
     prevState => (prevState === undefined ? defaultState : prevState)
   );
   const check$ = dom$
-    .select('.input-checkbox')
-    .events('click')
+    .select(".input-checkbox")
+    .events("click")
     .map(ev => (state: State) => ({
       ...state,
       isChecked: !(ev.target as HTMLInputElement).checked
@@ -55,12 +55,15 @@ export const model = (dom$: DOMSource): Stream<Reducer> => {
 
 const view = (state$: Stream<State>): Stream<VNode> => {
   return state$.map(s =>
-    li(
-      `.todo#${s.id}`,
-      input('.input-checkbox', {
-        attrs: { type: 'checkbox' },
-        props: { checked: s.isChecked }
-      })
-    )
+    div([
+      label(
+        "",
+        input(".input-checkbox", {
+          attrs: { type: "checkbox" },
+          props: { checked: s.isChecked }
+        })
+      ),
+      li(`#tutorial-card${s.id}.tutorial-card`, s.onelineExplanation)
+    ])
   );
 };

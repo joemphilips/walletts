@@ -22,13 +22,28 @@ export const defaultState: State = {
 };
 export type Reducer = (prev: State) => State | undefined;
 
+interface ClassNameToRoute {
+  [key: string]: HistoryAction;
+}
+const classNameToRoute: ClassNameToRoute = {
+  navigateToTutorial: "/tutorial",
+  navigateToWallet: "/wallet",
+  navigateToPage2: "/p2"
+};
+const createRouter = (DOM: DOMSource): Stream<HistoryAction> => {
+  return DOM.select('[data-action="navigate"]')
+    .events("click")
+    .map(
+      (x: MouseEvent) =>
+        x.srcElement ? classNameToRoute[x.srcElement.className] : "/"
+    );
+};
+
 export function Counter({ DOM, onion }: Sources): Sinks {
   const action$: Stream<Reducer> = intent(DOM);
   const vdom$: Stream<VNode> = view(onion.state$);
 
-  const routes$ = DOM.select('[data-action="navigate"]')
-    .events("click")
-    .mapTo("/p2") as Stream<HistoryAction>;
+  const routes$ = createRouter(DOM);
 
   return {
     DOM: vdom$,
@@ -62,9 +77,24 @@ function view(state$: Stream<State>): Stream<VNode> {
       button({ props: { className: "subtract" } }, "Decrease"),
       button(
         {
-          attrs: { "data-action": "navigate" }
+          attrs: { "data-action": "navigate" },
+          props: { className: "navigateToPage2" }
         },
         "Page 2"
+      ),
+      button(
+        {
+          attrs: { "data-action": "navigate" },
+          props: { className: "navigateToWallet" }
+        },
+        "see my wallet"
+      ),
+      button(
+        {
+          attrs: { "data-action": "navigate" },
+          props: { className: "navigateToTutorial" }
+        },
+        "take tutorial"
       )
     ])
   );

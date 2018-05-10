@@ -1,4 +1,4 @@
-import { h, ul, VNode } from "@cycle/dom";
+import { ul } from "@cycle/dom";
 import { makeCollection, StateSource } from "cycle-onionify";
 import xs, { Stream } from "xstream";
 import { BaseSinks, BaseSources } from "../../interfaces";
@@ -54,26 +54,10 @@ export const main = (sources: Sources): Sinks => {
     .mapTo("/wallet");
 
   return {
-    DOM: view(sources.onion.state$),
+    DOM: childSinks.DOM,
     onion: reducer$,
     router: routes$ as Stream<HistoryAction>
   };
-};
-
-const view = (state$: Stream<State>): Stream<VNode> => {
-  return state$.map((s: State) =>
-    h(
-      ".wallet-container",
-      [
-        h("input.navigate-button", {
-          props: { type: "button", value: "go to wallet detail" },
-          dataset: { action: "navigate" }
-        }),
-        ul(".todo-list", [, ...s.child])
-      ],
-      "main container for wallet page"
-    )
-  );
 };
 
 const model = (action: Intent): Stream<Reducer> => {
