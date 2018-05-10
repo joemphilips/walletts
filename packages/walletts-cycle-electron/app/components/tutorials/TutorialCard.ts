@@ -49,7 +49,7 @@ const intent = (dom$: DOMSource): Action => {
 };
 export const model = (actions: Action): Stream<Reducer> => {
   const init$ = xs.of<Reducer>(
-    prevState => (typeof prevState === undefined ? defaultState : prevState)
+    prevState => (typeof prevState === "undefined" ? defaultState : prevState)
   );
 
   const check$ = actions.check$.map(ev => (prev: State): State => ({
