@@ -37,7 +37,7 @@ export interface Actions {
 // define component for list of child. and combine its stream.
 const TutorialList = makeCollection({
   item: TutorialCard,
-  itemKey: (state: TutorialCardState, index) => String(state.id),
+  itemKey: (state: TutorialCardState, index) => String(index),
   itemScope: key => key,
   collectSinks: instances => {
     return {
@@ -54,7 +54,7 @@ export const main = (sources: Sources): Sinks => {
   const action$ = intent(sources);
   const thisReducer$ = model(action$);
 
-  const childSinks = isolate(TutorialList, { onion: "child" })(sources);
+  const childSinks = isolate(TutorialList, "child")(sources);
   const reducer$ = xs.merge<Reducer>(thisReducer$, childSinks.onion);
 
   // routes

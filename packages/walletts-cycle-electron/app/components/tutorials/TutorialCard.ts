@@ -1,4 +1,4 @@
-import { DOMSource, li, VNode, span, button } from "@cycle/dom";
+import { DOMSource, li, VNode, span, input } from "@cycle/dom";
 import isolate from "@cycle/isolate";
 import { StateSource } from "cycle-onionify";
 import xs, { Stream } from "xstream";
@@ -16,6 +16,10 @@ export interface State {
   readonly isChecked: boolean;
 }
 
+type Action = {
+  check$: Stream<null>;
+};
+
 export const defaultState: State = {
   id: 0,
   onelineExplanation: "this is default tutorial",
@@ -24,12 +28,9 @@ export const defaultState: State = {
 
 export type Reducer = (prev: State) => State;
 
-const tutorialCard: Component<Sources, Sinks> = ({
-  DOM,
-  onion
-}: Sources): Sinks => {
-  const state$ = onion.state$;
-  const reducer$ = model(DOM);
+const tutorialCard: Component<Sources, Sinks> = (sources$: Sources): Sinks => {
+  const state$ = sources$.onion.state$;
+  const reducer$ = model(intent(sources$.DOM));
   return {
     DOM: view(state$),
     onion: reducer$
@@ -38,38 +39,35 @@ const tutorialCard: Component<Sources, Sinks> = ({
 
 export const main = (sources: Sources): Sinks => isolate(tutorialCard)(sources);
 
-export const model = (dom$: DOMSource): Stream<Reducer> => {
-  const check$ = dom$
-    .select(".checkbox")
-    .events("click")
-    .map(ev => (prev: State): State => ({
-      ...prev,
-      isChecked: !prev.isChecked // !(ev.target as HTMLInputElement).checked
-    }));
-  const trimReducer$ = dom$
-    .select(".trim")
-    .events("click")
-    .mapTo(function trimReducer(prevState: State): State {
-      return {
-        ...prevState,
-        onelineExplanation: prevState.onelineExplanation.slice(0, -1)
-      };
-    });
+const intent = (dom$: DOMSource): Action => {
+  return {
+    check$: dom$
+      .select("checkbox")
+      .events("click")
+      .mapTo(null)
+  };
+};
+export const model = (actions: Action): Stream<Reducer> => {
+  const init$ = xs.of<Reducer>(
+    prevState => (typeof prevState === undefined ? defaultState : prevState)
+  );
 
-  return xs.merge(check$, trimReducer$);
+  const check$ = actions.check$.map(ev => (prev: State): State => ({
+    ...prev,
+    isChecked: !prev.isChecked // !(ev.target as HTMLInputElement).checked
+  }));
+
+  return xs.merge(init$, check$);
 };
 
 const view = (state$: Stream<State>): Stream<VNode> => {
   return state$.map(s =>
-    /*    
-    input(".input-checkbox", {
-          attrs: { type: "checkbox", value: s.onelineExplanation },
-          props: { checked: s.isChecked }
-        })*/
     li(`.tutorial-card`, [
-      span(".conent", "hoge"),
-      span(".trim", "(trim)"),
-      button(".checkbox", { props: { checked: s.isChecked } }, "checkbox"),
+      input(
+        ".checkbox",
+        { attrs: { type: "checkbox" }, props: { checked: s.isChecked } },
+        "checkbox"
+      ),
       span(".oneline-explanation", s.onelineExplanation)
     ])
   );
