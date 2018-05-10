@@ -1,6 +1,6 @@
 import { makeDOMDriver } from "@cycle/dom";
 import { makeHTTPDriver } from "@cycle/http";
-import { makeHistoryDriver } from "@cycle/history";
+import { makeHashHistoryDriver } from "@cycle/history";
 import { timeDriver } from "@cycle/time";
 import { routerify } from "cyclic-router";
 import onionify from "cycle-onionify";
@@ -18,7 +18,7 @@ const driverThunks: ReadonlyArray<DriverThunk> = [
   ["DOM", () => makeDOMDriver("#app")],
   ["HTTP", () => makeHTTPDriver()],
   ["time", () => timeDriver],
-  ["history", () => makeHistoryDriver()],
+  ["history", () => makeHashHistoryDriver()],
   ["storage", () => storageDriver]
 ];
 
