@@ -14,7 +14,7 @@ export default interface KeyRepository {
   readonly setHDNode: (id: AccountID, node: btc.HDNode) => Promise<void>;
   readonly getHDNode: (id: AccountID) => Promise<btc.HDNode | void>;
   readonly getPubKey: (id: AccountID) => Promise<string | void>;
-};
+}
 
 export class InMemoryKeyRepository extends Map<AccountID, btc.HDNode>
   implements KeyRepository {

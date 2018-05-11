@@ -1,6 +1,6 @@
 /* tslint:disable: no-submodule-imports */
 import { Either, left, right } from 'fp-ts/lib/Either';
-import { BalanceError } from './errors';
+import { BalanceError } from '../errors';
 
 export const MAX_SATOSHI = 21 * 1e14;
 
