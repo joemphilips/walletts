@@ -795,6 +795,12 @@
   dependencies:
     "@types/node" "*"
 
+"@uphold/request-logger@^2.0.0":
+  version "2.0.0"
+  resolved "http://localhost:4873/@uphold%2frequest-logger/-/request-logger-2.0.0.tgz#c585c0bdb94210198945c6597e4fe23d6e63e084"
+  dependencies:
+    uuid "^3.0.1"
+
 JSONStream@^1.0.4:
   version "1.3.2"
   resolved "http://localhost:4873/JSONStream/-/JSONStream-1.3.2.tgz#c102371b6ec3a7cf3b847ca00c20bb0fce4c6dea"
@@ -1115,7 +1121,32 @@ ascallback@^1.1.1:
   version "1.1.1"
   resolved "http://localhost:4873/ascallback/-/ascallback-1.1.1.tgz#246086fb5d3ac4e9b78ae79d2d5979efe563da35"
 
-asn1.js@^4.0.0:
+ascli@~1:
+  version "1.0.1"
+  resolved "http://localhost:4873/ascli/-/ascli-1.0.1.tgz#bcfa5974a62f18e81cabaeb49732ab4a88f906bc"
+  dependencies:
+    colour "~0.7.1"
+    optjs "~3.2.2"
+
+asn1.js-rfc3280@=4.0.0:
+  version "4.0.0"
+  resolved "http://localhost:4873/asn1.js-rfc3280/-/asn1.js-rfc3280-4.0.0.tgz#101039e0626bcc7e571447860e34a766e3d49825"
+
+asn1.js-rfc5280@=2.0.0:
+  version "2.0.0"
+  resolved "http://localhost:4873/asn1.js-rfc5280/-/asn1.js-rfc5280-2.0.0.tgz#b7943650c9bde722fd6438025615e8e66e6f8f65"
+  dependencies:
+    asn1.js "^4.5.0"
+
+asn1.js@=4.9.1:
+  version "4.9.1"
+  resolved "http://localhost:4873/asn1.js/-/asn1.js-4.9.1.tgz#48ba240b45a9280e94748990ba597d216617fd40"
+  dependencies:
+    bn.js "^4.0.0"
+    inherits "^2.0.1"
+    minimalistic-assert "^1.0.0"
+
+asn1.js@^4.0.0, asn1.js@^4.5.0:
   version "4.10.1"
   resolved "http://localhost:4873/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
   dependencies:
@@ -1170,6 +1201,10 @@ async@2.6.0, async@^2.0.0, async@^2.1.2, async@^2.1.4, async@^2.4.1:
   resolved "http://localhost:4873/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
   dependencies:
     lodash "^4.14.0"
+
+async@^0.9.0:
+  version "0.9.2"
+  resolved "http://localhost:4873/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
 
 async@^1.4.0, async@^1.5.0:
   version "1.5.2"
@@ -1530,9 +1565,13 @@ big.js@^3.1.3:
   version "3.2.0"
   resolved "http://localhost:4873/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
 
-bigi@^1.1.0, bigi@^1.4.0:
+bigi@^1.1.0, bigi@^1.2.0, bigi@^1.4.0:
   version "1.4.2"
   resolved "http://localhost:4873/bigi/-/bigi-1.4.2.tgz#9c665a95f88b8b08fc05cfd731f561859d725825"
+
+bignumber.js@^4.0.0:
+  version "4.1.0"
+  resolved "http://localhost:4873/bignumber.js/-/bignumber.js-4.1.0.tgz#db6f14067c140bd46624815a7916c92d9b6c24b1"
 
 binary-extensions@^1.0.0:
   version "1.11.0"
@@ -1544,6 +1583,18 @@ binary@^0.3.0:
   dependencies:
     buffers "~0.1.1"
     chainsaw "~0.1.0"
+
+bip38@^1.3.0:
+  version "1.4.0"
+  resolved "http://localhost:4873/bip38/-/bip38-1.4.0.tgz#b8db30ff183016ddde2cefb49b3055868e8df32d"
+  dependencies:
+    bigi "^1.2.0"
+    browserify-aes "^1.0.1"
+    buffer-xor "^1.0.2"
+    coinstring "^2.2.0"
+    create-hash "^1.1.1"
+    ecurve "^1.0.0"
+    scryptsy "^1.2.0"
 
 bip39@^2.5.0:
   version "2.5.0"
@@ -1560,6 +1611,19 @@ bip66@^1.1.0:
   resolved "http://localhost:4873/bip66/-/bip66-1.1.5.tgz#01fa8748785ca70955d5011217d1b3139969ca22"
   dependencies:
     safe-buffer "^5.0.1"
+
+bitcoin-core@^2.0.0:
+  version "2.0.0"
+  resolved "http://localhost:4873/bitcoin-core/-/bitcoin-core-2.0.0.tgz#defcd4b3bfb6738ea88051b5fe5a944e32c09df0"
+  dependencies:
+    "@uphold/request-logger" "^2.0.0"
+    bluebird "^3.4.1"
+    debugnyan "^1.0.0"
+    json-bigint "^0.2.0"
+    lodash "^4.0.0"
+    request "^2.53.0"
+    semver "^5.1.0"
+    standard-error "^1.1.0"
 
 bitcoin-ops@^1.3.0:
   version "1.4.1"
@@ -1584,6 +1648,64 @@ bitcoinjs-lib@^3.3.2:
     typeforce "^1.11.3"
     varuint-bitcoin "^1.0.4"
     wif "^2.0.1"
+
+bitcore-lib-cash@^0.16.1:
+  version "0.16.3"
+  resolved "http://localhost:4873/bitcore-lib-cash/-/bitcore-lib-cash-0.16.3.tgz#a24a859b82a6f8178d39feab843caf6d14fe78e5"
+  dependencies:
+    bn.js "=4.11.8"
+    bs58 "=4.0.1"
+    buffer-compare "=1.1.1"
+    elliptic "=6.4.0"
+    inherits "=2.0.1"
+    lodash "=4.17.4"
+    phantomjs-prebuilt "^2.1.16"
+
+bitcore-lib@^0.15.0:
+  version "0.15.0"
+  resolved "http://localhost:4873/bitcore-lib/-/bitcore-lib-0.15.0.tgz#f924be13869f2aab7e04aeec5642ad3359b6cec2"
+  dependencies:
+    bn.js "=4.11.8"
+    bs58 "=4.0.1"
+    buffer-compare "=1.1.1"
+    elliptic "=6.4.0"
+    inherits "=2.0.1"
+    lodash "=4.17.4"
+
+bitcore-mnemonic@^1.3.0:
+  version "1.5.0"
+  resolved "http://localhost:4873/bitcore-mnemonic/-/bitcore-mnemonic-1.5.0.tgz#c7e785beb6bf0616ed4992785dc3658670425a39"
+  dependencies:
+    bitcore-lib "^0.15.0"
+    unorm "^1.3.3"
+
+bitcore-payment-protocol@^1.7.0:
+  version "1.7.0"
+  resolved "http://localhost:4873/bitcore-payment-protocol/-/bitcore-payment-protocol-1.7.0.tgz#aa10a5625619d006b04720ffa518be3dc95ad14a"
+  dependencies:
+    asn1.js "=4.9.1"
+    asn1.js-rfc3280 "=4.0.0"
+    asn1.js-rfc5280 "=2.0.0"
+    bitcore-lib "^0.15.0"
+    bs58 "^4.0.1"
+    jsrsasign "^8.0.4"
+    protobufjs "=5.0.1"
+
+bitcore-wallet-client@^6.7.5:
+  version "6.7.5"
+  resolved "http://localhost:4873/bitcore-wallet-client/-/bitcore-wallet-client-6.7.5.tgz#ea8366f0d74318c43ab2abbfc44de58fde69c298"
+  dependencies:
+    async "^0.9.0"
+    bip38 "^1.3.0"
+    bitcore-lib "^0.15.0"
+    bitcore-lib-cash "^0.16.1"
+    bitcore-mnemonic "^1.3.0"
+    bitcore-payment-protocol "^1.7.0"
+    json-stable-stringify "^1.0.0"
+    lodash "^4.17.4"
+    preconditions "^1.0.8"
+    sjcl "1.0.3"
+    superagent "^3.4.1"
 
 bl@^1.0.0:
   version "1.2.2"
@@ -1620,11 +1742,11 @@ bluebird@^2.3:
   version "2.11.0"
   resolved "http://localhost:4873/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
-bluebird@^3.4.7, bluebird@^3.5.0, bluebird@^3.5.1:
+bluebird@^3.4.1, bluebird@^3.4.7, bluebird@^3.5.0, bluebird@^3.5.1:
   version "3.5.1"
   resolved "http://localhost:4873/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
+bn.js@=4.11.8, bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "http://localhost:4873/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
 
@@ -1743,7 +1865,7 @@ browser-resolve@^1.11.2:
   dependencies:
     resolve "1.1.7"
 
-browserify-aes@^1.0.0, browserify-aes@^1.0.4:
+browserify-aes@^1.0.0, browserify-aes@^1.0.1, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "http://localhost:4873/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
   dependencies:
@@ -1802,11 +1924,15 @@ browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
     caniuse-db "^1.0.30000639"
     electron-to-chromium "^1.2.7"
 
-bs58@^4.0.0:
+bs58@=4.0.1, bs58@^4.0.0, bs58@^4.0.1:
   version "4.0.1"
   resolved "http://localhost:4873/bs58/-/bs58-4.0.1.tgz#be161e76c354f6f788ae4071f63f34e8c4f0a42a"
   dependencies:
     base-x "^3.0.2"
+
+bs58@^2.0.1:
+  version "2.0.1"
+  resolved "http://localhost:4873/bs58/-/bs58-2.0.1.tgz#55908d58f1982aba2008fa1bed8f91998a29bf8d"
 
 bs58check@<3.0.0, bs58check@^2.0.0:
   version "2.1.1"
@@ -1832,6 +1958,10 @@ buffer-alloc@^1.1.0:
     buffer-alloc-unsafe "^0.1.0"
     buffer-fill "^0.1.0"
 
+buffer-compare@=1.1.1:
+  version "1.1.1"
+  resolved "http://localhost:4873/buffer-compare/-/buffer-compare-1.1.1.tgz#5be7be853af89198d1f4ddc090d1d66a48aef596"
+
 buffer-crc32@^0.2.1:
   version "0.2.13"
   resolved "http://localhost:4873/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
@@ -1844,7 +1974,7 @@ buffer-from@^1.0.0:
   version "1.0.0"
   resolved "http://localhost:4873/buffer-from/-/buffer-from-1.0.0.tgz#4cb8832d23612589b0406e9e2956c17f06fdf531"
 
-buffer-xor@^1.0.3:
+buffer-xor@^1.0.2, buffer-xor@^1.0.3:
   version "1.0.3"
   resolved "http://localhost:4873/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
 
@@ -1930,7 +2060,7 @@ bunyan-prettystream@^0.1.3:
   version "0.1.3"
   resolved "http://localhost:4873/bunyan-prettystream/-/bunyan-prettystream-0.1.3.tgz#6c3b713266f6ad32007c7b6ab1e998a245349d98"
 
-bunyan@^1.8.12:
+bunyan@^1.8.1, bunyan@^1.8.12:
   version "1.8.12"
   resolved "http://localhost:4873/bunyan/-/bunyan-1.8.12.tgz#f150f0f6748abdd72aeae84f04403be2ef113797"
   optionalDependencies:
@@ -1942,6 +2072,12 @@ bunyan@^1.8.12:
 byline@^5.0.0:
   version "5.0.0"
   resolved "http://localhost:4873/byline/-/byline-5.0.0.tgz#741c5216468eadc457b03410118ad77de8c1ddb1"
+
+bytebuffer@~5:
+  version "5.0.1"
+  resolved "http://localhost:4873/bytebuffer/-/bytebuffer-5.0.1.tgz#582eea4b1a873b6d020a48d58df85f0bba6cfddd"
+  dependencies:
+    long "~3"
 
 bytes@3.0.0:
   version "3.0.0"
@@ -2012,7 +2148,7 @@ camelcase@^1.0.2:
   version "1.2.1"
   resolved "http://localhost:4873/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
 
-camelcase@^2.0.0, camelcase@^2.1.0:
+camelcase@^2.0.0, camelcase@^2.0.1, camelcase@^2.1.0:
   version "2.1.1"
   resolved "http://localhost:4873/camelcase/-/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
 
@@ -2227,7 +2363,7 @@ cliui@^2.1.0:
     right-align "^0.1.1"
     wordwrap "0.0.2"
 
-cliui@^3.2.0:
+cliui@^3.0.3, cliui@^3.2.0:
   version "3.2.0"
   resolved "http://localhost:4873/cliui/-/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"
   dependencies:
@@ -2297,6 +2433,13 @@ codecov@^3.0.0:
     request "^2.81.0"
     urlgrey "0.4.4"
 
+coinstring@^2.2.0:
+  version "2.3.0"
+  resolved "http://localhost:4873/coinstring/-/coinstring-2.3.0.tgz#cdb63363a961502404a25afb82c2e26d5ff627a4"
+  dependencies:
+    bs58 "^2.0.1"
+    create-hash "^1.1.1"
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "http://localhost:4873/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -2351,6 +2494,10 @@ colors@^1.1.2:
 colors@~1.1.2:
   version "1.1.2"
   resolved "http://localhost:4873/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
+
+colour@~0.7.1:
+  version "0.7.1"
+  resolved "http://localhost:4873/colour/-/colour-0.7.1.tgz#9cb169917ec5d12c0736d3e8685746df1cadf778"
 
 columnify@^1.5.4:
   version "1.5.4"
@@ -2749,7 +2896,7 @@ create-error-class@^3.0.0, create-error-class@^3.0.1:
   dependencies:
     capture-stack-trace "^1.0.0"
 
-create-hash@^1.1.0, create-hash@^1.1.2:
+create-hash@^1.1.0, create-hash@^1.1.1, create-hash@^1.1.2:
   version "1.2.0"
   resolved "http://localhost:4873/create-hash/-/create-hash-1.2.0.tgz#889078af11a63756bcfb59bd221996be3a9ef196"
   dependencies:
@@ -3129,6 +3276,13 @@ debug@^3.0.0, debug@^3.0.1, debug@^3.1.0:
   resolved "http://localhost:4873/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
     ms "2.0.0"
+
+debugnyan@^1.0.0:
+  version "1.0.0"
+  resolved "http://localhost:4873/debugnyan/-/debugnyan-1.0.0.tgz#90386d5ebc2c63588f17f272be5c2a93b7665d83"
+  dependencies:
+    bunyan "^1.8.1"
+    debug "^2.2.0"
 
 decamelize-keys@^1.0.0:
   version "1.1.0"
@@ -3627,7 +3781,7 @@ electron@1.8.4:
     electron-download "^3.0.1"
     extract-zip "^1.0.3"
 
-elliptic@^6.0.0:
+elliptic@=6.4.0, elliptic@^6.0.0:
   version "6.4.0"
   resolved "http://localhost:4873/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
   dependencies:
@@ -4404,6 +4558,14 @@ fs-extra@^0.30.0:
     path-is-absolute "^1.0.0"
     rimraf "^2.2.8"
 
+fs-extra@^1.0.0:
+  version "1.0.0"
+  resolved "http://localhost:4873/fs-extra/-/fs-extra-1.0.0.tgz#cd3ce5f7e7cb6145883fcae3191e9877f8587950"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^2.1.0"
+    klaw "^1.0.0"
+
 fs-extra@^2.0.0:
   version "2.1.2"
   resolved "http://localhost:4873/fs-extra/-/fs-extra-2.1.2.tgz#046c70163cef9aad46b0e4a7fa467fb22d71de35"
@@ -4625,6 +4787,16 @@ glob-parent@^3.1.0:
 glob-to-regexp@^0.3.0:
   version "0.3.0"
   resolved "http://localhost:4873/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz#8c5a1494d2066c570cc3bfe4496175acc4d502ab"
+
+glob@^5.0.10:
+  version "5.0.15"
+  resolved "http://localhost:4873/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
 
 glob@^6.0.1, glob@^6.0.4:
   version "6.0.4"
@@ -4863,6 +5035,13 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.0"
+
+hasha@^2.2.0:
+  version "2.2.0"
+  resolved "http://localhost:4873/hasha/-/hasha-2.2.0.tgz#78d7cbfc1e6d66303fe79837365984517b2f6ee1"
+  dependencies:
+    is-stream "^1.0.1"
+    pinkie-promise "^2.0.0"
 
 hawk@~3.1.3:
   version "3.1.3"
@@ -5177,7 +5356,7 @@ inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, i
   version "2.0.3"
   resolved "http://localhost:4873/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
-inherits@2.0.1:
+inherits@2.0.1, inherits@=2.0.1:
   version "2.0.1"
   resolved "http://localhost:4873/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
 
@@ -6017,6 +6196,12 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "http://localhost:4873/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
+json-bigint@^0.2.0:
+  version "0.2.3"
+  resolved "http://localhost:4873/json-bigint/-/json-bigint-0.2.3.tgz#118d7f6ff1d38659f19f94cf73e64a75a3f988a8"
+  dependencies:
+    bignumber.js "^4.0.0"
+
 json-loader@^0.5.4:
   version "0.5.7"
   resolved "http://localhost:4873/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
@@ -6033,7 +6218,7 @@ json-schema@0.2.3:
   version "0.2.3"
   resolved "http://localhost:4873/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
 
-json-stable-stringify@^1.0.1:
+json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
   version "1.0.1"
   resolved "http://localhost:4873/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
   dependencies:
@@ -6086,9 +6271,17 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jsrsasign@^8.0.4:
+  version "8.0.12"
+  resolved "http://localhost:4873/jsrsasign/-/jsrsasign-8.0.12.tgz#22abb9656d34a30b9530436720835e89c2e5c316"
+
 just-extend@^1.1.27:
   version "1.1.27"
   resolved "http://localhost:4873/just-extend/-/just-extend-1.1.27.tgz#ec6e79410ff914e472652abfa0e603c03d60e905"
+
+kew@^0.7.0:
+  version "0.7.0"
+  resolved "http://localhost:4873/kew/-/kew-0.7.0.tgz#79d93d2d33363d6fdd2970b335d9141ad591d79b"
 
 keyboardevent-from-electron-accelerator@^1.1.0:
   version "1.1.0"
@@ -6452,6 +6645,14 @@ lodash.values@^4.3.0:
   version "4.3.0"
   resolved "http://localhost:4873/lodash.values/-/lodash.values-4.3.0.tgz#a3a6c2b0ebecc5c2cba1c17e6e620fe81b53d347"
 
+lodash@=4.17.4:
+  version "4.17.4"
+  resolved "http://localhost:4873/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^2.4.1:
+  version "2.4.2"
+  resolved "http://localhost:4873/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
+
 lodash@^3.10.0, lodash@^3.10.1:
   version "3.10.1"
   resolved "http://localhost:4873/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
@@ -6484,6 +6685,10 @@ lolex@^2.2.0, lolex@^2.3.2:
 long@^4.0.0:
   version "4.0.0"
   resolved "http://localhost:4873/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+
+long@~3:
+  version "3.2.0"
+  resolved "http://localhost:4873/long/-/long-3.2.0.tgz#d821b7138ca1cb581c172990ef14db200b5c474b"
 
 longest@^1.0.1:
   version "1.0.1"
@@ -7494,6 +7699,10 @@ options@>=0.0.5:
   version "0.0.6"
   resolved "http://localhost:4873/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
 
+optjs@~3.2.2:
+  version "3.2.2"
+  resolved "http://localhost:4873/optjs/-/optjs-3.2.2.tgz#69a6ce89c442a44403141ad2f9b370bd5bb6f4ee"
+
 os-browserify@^0.3.0:
   version "0.3.0"
   resolved "http://localhost:4873/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
@@ -7751,6 +7960,20 @@ pend@~1.2.0:
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "http://localhost:4873/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
+
+phantomjs-prebuilt@^2.1.16:
+  version "2.1.16"
+  resolved "http://localhost:4873/phantomjs-prebuilt/-/phantomjs-prebuilt-2.1.16.tgz#efd212a4a3966d3647684ea8ba788549be2aefef"
+  dependencies:
+    es6-promise "^4.0.3"
+    extract-zip "^1.6.5"
+    fs-extra "^1.0.0"
+    hasha "^2.2.0"
+    kew "^0.7.0"
+    progress "^1.1.8"
+    request "^2.81.0"
+    request-progress "^2.0.1"
+    which "^1.2.10"
 
 pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
@@ -8107,6 +8330,12 @@ prebuild-install@^2.2.2:
     tunnel-agent "^0.6.0"
     which-pm-runs "^1.0.0"
 
+preconditions@^1.0.8:
+  version "1.0.8"
+  resolved "http://localhost:4873/preconditions/-/preconditions-1.0.8.tgz#7bc1831ef6815602f3ad0c46968cb75eb1d92cc5"
+  dependencies:
+    lodash "^2.4.1"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "http://localhost:4873/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -8176,6 +8405,10 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
+progress@^1.1.8:
+  version "1.1.8"
+  resolved "http://localhost:4873/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
+
 progress@^2.0.0:
   version "2.0.0"
   resolved "http://localhost:4873/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
@@ -8193,6 +8426,15 @@ prop-types@^15.5.4, prop-types@^15.6.0:
     fbjs "^0.8.16"
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
+
+protobufjs@=5.0.1:
+  version "5.0.1"
+  resolved "http://localhost:4873/protobufjs/-/protobufjs-5.0.1.tgz#589ecdda1a555fd69df4699adc142d36f133aa0b"
+  dependencies:
+    ascli "~1"
+    bytebuffer "~5"
+    glob "^5.0.10"
+    yargs "^3.10.0"
 
 protobufjs@^6.8.6:
   version "6.8.6"
@@ -8720,6 +8962,12 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
+request-progress@^2.0.1:
+  version "2.0.1"
+  resolved "http://localhost:4873/request-progress/-/request-progress-2.0.1.tgz#5d36bb57961c673aa5b788dbc8141fdf23b44e08"
+  dependencies:
+    throttleit "^1.0.0"
+
 request-promise-core@1.1.1:
   version "1.1.1"
   resolved "http://localhost:4873/request-promise-core/-/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
@@ -8743,7 +8991,7 @@ request-promise@^0.4.3:
     lodash "^3.10.0"
     request "^2.34"
 
-request@2, request@^2.34, request@^2.45.0, request@^2.79.0, request@^2.81.0, request@^2.83.0:
+request@2, request@^2.34, request@^2.45.0, request@^2.53.0, request@^2.79.0, request@^2.81.0, request@^2.83.0:
   version "2.85.0"
   resolved "http://localhost:4873/request/-/request-2.85.0.tgz#5a03615a47c61420b3eb99b7dba204f83603e1fa"
   dependencies:
@@ -9050,6 +9298,12 @@ schema-utils@^0.4.5:
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
+scryptsy@^1.2.0:
+  version "1.2.1"
+  resolved "http://localhost:4873/scryptsy/-/scryptsy-1.2.1.tgz#a3225fa4b2524f802700761e2855bdf3b2d92163"
+  dependencies:
+    pbkdf2 "^3.0.3"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "http://localhost:4873/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -9227,6 +9481,10 @@ sinon@^4.0.0:
     nise "^1.2.0"
     supports-color "^5.1.0"
     type-detect "^4.0.5"
+
+sjcl@1.0.3:
+  version "1.0.3"
+  resolved "http://localhost:4873/sjcl/-/sjcl-1.0.3.tgz#4ed486498ed6b742b5d4a21902268116f054a709"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -9465,6 +9723,10 @@ stack-utils@^1.0.1:
   version "1.0.1"
   resolved "http://localhost:4873/stack-utils/-/stack-utils-1.0.1.tgz#d4f33ab54e8e38778b0ca5cfd3b3afb12db68620"
 
+standard-error@^1.1.0:
+  version "1.1.0"
+  resolved "http://localhost:4873/standard-error/-/standard-error-1.1.0.tgz#23e5168fa1c0820189e5812701a79058510d0d34"
+
 standard-version@^4.0.0:
   version "4.3.0"
   resolved "http://localhost:4873/standard-version/-/standard-version-4.3.0.tgz#41006cfee4eeab7c0ff3a47eecaa4c7506ed2e3f"
@@ -9679,7 +9941,7 @@ superagent@3.8.2:
     qs "^6.5.1"
     readable-stream "^2.0.5"
 
-superagent@^3.8.2:
+superagent@^3.4.1, superagent@^3.8.2:
   version "3.8.3"
   resolved "http://localhost:4873/superagent/-/superagent-3.8.3.tgz#460ea0dbdb7d5b11bc4f78deba565f86a178e128"
   dependencies:
@@ -9900,6 +10162,10 @@ throat@^4.0.0:
 throttleit@0.0.2:
   version "0.0.2"
   resolved "http://localhost:4873/throttleit/-/throttleit-0.0.2.tgz#cfedf88e60c00dd9697b61fdd2a8343a9b680eaf"
+
+throttleit@^1.0.0:
+  version "1.0.0"
+  resolved "http://localhost:4873/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
 
 through2@^2.0.0, through2@^2.0.2:
   version "2.0.3"
@@ -10740,7 +11006,7 @@ which-pm-runs@^1.0.0:
   version "1.0.0"
   resolved "http://localhost:4873/which-pm-runs/-/which-pm-runs-1.0.0.tgz#670b3afbc552e0b55df6b7780ca74615f23ad1cb"
 
-which@1, which@^1.2.12, which@^1.2.8, which@^1.2.9, which@^1.3.0:
+which@1, which@^1.2.10, which@^1.2.12, which@^1.2.8, which@^1.2.9, which@^1.3.0:
   version "1.3.0"
   resolved "http://localhost:4873/which/-/which-1.3.0.tgz#ff04bdfc010ee547d780bec38e1ac1c2777d253a"
   dependencies:
@@ -10773,6 +11039,10 @@ wif@^2.0.1:
 window-size@0.1.0:
   version "0.1.0"
   resolved "http://localhost:4873/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
+
+window-size@^0.1.4:
+  version "0.1.4"
+  resolved "http://localhost:4873/window-size/-/window-size-0.1.4.tgz#f8e1aa1ee5a53ec5bf151ffa09742a6ad7697876"
 
 word-wrap@^1.0.3:
   version "1.2.3"
@@ -10910,7 +11180,7 @@ xtend@~2.1.1:
   dependencies:
     object-keys "~0.4.0"
 
-y18n@^3.2.1:
+y18n@^3.2.0, y18n@^3.2.1:
   version "3.2.1"
   resolved "http://localhost:4873/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
 
@@ -10996,6 +11266,18 @@ yargs@^11.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
+
+yargs@^3.10.0:
+  version "3.32.0"
+  resolved "http://localhost:4873/yargs/-/yargs-3.32.0.tgz#03088e9ebf9e756b69751611d2a5ef591482c995"
+  dependencies:
+    camelcase "^2.0.1"
+    cliui "^3.0.3"
+    decamelize "^1.1.1"
+    os-locale "^1.4.0"
+    string-width "^1.0.1"
+    window-size "^0.1.4"
+    y18n "^3.2.0"
 
 yargs@^7.0.0:
   version "7.1.0"

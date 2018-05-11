@@ -102,12 +102,12 @@ declare module 'bitcore-wallet-client' {
     coin: SupportedCoinType;
     account: number;
     derivationStrategy: string;
-   }
+  }
 
-   export interface ImportFromMnemonicOpts extends seedFromMnemonicOpts {
-     entropySourcePath: string;
-     walletPrivKey: string;
-   }
+  export interface ImportFromMnemonicOpts extends seedFromMnemonicOpts {
+    entropySourcePath: string;
+    walletPrivKey: string;
+  }
 
   class Client extends EventEmitter {
     constructor(opts: Partial<ClientConstructorOption> | null);
@@ -125,20 +125,31 @@ declare module 'bitcore-wallet-client' {
       opts: Partial<extendedKeyToSeedOpts> | null
     ): void;
 
-    validateKeyDerivation(opts: Partial<{
-      passphrase: string;
-      skipDeviceValidation: boolean;
-    }> | null): void;
+    validateKeyDerivation(
+      opts: Partial<{
+        passphrase: string;
+        skipDeviceValidation: boolean;
+      }> | null
+    ): void;
 
     seedFromMnemonic(words: string, opts: Partial<seedFromMnemonicOpts>): void;
 
-    seedFromExtendedPublicKey(xPubkey: string, source: string, entropySourceHex: string, opts: Partial<extendedKeyToSeedOpts>): void;
+    seedFromExtendedPublicKey(
+      xPubkey: string,
+      source: string,
+      entropySourceHex: string,
+      opts: Partial<extendedKeyToSeedOpts>
+    ): void;
 
-    export(opts: Partial<{password: string, noSign: boolean}>): void;
+    export(opts: Partial<{ password: string; noSign: boolean }>): void;
 
-    import(str: string): void
+    import(str: string): void;
 
-    importFromMnemonic(words: string, opts: Partial<ImportFromMnemonicOpts>, cb: Callback): void
+    importFromMnemonic(
+      words: string,
+      opts: Partial<ImportFromMnemonicOpts>,
+      cb: Callback
+    ): void;
 
     createWallet(opts: CreateWalletOpts): void;
 

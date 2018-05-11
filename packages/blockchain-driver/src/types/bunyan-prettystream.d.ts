@@ -5,7 +5,7 @@
 
 /// <reference types="node" />
 
-declare module "bunyan-prettystream" {
+declare module 'bunyan-prettystream' {
   import stream = require('stream');
   export default class PrettyStream extends stream.Writable {
     /**
