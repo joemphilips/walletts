@@ -32,6 +32,7 @@
   ],
   "include": [
     "./custom-typings.d.ts",
+    "./bitcoin-core-typings.d.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
     "test/**/*.ts",

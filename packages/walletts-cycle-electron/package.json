@@ -10,8 +10,8 @@
     "test-watch": "npm test -- --watch",
     "test-e2e": "cross-env NODE_ENV=test node --trace-warnings ./test/runTests.js e2e",
     "hot-server": "cross-env NODE_ENV=development node --max_old_space_size=2096 server.js",
-    "build-main": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
-    "build-renderer": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config webpack.config.production.js --progress --profile --colors",
+    "build-main": "cross-env NODE_ENV=production node ./node_modules/.bin/webpack --config webpack.config.electron.js --progress --profile --colors",
+    "build-renderer": "cross-env NODE_ENV=production node ./node_modules/.bin/webpack --config webpack.config.production.js --progress --profile --colors",
     "build": "npm run build-main && npm run build-renderer",
     "start": "cross-env NODE_ENV=production electron ./app/",
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron ./app/main.development",
@@ -46,8 +46,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReactTypescript",
-    "appId": "io.github.irath96.ElectronReactTypescript",
+    "productName": "walletts-electron",
+    "appId": "io.github.irath96.wallettsElectron",
     "dmg": {
       "contents": [
         {
@@ -103,12 +103,8 @@
   },
   "keywords": [
     "electron",
-    "boilerplate",
-    "react",
-    "react-router",
-    "flux",
-    "webpack",
-    "react-hot"
+    "cyclejs",
+    "webpack"
   ],
   "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
   "devDependencies": {
@@ -171,7 +167,6 @@
     "@cycle/http": "^14.9.0",
     "@cycle/isolate": "^3.3.0",
     "@cycle/storage": "^5.0.3",
-    "bitcoin-core": "https://github.com/joemphilips/bitcoin-core#typings",
     "bitcoinjs-lib": "^3.3.2",
     "cycle-onionify": "^5.0.0",
     "cycle-restart": "^0.2.3",
