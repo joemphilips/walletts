@@ -1,8 +1,18 @@
 {
+  "repository": "https://github.com/joemphilips/cycle-walletts",
+  "description": "bitcoin wallet suite in typescript",
+  "license": "MIT",
 	"workspaces": [
 		"packages/*"
 	],
+  "scripts": {
+    "test": "lerna run test"
+  },
+  "private": true,
 	"devDependencies": {
 		"lerna": "^2.9.0"
-	}
+	},
+ "publishConfig": {
+   "access": "public"
+ }
 }
