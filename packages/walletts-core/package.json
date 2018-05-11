@@ -1,5 +1,5 @@
 {
-  "name": "typescript-starter",
+  "name": "walletts-core",
   "version": "1.0.0",
   "description": "extendable, composable, and hackable bitcoin wallet",
   "main": "build/main/index.js",
