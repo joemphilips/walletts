@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@walletts/*": [
-        "./packages/walletts*/*/src"
+        "./packages/*/src"
       ],
       "*": [
         "./packages/*/src"
