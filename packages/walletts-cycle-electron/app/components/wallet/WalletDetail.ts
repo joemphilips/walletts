@@ -1,7 +1,7 @@
 import { div, DOMSource, h, VNode } from "@cycle/dom";
 import { StateSource } from "cycle-onionify";
 import xs, { Stream } from "xstream";
-import { MyWalletCoin } from "../../primitives/wallet-coin";
+import { MyWalletCoin } from "walletts-core";
 import { BaseSinks, BaseSources } from "../../interfaces";
 import { HistoryAction } from "cyclic-router";
 
