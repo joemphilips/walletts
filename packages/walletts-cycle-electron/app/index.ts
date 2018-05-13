@@ -1,9 +1,9 @@
 // tslint:disable:no-if-statement
 import { setup, run } from "@cycle/run";
 import isolate from "@cycle/isolate";
-/// #if DEVELOPMENT
 import { restartable, rerunner } from "cycle-restart";
-/// #endif
+import * as csstips from "csstips";
+csstips.normalize();
 
 import { buildDrivers, wrapMain } from "./drivers";
 import { App } from "./components/app";
@@ -34,4 +34,3 @@ if (process.env.NODE_ENV === "production") {
     });
   }
 }
-/// #endif
