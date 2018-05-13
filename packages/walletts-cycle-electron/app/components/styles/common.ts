@@ -1,4 +1,7 @@
-import { style, classes } from "typestyle";
+import * as csstips from "csstips";
+import { style, classes, fontFace } from "typestyle";
+
+export const flexHorizontalGreen = style(csstips.flex);
 
 // style which should be applied to most of the components
 export namespace defaultStyle {
@@ -19,4 +22,15 @@ export namespace defaultStyle {
       borderRadius: 2
     })
   );
+
+  export const Button = style({
+    padding: "4px",
+    fontSize: "14px"
+  });
+
+  export const font = fontFace({
+    fontFamily: "Roboto",
+    fontStyle: "normal",
+    fontWeight: 400
+  });
 }
