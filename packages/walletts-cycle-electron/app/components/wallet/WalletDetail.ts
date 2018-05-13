@@ -1,9 +1,10 @@
-import { div, DOMSource, h, VNode } from "@cycle/dom";
+import { div, DOMSource, VNode, button } from "@cycle/dom";
 import { StateSource } from "cycle-onionify";
 import xs, { Stream } from "xstream";
 import { MyWalletCoin } from "walletts-core";
 import { BaseSinks, BaseSources } from "../../interfaces";
 import { HistoryAction } from "cyclic-router";
+import { defaultStyle as Style } from "../styles/common";
 
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
@@ -34,7 +35,7 @@ export type Reducer = (prev: State) => State | null;
 export const WalletDetail = ({ DOM, onion }: Sources): Sinks => {
   const action$: Stream<Reducer> = intent(DOM);
 
-  const routes$ = DOM.select(".wallet-detail-container")
+  const routes$ = DOM.select('[data-action="navigate"]')
     .events("click")
     // tslint:disable-next-line:no-console
     .debug(x => console.log("going to navigate to /landing-page . received"))
@@ -74,11 +75,15 @@ export const intent = (DOM: DOMSource): Stream<Reducer> => {
 export const view = (state$: Stream<State>): Stream<VNode> => {
   state$.debug("rendering");
   return state$.map(s =>
-    div(".wallet-detail-container", [
-      h("input.navigate-button", {
-        props: { type: "button", value: "go to landing page" },
-        dataset: { action: "navigate" }
-      }),
+    div(`.${Style.containerBase}`, [
+      button(
+        `.${Style.Button}`,
+        {
+          props: { value: "go to landing page" },
+          dataset: { action: "navigate" }
+        },
+        "go to landing page"
+      ),
       div(
         ".wallet-detail",
         Object.keys(s.txs).map(txid => div(`#${txid}`, `this is tx ${txid}`))
