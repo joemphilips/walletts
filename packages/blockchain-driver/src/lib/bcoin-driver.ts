@@ -37,7 +37,8 @@ export const makeTrustedBcoinNodeDriver = (opts: BclientOption) => {
             ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
             : xs.fromPromise(cli[x.method].bind(cli)())
       )
-      .flatten();
+      .flatten()
+      .map(r => ({ ...r, type: 'rpc' }));
     return adapt(response$);
   };
 
@@ -49,12 +50,14 @@ export const makeTrustedBcoinWalletDriver = (opts: BclientOption) => {
     request$: Stream<Request>
   ): MemoryStream<Response> => {
     const cli = new WalletClient(opts);
-    const response$ = request$.map(
-      x =>
-        x.options
-          ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
-          : xs.fromPromise(cli[x.method].bind(cli))
-    );
+    const response$ = request$
+      .map(
+        x =>
+          x.options
+            ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
+            : xs.fromPromise(cli[x.method].bind(cli)())
+      )
+      .flatten();
     return adapt(response$);
   };
   return TrustedBcoinWalletDriver;
