@@ -13,3 +13,5 @@ includes following packages
 
 clone this repository and run
 `lerna bootstrap`
+
+Run test with `yarn test`

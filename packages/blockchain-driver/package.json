@@ -15,7 +15,7 @@
     "build:module": "tsc -p tsconfig.module.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
-    "integration": "nyc --silent ava",
+    "test:integration": "nyc --silent ava",
     "test": "run-s build test:*",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
     "docker": "docker-compose down && docker-compose up -d && run-s docker-generate",
@@ -54,6 +54,7 @@
   "dependencies": {
     "@cycle/dom": "^20.2.0",
     "@cycle/run": "^4.1.0",
+    "bclient": "^0.0.2",
     "bitcoin-core": "^2.0.0",
     "bitcore-wallet-client": "^6.7.5",
     "bunyan": "^1.8.12",

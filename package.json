@@ -6,7 +6,9 @@
 		"packages/*"
 	],
   "scripts": {
-    "test": "lerna run test"
+    "test": "docker-compose down && docker-compose up -d && npm run test:run",
+    "test:run": "lerna run test",
+    "build": "lerna run build"
   },
   "private": true,
 	"devDependencies": {

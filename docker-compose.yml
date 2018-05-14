@@ -8,7 +8,6 @@ services:
       #-- Mainnet
       - "8333:8333"
       - "8332:8332" # RPC
-      - "8334:8334" # Wallet
       #-- Testnet
       - "18333:18333"
       - "18332:18332" # RPC
@@ -26,15 +25,20 @@ services:
       -server
       -zmqpubrawblock='tcp://127.0.0.1:288332'
       -zmqpubrawtx='tcp://127.0.0.1:288332'
-      # bcoin:
-      # image: purse/bcoin
-      # restart: unless-stopped
-      # env_file:
-      # - ./bcoin.env
-      # ports:
-      # - "48444:48444"
-      # - "48332:48332"
-      # - "48334:48334"
+  bcoin:
+    image: purse/bcoin
+    restart: unless-stopped
+    env_file:
+      - ./bcoin.env
+    ports:
+      # Regtest
+      - "48444:48444"
+      - "48332:48332" # RPC
+      - "48334:48334" # Wallet
+      # Simnet
+      - "18555:18555"
+      - "18556:18556" # RPC
+      - "18558:18558" # Wallet
   db:
     image: mongo:latest
     restart: unless-stopped
