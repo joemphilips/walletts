@@ -2,9 +2,7 @@ import { setup } from '@cycle/run';
 import test from 'ava';
 import xs, { Stream } from 'xstream';
 import { BWSMethodName, BWSRequest, BWSResponse, makeBWSDriver } from '.';
-
-const sleep = (msec: number) =>
-  new Promise(resolve => setTimeout(resolve, msec));
+import { sleep } from './test-common';
 
 interface BWSTestSink {
   readonly Blockchain: Stream<BWSRequest>;
@@ -17,7 +15,7 @@ const isWalletSecret = (r: any): boolean => {
   return typeof r === 'string' && r.substring(r.length - 3, r.length) === 'btc';
 };
 
-test('bws driver can getVersion', async t => {
+test('bws getVersion', async t => {
   t.plan(1);
   const main = _ => {
     return {
@@ -45,7 +43,7 @@ test('bws driver can getVersion', async t => {
   await sleep(2000);
 });
 
-test('bws driver can createWallet', async t => {
+test('bws createWallet', async t => {
   t.plan(1);
   const main = (_: BWSTestSource): BWSTestSink => {
     const createWalletOpts: ReadonlyArray<any> = [
@@ -83,7 +81,7 @@ test('bws driver can createWallet', async t => {
   await sleep(1000);
 });
 
-test('bws driver can getNotification with auth', async t => {
+test('bws getNotification with auth', async t => {
   t.plan(1);
   const main = (_): BWSTestSink => {
     const createWalletOpts: ReadonlyArray<any> = [

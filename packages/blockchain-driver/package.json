@@ -54,6 +54,7 @@
   "dependencies": {
     "@cycle/dom": "^20.2.0",
     "@cycle/run": "^4.1.0",
+    "bclient": "^0.0.2",
     "bitcoin-core": "^2.0.0",
     "bitcore-wallet-client": "^6.7.5",
     "bunyan": "^1.8.12",

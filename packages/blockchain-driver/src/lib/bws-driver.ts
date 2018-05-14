@@ -39,8 +39,6 @@ export const makeBWSDriver = ({ url }: BWSClientOption) => {
   ): MemoryStream<BWSResponse> => {
     const cli = new Client({ baseUrl: url + '/bws/api', timeout: 3000 });
     const response$ = request$
-      /* tslint:disable-next-line */
-      .debug(r => console.log(`going to call ${r.method} with ${r.options}`))
       .map(r =>
         xs.fromPromise(
           r.options
