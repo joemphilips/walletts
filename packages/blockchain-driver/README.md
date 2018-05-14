@@ -3,7 +3,7 @@
 Cycle.js driver for following blockchain clients
 
 * [bitcoind](https://github.com/bitcoin/bitcoin)
-* [bcoin](https://github.com/bcoin-org/bcoin) ... WIP
+* [bcoin](https://github.com/bcoin-org/bcoin)
 * [bitcore-wallet-service (bws)](https://github.com/bitpay/bitcore-wallet-service) 
 
 ## Example
