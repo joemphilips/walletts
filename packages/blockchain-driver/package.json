@@ -15,7 +15,7 @@
     "build:module": "tsc -p tsconfig.module.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
-    "integration": "nyc --silent ava",
+    "test:integration": "nyc --silent ava",
     "test": "run-s build test:*",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
     "docker": "docker-compose down && docker-compose up -d && run-s docker-generate",
