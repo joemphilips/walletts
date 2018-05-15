@@ -26,7 +26,11 @@ services:
       -zmqpubrawblock='tcp://127.0.0.1:288332'
       -zmqpubrawtx='tcp://127.0.0.1:288332'
   bcoin:
-    image: purse/bcoin
+    build:
+      context: ./bcoin-docker
+      dockerfile: Dockerfile.slim
+      args:
+        BCOIN_VERSION: v1.0.0-beta.15
     restart: unless-stopped
     env_file:
       - ./bcoin.env
