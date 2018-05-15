@@ -3,7 +3,8 @@ import test from 'ava';
 import xs from 'xstream';
 import {
   makeTrustedBcoinNodeDriver,
-  makeTrustedBcoinWalletDriver
+  makeTrustedBcoinWalletDriver,
+  WalletRequest
 } from './bcoin-driver';
 import { sleep } from './test-common';
 
@@ -46,9 +47,14 @@ test('bcoin node getInfo', async t => {
   await sleep(2000);
 });
 
-test('bcoin wallet getWalletInfo', async t => {
+test('bcoin wallet getInfo', async t => {
   t.plan(1);
-  const main = _ => ({ Blockchain: xs.of({ method: 'getInfo' }) });
+  const main = _ => ({
+    Blockchain: xs.from<WalletRequest>([
+      { id: 'test1', method: 'createWallet' },
+      { id: 'test1', method: 'getInfo' }
+    ])
+  });
 
   const driver = makeTrustedBcoinWalletDriver({
     apiKey: 'api-key-for-testing',
@@ -58,7 +64,23 @@ test('bcoin wallet getWalletInfo', async t => {
   const { run, sources } = setup(main, { Blockchain: driver });
   sources.Blockchain.addListener({
     next: resp => {
-      t.deepEqual(resp, ['hoge'], 'failed to getWalletInfo');
+      t.deepEqual(
+        Object.keys(resp).sort(),
+        [
+          'account',
+          'accountDepth',
+          'id',
+          'initialized',
+          'master',
+          'network',
+          'state',
+          'token',
+          'tokenDepth',
+          'watchOnly',
+          'wid'
+        ].sort(),
+        'failed to getWalletInfo'
+      );
     },
     error: e => t.fail(e),
     complete: () => t.fail('bcoin driver must not complete')

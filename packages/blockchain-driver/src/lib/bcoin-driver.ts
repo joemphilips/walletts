@@ -14,10 +14,17 @@ export interface BclientOption {
   readonly token?: string;
 }
 
-export type methodName = keyof NodeClient;
+export type nodeMethodName = keyof NodeClient;
+export type walletMethodName = keyof WalletClient;
 
-export interface Request {
-  readonly method: methodName;
+export interface NodeRequest {
+  readonly method: nodeMethodName;
+  readonly options?: any;
+}
+
+export interface WalletRequest {
+  readonly method: walletMethodName;
+  readonly id: string;
   readonly options?: any;
 }
 
@@ -27,7 +34,7 @@ export interface Response {
 
 export const makeTrustedBcoinNodeDriver = (opts: BclientOption) => {
   const TrustedBcoinNodeDriver = (
-    request$: Stream<Request>
+    request$: Stream<NodeRequest>
   ): MemoryStream<Response> => {
     const cli = new NodeClient(opts);
     const response$ = request$
@@ -47,15 +54,15 @@ export const makeTrustedBcoinNodeDriver = (opts: BclientOption) => {
 
 export const makeTrustedBcoinWalletDriver = (opts: BclientOption) => {
   const TrustedBcoinWalletDriver = (
-    request$: Stream<Request>
+    request$: Stream<WalletRequest>
   ): MemoryStream<Response> => {
     const cli = new WalletClient(opts);
     const response$ = request$
       .map(
         x =>
           x.options
-            ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
-            : xs.fromPromise(cli[x.method].bind(cli)())
+            ? xs.fromPromise(cli[x.method].bind(cli)(x.id, x.options))
+            : xs.fromPromise(cli[x.method].bind(cli)(x.id))
       )
       .flatten();
     return adapt(response$);
