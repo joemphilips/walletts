@@ -14,4 +14,5 @@ includes following packages
 clone this repository and run
 `lerna bootstrap`
 
-Run test with `yarn test`
+run `yarn build` to build all packages
+run `yarn test` ro run tests in all packages
