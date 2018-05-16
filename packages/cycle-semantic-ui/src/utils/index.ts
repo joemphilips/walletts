@@ -1,4 +1,4 @@
-import { VNode } from "@cycle/dom";
+import { VNode, VNodeData } from "@cycle/dom";
 
 let counter = 0;
 export function getScope(): string {
@@ -24,7 +24,7 @@ export function patchClassList(target: VNode, classes: string[], classesToAdd: s
     "props": {
       className
     }
-  });
+  }) as VNodeData & { "props": { className: string } }; 
 }
 
 /**
