@@ -6,6 +6,9 @@
       ],
       "*": [
         "./packages/*/src"
+      ],
+      "@cycle/dom": [
+        "./node_modules/@cycle/dom"
       ]
     }
   }

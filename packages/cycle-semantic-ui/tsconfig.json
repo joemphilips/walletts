@@ -1,0 +1,36 @@
+{ 
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "noImplicitUseStrict": false,
+        "removeComments": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "sourceMap": true,
+        "outDir": "./build",
+        "typeRoots": ["node_modules/@types", "./typings-custom"],
+        "lib": ["es2017", "dom"]
+    },  
+    "formatCodeOptions": {
+      "indentSize": 2,
+      "tabSize": 2
+    },
+    "exclude": [
+        "node_modules",
+        "docs-src",
+        "test",
+        "typings/browser",
+        "typings/browser.d.ts"
+    ],  
+    "compileOnSave": false,
+    "buildOnSave": false
+}

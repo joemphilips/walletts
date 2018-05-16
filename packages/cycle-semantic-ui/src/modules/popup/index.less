@@ -1,0 +1,529 @@
+
+/*!
+ * # Semantic UI - Popup
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Copyright 2015 Contributors
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+/*******************************
+            Theme
+*******************************/
+
+@import (multiple) '../../theme.less';
+@import './index.variables';
+
+/*******************************
+            Popup
+*******************************/
+
+.ui.popup {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  /* Fixes content being squished when inline (moz only) */
+  min-width: min-content;
+  z-index: @zIndex;
+
+  border: @border;
+  line-height: @lineHeight;
+  max-width: @maxWidth;
+  background: @background;
+
+  padding: @verticalPadding @horizontalPadding;
+  font-weight: @fontWeight;
+  font-style: @fontStyle;
+  color: @color;
+
+  border-radius: @borderRadius;
+  box-shadow: @boxShadow;
+}
+.ui.popup > .header {
+  padding: 0em;
+
+  font-family: @headerFont;
+  font-size: @headerFontSize;
+  line-height: @headerLineHeight;
+  font-weight: bold;
+}
+.ui.popup > .header + .content {
+  padding-top: @headerDistance;
+}
+
+.ui.popup:before {
+  position: absolute;
+  content: '';
+  width: @arrowSize;
+  height: @arrowSize;
+
+  background: @arrowBackground;
+  transform: rotate(45deg);
+
+  z-index: @arrowZIndex;
+  box-shadow: @arrowBoxShadow;
+}
+
+/*******************************
+            Types
+*******************************/
+
+/*--------------
+     Spacing
+---------------*/
+
+.ui.popup {
+  margin: 0em;
+}
+
+/* Extending from Top */
+.ui.top.popup {
+  margin: 0em 0em @popupDistanceAway;
+}
+.ui.top.left.popup {
+  transform-origin: left bottom;
+}
+.ui.top.center.popup {
+  transform-origin: center bottom;
+}
+.ui.top.right.popup {
+  transform-origin: right bottom;
+}
+
+/* Extending from Vertical Center */
+.ui.left.center.popup {
+  margin: 0em @popupDistanceAway 0em 0em;
+  transform-origin: right 50%;
+}
+.ui.right.center.popup {
+  margin: 0em 0em 0em @popupDistanceAway;
+  transform-origin: left 50%;
+}
+
+/* Extending from Bottom */
+.ui.bottom.popup {
+  margin: @popupDistanceAway 0em 0em;
+}
+.ui.bottom.left.popup {
+  transform-origin: left top;
+}
+.ui.bottom.center.popup {
+  transform-origin: center top;
+}
+.ui.bottom.right.popup {
+  transform-origin: right top;
+}
+
+/*--------------
+     Pointer
+---------------*/
+
+/*--- Below ---*/
+.ui.bottom.center.popup:before {
+  margin-left: @arrowOffset;
+  top: @arrowOffset;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  box-shadow: @bottomArrowBoxShadow;
+}
+
+.ui.bottom.left.popup {
+  margin-left: @boxArrowOffset;
+}
+/*rtl:rename*/
+.ui.bottom.left.popup:before {
+  top: @arrowOffset;
+  left: @arrowDistanceFromEdge;
+  right: auto;
+  bottom: auto;
+  margin-left: 0em;
+  box-shadow: @bottomArrowBoxShadow;
+}
+
+.ui.bottom.right.popup {
+  margin-right: @boxArrowOffset;
+}
+/*rtl:rename*/
+.ui.bottom.right.popup:before {
+  top: @arrowOffset;
+  right: @arrowDistanceFromEdge;
+  bottom: auto;
+  left: auto;
+  margin-left: 0em;
+  box-shadow: @bottomArrowBoxShadow;
+}
+
+/*--- Above ---*/
+.ui.top.center.popup:before {
+  top: auto;
+  right: auto;
+  bottom: @arrowOffset;
+  left: 50%;
+  margin-left: @arrowOffset;
+}
+.ui.top.left.popup {
+  margin-left: @boxArrowOffset;
+}
+/*rtl:rename*/
+.ui.top.left.popup:before {
+  bottom: @arrowOffset;
+  left: @arrowDistanceFromEdge;
+  top: auto;
+  right: auto;
+  margin-left: 0em;
+}
+.ui.top.right.popup {
+  margin-right: @boxArrowOffset;
+}
+/*rtl:rename*/
+.ui.top.right.popup:before {
+  bottom: @arrowOffset;
+  right: @arrowDistanceFromEdge;
+  top: auto;
+  left: auto;
+  margin-left: 0em;
+}
+
+/*--- Left Center ---*/
+/*rtl:rename*/
+.ui.left.center.popup:before {
+  top: 50%;
+  right: @arrowOffset;
+  bottom: auto;
+  left: auto;
+  margin-top: @arrowOffset;
+  box-shadow: @leftArrowBoxShadow;
+}
+
+/*--- Right Center  ---*/
+/*rtl:rename*/
+.ui.right.center.popup:before {
+  top: 50%;
+  left: @arrowOffset;
+  bottom: auto;
+  right: auto;
+  margin-top: @arrowOffset;
+  box-shadow: @rightArrowBoxShadow;
+}
+
+/* Arrow Color By Location */
+.ui.bottom.popup:before {
+  background: @arrowTopBackground;
+}
+.ui.right.center.popup:before,
+.ui.left.center.popup:before {
+  background: @arrowCenterBackground;
+}
+.ui.top.popup:before {
+  background: @arrowBottomBackground;
+}
+
+/* Inverted Arrow Color */
+.ui.inverted.bottom.popup:before {
+  background: @invertedArrowTopBackground;
+}
+.ui.inverted.right.center.popup:before,
+.ui.inverted.left.center.popup:before {
+  background: @invertedArrowCenterBackground;
+}
+.ui.inverted.top.popup:before {
+  background: @invertedArrowBottomBackground;
+}
+
+/* Colored Arrow Colors */
+.ui.primaryColored.bottom.popup:before {
+  background: @primaryColoredArrowTopBackground;
+}
+.ui.primaryColored.right.center.popup:before,
+.ui.primaryColored.left.center.popup:before {
+  background: @primaryColoredArrowCenterBackground;
+}
+.ui.primaryColored.top.popup:before {
+  background: @primaryColoredArrowBottomBackground;
+}
+
+.ui.secondaryColored.bottom.popup:before {
+  background: @secondaryColoredArrowTopBackground;
+}
+.ui.secondaryColored.right.center.popup:before,
+.ui.secondaryColored.left.center.popup:before {
+  background: @secondaryColoredArrowCenterBackground;
+}
+.ui.secondaryColored.top.popup:before {
+  background: @secondaryColoredArrowBottomBackground;
+}
+
+.ui.successColored.bottom.popup:before {
+  background: @successColoredArrowTopBackground;
+}
+.ui.successColored.right.center.popup:before,
+.ui.successColored.left.center.popup:before {
+  background: @successColoredArrowCenterBackground;
+}
+.ui.successColored.top.popup:before {
+  background: @successColoredArrowBottomBackground;
+}
+
+.ui.infoColored.bottom.popup:before {
+  background: @infoColoredArrowTopBackground;
+}
+.ui.infoColored.right.center.popup:before,
+.ui.infoColored.left.center.popup:before {
+  background: @infoColoredArrowCenterBackground;
+}
+.ui.infoColored.top.popup:before {
+  background: @infoColoredArrowBottomBackground;
+}
+
+.ui.warningColored.bottom.popup:before {
+  background: @warningColoredArrowTopBackground;
+}
+.ui.warningColored.right.center.popup:before,
+.ui.warningColored.left.center.popup:before {
+  background: @warningColoredArrowCenterBackground;
+}
+.ui.warningColored.top.popup:before {
+  background: @warningColoredArrowBottomBackground;
+}
+
+.ui.errorColored.bottom.popup:before {
+  background: @errorColoredArrowTopBackground;
+}
+.ui.errorColored.right.center.popup:before,
+.ui.errorColored.left.center.popup:before {
+  background: @errorColoredArrowCenterBackground;
+}
+.ui.errorColored.top.popup:before {
+  background: @errorColoredArrowBottomBackground;
+}
+
+
+
+/*******************************
+            Coupling
+*******************************/
+
+/* Immediate Nested Grid */
+.ui.popup > .ui.grid:not(.padded) {
+  width: @nestedGridWidth;
+  margin: @nestedGridMargin;
+}
+
+/*******************************
+            States
+*******************************/
+
+.ui.loading.popup {
+  display: block;
+  visibility: hidden;
+  z-index: @loadingZIndex;
+}
+
+.ui.animating.popup,
+.ui.visible.popup {
+  display: block;
+}
+
+.ui.visible.popup {
+  transform: translateZ(0px);
+  backface-visibility: hidden;
+}
+
+
+/*******************************
+            Variations
+*******************************/
+
+/*--------------
+     Basic
+---------------*/
+
+.ui.basic.popup:before {
+  display: none;
+}
+
+
+/*--------------
+     Wide
+---------------*/
+
+.ui.wide.popup {
+  max-width: @wideWidth;
+}
+.ui[class*="very wide"].popup {
+  max-width: @veryWideWidth;
+}
+
+@media only screen and (max-width: @largestMobileScreen) {
+  .ui.wide.popup,
+  .ui[class*="very wide"].popup {
+    max-width: @maxWidth;
+  }
+}
+
+
+/*--------------
+     Fluid
+---------------*/
+
+.ui.fluid.popup {
+  width: 100%;
+  max-width: none;
+}
+
+
+/*--------------
+     Colors
+---------------*/
+
+/* Inverted colors  */
+.ui.inverted.popup {
+  background: @invertedBackground;
+  color: @invertedColor;
+  border: @invertedBorder;
+  box-shadow: @invertedBoxShadow;
+}
+.ui.inverted.popup .header {
+  background-color: @invertedHeaderBackground;
+  color: @invertedHeaderColor;
+}
+.ui.inverted.popup:before {
+  background-color: @invertedArrowColor;
+  box-shadow: none !important;
+}
+
+/* Colored variant colors  */
+.ui.primaryColored.popup {
+  background: @primaryColoredBackground;
+  color: @primaryColoredColor;
+  border: @primaryColoredBorder;
+  box-shadow: @primaryColoredBoxShadow;
+}
+.ui.primaryColored.popup .header {
+  background-color: @primaryColoredHeaderBackground;
+  color: @primaryColoredHeaderColor;
+}
+.ui.primaryColored.popup:before {
+  background-color: @primaryColoredArrowColor;
+  box-shadow: none !important;
+}
+
+.ui.secondaryColored.popup {
+  background: @secondaryColoredBackground;
+  color: @secondaryColoredColor;
+  border: @secondaryColoredBorder;
+  box-shadow: @secondaryColoredBoxShadow;
+}
+.ui.secondaryColored.popup .header {
+  background-color: @secondaryColoredHeaderBackground;
+  color: @secondaryColoredHeaderColor;
+}
+.ui.secondaryColored.popup:before {
+  background-color: @secondaryColoredArrowColor;
+  box-shadow: none !important;
+}
+
+.ui.successColored.popup {
+  background: @successColoredBackground;
+  color: @successColoredColor;
+  border: @successColoredBorder;
+  box-shadow: @successColoredBoxShadow;
+}
+.ui.successColored.popup .header {
+  background-color: @successColoredHeaderBackground;
+  color: @successColoredHeaderColor;
+}
+.ui.successColored.popup:before {
+  background-color: @successColoredArrowColor;
+  box-shadow: none !important;
+}
+
+.ui.infoColored.popup {
+  background: @infoColoredBackground;
+  color: @infoColoredColor;
+  border: @infoColoredBorder;
+  box-shadow: @infoColoredBoxShadow;
+}
+.ui.infoColored.popup .header {
+  background-color: @infoColoredHeaderBackground;
+  color: @infoColoredHeaderColor;
+}
+.ui.infoColored.popup:before {
+  background-color: @infoColoredArrowColor;
+  box-shadow: none !important;
+}
+
+.ui.warningColored.popup {
+  background: @warningColoredBackground;
+  color: @warningColoredColor;
+  border: @warningColoredBorder;
+  box-shadow: @warningColoredBoxShadow;
+}
+.ui.warningColored.popup .header {
+  background-color: @warningColoredHeaderBackground;
+  color: @warningColoredHeaderColor;
+}
+.ui.warningColored.popup:before {
+  background-color: @warningColoredArrowColor;
+  box-shadow: none !important;
+}
+
+.ui.errorColored.popup {
+  background: @errorColoredBackground;
+  color: @errorColoredColor;
+  border: @errorColoredBorder;
+  box-shadow: @errorColoredBoxShadow;
+}
+.ui.errorColored.popup .header {
+  background-color: @errorColoredHeaderBackground;
+  color: @errorColoredHeaderColor;
+}
+.ui.errorColored.popup:before {
+  background-color: @errorColoredArrowColor;
+  box-shadow: none !important;
+}
+
+/*--------------
+     Flowing
+---------------*/
+
+.ui.flowing.popup {
+  max-width: max-content;
+}
+
+
+/*--------------
+     Sizes
+---------------*/
+
+.ui.mini.popup {
+  font-size: @mini;
+}
+.ui.tiny.popup {
+  font-size: @tiny;
+}
+.ui.small.popup {
+  font-size: @small;
+}
+.ui.popup {
+  font-size: @medium;
+}
+.ui.large.popup {
+  font-size: @large;
+}
+.ui.big.popup {
+  font-size: @big;
+}
+.ui.huge.popup {
+  font-size: @huge;
+}
+.ui.massive.popup {
+  font-size: @massive;
+}
