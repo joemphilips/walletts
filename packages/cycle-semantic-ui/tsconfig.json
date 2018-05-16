@@ -15,7 +15,8 @@
         "suppressImplicitAnyIndexErrors": true,
         "sourceMap": true,
         "outDir": "./build",
-        "typeRoots": ["node_modules/@types", "./typings-custom"]
+        "typeRoots": ["node_modules/@types", "./typings-custom"],
+        "lib": ["es2017", "dom"]
     },  
     "formatCodeOptions": {
       "indentSize": 2,

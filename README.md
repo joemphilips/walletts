@@ -20,3 +20,4 @@ clone this repository and run
 
 run `yarn build` to build all packages
 run `yarn test` ro run tests in all packages
+run `yarn dev` to launch application in development mode.
