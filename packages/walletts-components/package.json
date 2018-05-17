@@ -51,7 +51,11 @@
   "engines": {
     "node": ">=8.9"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@cycle/dom": "^20.4.0",
+    "cycle-semantic-ui": "^0.3.16",
+    "xstream": "^11.2.0"
+  },
   "devDependencies": {
     "ava": "^1.0.0-beta.3",
     "codecov": "^3.0.0",
