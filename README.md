@@ -4,14 +4,12 @@ The bitcoin-blockchain sdk for typescript and applications for managing your fin
 
 includes following packages
 
-* `@walletts/core` primitive for working with your own wallet.
-* `@walletts/cycle-electron` copay-style wallet and crowdfunding application powered by electron and cyclejs
-* `@walletts/blockchain-driver` cyclejs driver for interacting with the bitcoin blockchain
+* `walletts-core` primitive for working with your own wallet.
+* `walletts-cycle-electron` copay-style wallet and crowdfunding application powered by electron and cyclejs
+* `blockchain-driver` cyclejs driver for interacting with the bitcoin blockchain
+* `walletts-components` reusable cyclejs components used in the app. It follows semantics in [semantic-ui](https://semantic-ui.com/)
 
-small components which has specific purpose (e.g. `walletInformationContainer`, `Button`)
-must be placed into separated packages from `cycle-electron` and must specify `cycle-electron` as its `peerDependencies`.
-
-large components (e.g. `Header` `CrowdFundingPage`) must be in a directory under `cycle-electron`
+components which represents whole page (e.g. `CrowdFundingProjectView`) must be directly under `wallets-cycle-electron` instead of `walletts-components`
 
 ## development
 
