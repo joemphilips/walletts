@@ -1,23 +1,24 @@
-import xs, { Stream } from 'xstream';
-import { StateSource } from 'cycle-onionify';
-import isolate from '@cycle/isolate';
-import { extractSinks } from 'cyclejs-utils';
-
-import { driverNames } from '../drivers';
-import { BaseSources, BaseSinks } from '../interfaces';
-import { RouteValue, routes } from '../routes';
-
-import { State as CounterState } from './counter';
-import { State as SpeakerState } from './speaker';
+import { driverNames } from "../drivers";
+import xs, { Stream } from "xstream";
+import { StateSource } from "cycle-onionify";
+import isolate from "@cycle/isolate";
+import { extractSinks } from "cyclejs-utils";
+import { BaseSources, BaseSinks } from "../interfaces";
+import { RouteValue, routes } from "../routes";
+import { State as CounterState } from "./counter";
+import { State as SpeakerState } from "./speaker";
+import { VNode } from "@cycle/dom";
 
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
 }
 export interface Sinks extends BaseSinks {
   readonly onion?: Stream<Reducer>;
+  readonly DOM: Stream<VNode>;
 }
 
-// State
+export type Reducer = (prev?: State) => State | undefined;
+
 export interface State {
   readonly counter?: CounterState;
   readonly speaker?: SpeakerState;
@@ -26,13 +27,12 @@ export const defaultState: State = {
   counter: { count: 5 },
   speaker: undefined // use default state of component
 };
-export type Reducer = (prev?: State) => State | undefined;
+
+const initReducer$ = xs.of<Reducer>(
+  prevState => (prevState === undefined ? defaultState : prevState)
+);
 
 export function App(sources: Sources): Sinks {
-  const initReducer$ = xs.of<Reducer>(
-    prevState => (prevState === undefined ? defaultState : prevState)
-  );
-
   const match$ = sources.router.define(routes);
 
   const componentSinks$ = match$.map(
@@ -51,9 +51,9 @@ export function App(sources: Sources): Sinks {
     }
   );
 
-  const sinks = extractSinks(componentSinks$, driverNames);
+  const currentSinks = extractSinks(componentSinks$, driverNames);
   return {
-    ...sinks,
-    onion: xs.merge(initReducer$, sinks.onion)
+    ...currentSinks,
+    onion: xs.merge(initReducer$, currentSinks.onion) as Stream<Reducer>
   };
 }

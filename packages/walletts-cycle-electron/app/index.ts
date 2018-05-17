@@ -6,9 +6,9 @@ import * as csstips from "csstips";
 csstips.normalize();
 
 import { buildDrivers, wrapMain } from "./drivers";
-import { App } from "./components/app";
+import { AppContainer } from "./components/appContainer";
 
-const main = wrapMain(App as any);
+const main = wrapMain(AppContainer as any);
 
 if (process.env.NODE_ENV === "production") {
   run(main as any, buildDrivers(([k, t]) => [k, t()]));
