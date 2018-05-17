@@ -27,8 +27,8 @@ if (process.env.NODE_ENV === "production") {
   rerun(main as any);
 
   if (module.hot) {
-    module.hot.accept("./components/app", () => {
-      const newApp = (require("./components/app") as any).App;
+    module.hot.accept("./appContainer", () => {
+      const newApp = (require("./appContainer") as any).AppContainer;
 
       rerun(wrapMain(newApp));
     });
