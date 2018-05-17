@@ -4,9 +4,9 @@ import {
   Sources as AppSources,
   Sinks as AppSinks
 } from "./app";
-import { Sidebar } from "./sidebar";
-import xs, { Stream } from "xstream";
-import { VNode } from "@cycle/dom";
+import { Sidebar } from "walletts-components";
+import { Stream } from "xstream";
+import { div, VNode } from "@cycle/dom";
 import { IconType } from "cycle-semantic-ui";
 
 export interface Sources extends AppSources {}
@@ -32,8 +32,8 @@ const defaultState: State = {
 export function AppContainer(sources: Sources): Sinks {
   const childSink = App(sources);
   const state = makeState();
-  const sidebarSink = Sidebar.render(sources, state.sidebarContents);
-  const vdom$ = view(sources, childSink.DOM, sidebarSink.DOM);
+  const sidebar = Sidebar.render(sources, state.sidebarContents);
+  const vdom$ = view(sources, childSink.DOM, sidebar);
 
   return {
     ...childSink,
@@ -44,11 +44,11 @@ export function AppContainer(sources: Sources): Sinks {
 export function view(
   sources: Sources,
   childDom$: Stream<VNode>,
-  sidebarDom$: Stream<VNode>
+  sidebarDom: VNode
 ): Stream<VNode> {
-  const vdom$ = xs.combine(sidebarDom$, childDom$).map(([sidebar, main]) => {
+  const vdom$ = childDom$.map(main => {
     // TODO: return view
-    return div();
+    return div("app-whole", [sidebarDom, main]);
   });
 
   return vdom$;

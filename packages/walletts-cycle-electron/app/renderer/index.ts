@@ -6,7 +6,7 @@ import * as csstips from "csstips";
 csstips.normalize();
 
 import { buildDrivers, wrapMain } from "./drivers";
-import { AppContainer } from "./components/appContainer";
+import { AppContainer } from "./appContainer";
 
 const main = wrapMain(AppContainer as any);
 

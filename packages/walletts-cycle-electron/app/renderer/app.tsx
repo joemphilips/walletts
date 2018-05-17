@@ -1,12 +1,12 @@
-import { driverNames } from "../drivers";
+import { driverNames } from "./drivers";
 import xs, { Stream } from "xstream";
 import { StateSource } from "cycle-onionify";
 import isolate from "@cycle/isolate";
 import { extractSinks } from "cyclejs-utils";
-import { BaseSources, BaseSinks } from "../interfaces";
-import { RouteValue, routes } from "../routes";
-import { State as CounterState } from "./counter";
-import { State as SpeakerState } from "./speaker";
+import { BaseSources, BaseSinks } from "./interfaces";
+import { RouteValue, routes } from "./routes";
+import { State as CounterState } from "./pages/counter";
+import { State as SpeakerState } from "./pages/speaker";
 import { VNode } from "@cycle/dom";
 
 export interface Sources extends BaseSources {
