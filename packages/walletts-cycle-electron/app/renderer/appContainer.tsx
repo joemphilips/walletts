@@ -18,12 +18,16 @@ export interface State extends AppState {
   readonly sidebarContents: Sidebar.SideBarContents;
 }
 const defaultState: State = {
-  sidebarContents: [
-    {
-      name: "default sidebar content",
-      icon: IconType.Bitcoin
-    }
-  ]
+  sidebarContents: {
+    beforeNav: [],
+    items: [
+      {
+        name: "default sidebar content",
+        icon: IconType.Bitcoin
+      }
+    ],
+    afterNav: []
+  }
 };
 
 /**

@@ -26,7 +26,7 @@ export namespace defaultStyle {
     fontSize: "14px"
   });
 
-  export const appContainerStyle = style(csstips.flexRoot, {
+  export const appContainerStyle = style(csstips.horizontal, {
     height: "100%",
     backgroundColor: "aquamarine"
   });
