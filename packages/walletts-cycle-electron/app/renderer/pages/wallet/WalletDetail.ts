@@ -77,7 +77,7 @@ export const view = (state$: Stream<State>): Stream<VNode> => {
   return state$.map(s =>
     div(`.${Style.containerBase}`, [
       button(
-        `.${Style.Button}`,
+        `.${Style.buttonStyle}`,
         {
           props: { value: "go to landing page" },
           dataset: { action: "navigate" }

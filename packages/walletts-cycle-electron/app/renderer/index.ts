@@ -3,6 +3,7 @@ import { setup, run } from "@cycle/run";
 import isolate from "@cycle/isolate";
 import { restartable, rerunner } from "cycle-restart";
 import * as csstips from "csstips";
+csstips.setupPage("#app");
 csstips.normalize();
 
 import { buildDrivers, wrapMain } from "./drivers";

@@ -23,10 +23,12 @@ export namespace defaultStyle {
     })
   );
 
-  export const Button = style({
+  export const buttonStyle = style({
     padding: "4px",
     fontSize: "14px"
   });
+
+  export const appContainerStyle = style(csstips.flexRoot);
 
   export const font = fontFace({
     fontFamily: "Roboto",

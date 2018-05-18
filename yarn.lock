@@ -3266,9 +3266,17 @@ csstips@^0.2.3:
   version "0.2.3"
   resolved "http://localhost:4873/csstips/-/csstips-0.2.3.tgz#490069d2bd4f8fc4224a1f6123112322ad8900ed"
 
+csstips@^0.3.0:
+  version "0.3.0"
+  resolved "http://localhost:4873/csstips/-/csstips-0.3.0.tgz#e9a069363fbd53002ac4dd4221b5f4ad4e18f65c"
+
 csstype@^2.2.0:
   version "2.5.0"
   resolved "http://localhost:4873/csstype/-/csstype-2.5.0.tgz#53e1c242f422d5d976b81f42707bd9b8934492ee"
+
+csstype@^2.4.0:
+  version "2.5.2"
+  resolved "http://localhost:4873/csstype/-/csstype-2.5.2.tgz#4534308476ceede8fbe148b9b99f9baf1c80fa06"
 
 cuint@^0.2.1:
   version "0.2.2"
@@ -11169,6 +11177,13 @@ typestyle@^1.7.2:
   version "1.7.2"
   resolved "http://localhost:4873/typestyle/-/typestyle-1.7.2.tgz#22ca9dfeaf334f755030cc6d7799b468bb1ee132"
   dependencies:
+    free-style "2.5.1"
+
+typestyle@^2.0.0:
+  version "2.0.0"
+  resolved "http://localhost:4873/typestyle/-/typestyle-2.0.0.tgz#b81e064d9c001028f0c2972acbaa08a1e1dc82a2"
+  dependencies:
+    csstype "^2.4.0"
     free-style "2.5.1"
 
 typings-core@^2.3.3:

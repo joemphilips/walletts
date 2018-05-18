@@ -53,7 +53,9 @@
   },
   "dependencies": {
     "@cycle/dom": "^20.4.0",
+    "csstips": "^0.3.0",
     "cycle-semantic-ui": "^0.3.16",
+    "typestyle": "^2.0.0",
     "xstream": "^11.2.0"
   },
   "devDependencies": {

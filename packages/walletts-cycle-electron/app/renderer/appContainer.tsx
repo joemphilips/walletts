@@ -8,6 +8,7 @@ import { Sidebar } from "walletts-components";
 import { Stream } from "xstream";
 import { div, VNode } from "@cycle/dom";
 import { IconType } from "cycle-semantic-ui";
+import { defaultStyle as Style } from "./styles/common";
 
 export interface Sources extends AppSources {}
 
@@ -48,7 +49,7 @@ export function view(
 ): Stream<VNode> {
   const vdom$ = childDom$.map(main => {
     // TODO: return view
-    return div("app-whole", [sidebarDom, main]);
+    return div(`.${Style.appContainerStyle}`, [sidebarDom, main]);
   });
 
   return vdom$;
