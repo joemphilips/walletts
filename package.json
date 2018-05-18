@@ -9,7 +9,7 @@
     "test": "docker-compose down && docker-compose up -d && npm run test:run",
     "test:run": "lerna run test --stream",
     "build": "lerna run build --stream",
-    "dev": "lerna run dev --scope=walletts-cycle-electron --parallel"
+    "dev": "lerna run dev --scope=walletts-cycle-electron --scope=walletts-components --parallel"
   },
   "private": true,
 	"devDependencies": {
