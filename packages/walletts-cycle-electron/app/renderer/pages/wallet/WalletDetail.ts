@@ -75,7 +75,7 @@ export const intent = (DOM: DOMSource): Stream<Reducer> => {
 export const view = (state$: Stream<State>): Stream<VNode> => {
   state$.debug("rendering");
   return state$.map(s =>
-    div(`.${Style.containerBase}`, [
+    div(`.${Style.pageBase}`, [
       button(
         `.${Style.buttonStyle}`,
         {

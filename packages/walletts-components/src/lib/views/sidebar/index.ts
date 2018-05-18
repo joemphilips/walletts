@@ -1,7 +1,8 @@
-import { div, VNode } from "@cycle/dom";
-import * as csstips from 'csstips'
-import { IconType } from "cycle-semantic-ui";
-import { style } from 'typestyle'
+import { div, VNode } from '@cycle/dom';
+import * as csstips from 'csstips';
+import * as csx from 'csx';
+import { IconType } from 'cycle-semantic-ui';
+import { style } from 'typestyle';
 
 export namespace Sidebar {
   export type SideBarContents = ReadonlyArray<SideBarItemProps>;
@@ -11,13 +12,19 @@ export namespace Sidebar {
     readonly icon: IconType;
   }
 
-  const sidebarStyle = style(csstips.horizontal, csstips.center)
+  const sidebarStyle = style(
+    csstips.vertical,
+    csstips.centerCenter,
+    csstips.content,
+    csstips.width(csx.rem(10)),
+    csstips.height(csx.rem(100))
+  );
   export function render(sources: any, props: SideBarContents): VNode {
     // tslint:disable-next-line
-    console.log(sources)
+    console.log(sources);
     // tslint:disable-next-line
-    console.log(props)
+    console.log(props);
     // TODO: implement Model, Intent and make reactive
-    return div(sidebarStyle, "TODO: this shuold be replaced")
+    return div(sidebarStyle, 'shuold be replaced');
   }
 }
