@@ -3,12 +3,13 @@ import { setup, run } from "@cycle/run";
 import isolate from "@cycle/isolate";
 import { restartable, rerunner } from "cycle-restart";
 import * as csstips from "csstips";
+csstips.setupPage("#app");
 csstips.normalize();
 
 import { buildDrivers, wrapMain } from "./drivers";
-import { App } from "./components/app";
+import { AppContainer } from "./appContainer";
 
-const main = wrapMain(App as any);
+const main = wrapMain(AppContainer as any);
 
 if (process.env.NODE_ENV === "production") {
   run(main as any, buildDrivers(([k, t]) => [k, t()]));
@@ -27,8 +28,8 @@ if (process.env.NODE_ENV === "production") {
   rerun(main as any);
 
   if (module.hot) {
-    module.hot.accept("./components/app", () => {
-      const newApp = (require("./components/app") as any).App;
+    module.hot.accept("./appContainer", () => {
+      const newApp = (require("./appContainer") as any).AppContainer;
 
       rerun(wrapMain(newApp));
     });

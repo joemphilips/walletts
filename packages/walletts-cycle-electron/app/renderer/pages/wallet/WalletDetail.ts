@@ -4,7 +4,7 @@ import xs, { Stream } from "xstream";
 import { MyWalletCoin } from "walletts-core";
 import { BaseSinks, BaseSources } from "../../interfaces";
 import { HistoryAction } from "cyclic-router";
-import { defaultStyle as Style } from "../styles/common";
+import { defaultStyle as Style } from "../../styles/common";
 
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
@@ -75,9 +75,9 @@ export const intent = (DOM: DOMSource): Stream<Reducer> => {
 export const view = (state$: Stream<State>): Stream<VNode> => {
   state$.debug("rendering");
   return state$.map(s =>
-    div(`.${Style.containerBase}`, [
+    div(`.${Style.pageBase}`, [
       button(
-        `.${Style.Button}`,
+        `.${Style.buttonStyle}`,
         {
           props: { value: "go to landing page" },
           dataset: { action: "navigate" }

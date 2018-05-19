@@ -13,7 +13,7 @@ module.exports = merge(baseConfig, {
   devtool: 'cheap-module-source-map',
 
   entry: [
-    './app/index'
+    './app/renderer/index'
   ],
 
   output: {

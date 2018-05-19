@@ -1,8 +1,8 @@
 import { Component } from "./interfaces";
-import { Counter } from "./components/counter";
-import { Speaker } from "./components/speaker";
-import { main as TutorialList } from "./components/tutorials/TutorialList";
-import { WalletDetail } from "./components/wallet/WalletDetail";
+import { Counter } from "./pages/counter";
+import { Speaker } from "./pages/speaker";
+import { main as TutorialList } from "./pages/tutorials/TutorialList";
+import { WalletDetail } from "./pages/wallet/WalletDetail";
 
 export interface RouteValue {
   readonly component: Component<any, any>;

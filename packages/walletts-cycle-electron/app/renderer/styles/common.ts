@@ -12,20 +12,23 @@ export namespace defaultStyle {
   });
 
   // example for composing 2 classes
-  export const containerBase = classes(
+  export const pageBase = classes(
     baseStyle,
-    style({
-      display: "flex",
-      margin: "5%",
+    style(csstips.flex, csstips.height(100), {
       padding: "4px 10px",
       border: "solid thing lightgray",
       borderRadius: 2
     })
   );
 
-  export const Button = style({
+  export const buttonStyle = style({
     padding: "4px",
     fontSize: "14px"
+  });
+
+  export const appContainerStyle = style(csstips.horizontal, {
+    height: "100%",
+    backgroundColor: "aquamarine"
   });
 
   export const font = fontFace({
