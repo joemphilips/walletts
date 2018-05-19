@@ -9,13 +9,14 @@ includes following packages
 * `blockchain-driver` cyclejs driver for interacting with the bitcoin blockchain
 * `walletts-components` reusable cyclejs components used in the app. It follows semantics in [semantic-ui](https://semantic-ui.com/)
 
-components which represents whole page (e.g. `CrowdFundingProjectView`) must be directly under `wallets-cycle-electron` instead of `walletts-components`
+components which represents whole page (e.g. `CrowdFundingProjectView`) must be under `wallets-cycle-electron` package instead of `walletts-components`
 
 ## development
 
 clone this repository and run
 `lerna bootstrap`
 
+and
 run `yarn build` to build all packages
 run `yarn test` ro run tests in all packages
 run `yarn dev` to launch application in development mode. this will compile every packages with `tsc -w`.
