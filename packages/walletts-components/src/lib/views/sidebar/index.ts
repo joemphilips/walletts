@@ -1,4 +1,4 @@
-import { div, VNode } from '@cycle/dom';
+import { div, VNode, nav } from '@cycle/dom';
 import * as csstips from 'csstips';
 import * as csx from 'csx';
 import { IconType } from 'cycle-semantic-ui';
@@ -30,20 +30,28 @@ export namespace Sidebar {
       backgroundColor: 'lightgray'
     }
   );
-  const sidebarItemStyle = style();
+  const sidebarItemStyle = style({
+    $nest: {
+      '&:hover': {
+        border: 'medium solid white',
+        transition: 'border-color .2s linear'
+      }
+    },
+    borderRadius: '3px'
+  });
 
   export function render(sources: any, props: SideBarContents): VNode {
     // tslint:disable-next-line
-    console.log(sources);
+    console.log(`render function received ${sources}`);
     // tslint:disable-next-line
-    console.log(props);
+    console.log(`going to render ${JSON.stringify(props)}`);
     // TODO: implement Model, Intent and make reactive
-    return div(
+    return nav(
       `.${sidebarStyle}`,
-      props.items.map((prop, index) =>
-        div(`.${sidebarItemStyle}`, `this is ${prop} of item no. ${index}`)
-      ),
-      'shuold be replaced'
+      {},
+      props.items.map(prop =>
+        div(`.${sidebarItemStyle}`, {}, `this is ${prop.name}`)
+      )
     );
   }
 }

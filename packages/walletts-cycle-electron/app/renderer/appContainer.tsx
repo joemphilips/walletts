@@ -24,6 +24,10 @@ const defaultState: State = {
       {
         name: "default sidebar content",
         icon: IconType.Bitcoin
+      },
+      {
+        name: "second default sidebar content",
+        icon: IconType.Bicycle
       }
     ],
     afterNav: []
