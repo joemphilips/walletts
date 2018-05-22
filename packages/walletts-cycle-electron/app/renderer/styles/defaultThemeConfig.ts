@@ -1,5 +1,4 @@
 import { ThemeConfig } from "../interfaces";
-import { createDefaultTheme } from "./defaultThemeVariable";
 import { ThemeVariable } from "../interfaces/themes";
 import * as csx from "csx";
 
@@ -43,7 +42,6 @@ export const createThemeConfig = (
     /// COMPONENT VARIABLES
     /// *******************
     // Logo
-    logoUrl,
 
     /// *****
     /// FONTS
@@ -104,9 +102,9 @@ export const createThemeConfig = (
       body: {
         color: themeColors.primary,
         background: appBg,
-        backgroundSize: appBgSize,
+        backgroundSize: Number(appBgSize),
         height: "100%",
-        minHeight: csx.rem(18.75 * fontSizeBase),
+        minHeight: csx.rem(18.75 * Number(fontSizeBase)),
         overflowY: "visible",
         fontFamily
       },
@@ -119,10 +117,10 @@ export const createThemeConfig = (
     sidebar: {
       container: {
         height: appHeight,
-        minHeight: csx.rem(18.75 * fontSizeBase)
+        minHeight: csx.rem(18.75 * Number(fontSizeBase))
       },
       link: {
-        minWidth: csx.rem(fontSizeBase * 9.375),
+        minWidth: csx.rem(Number(fontSizeBase) * 9.375),
         textDecoration: "none",
         width: "100%",
         ":hover": {
@@ -149,8 +147,8 @@ export const createThemeConfig = (
         width: "100%"
       },
       logoImg: {
-        height: csx.rem(3.75 * fontSizeBase),
-        width: csx.rem(3.75 * fontSizeBase)
+        height: csx.rem(3.75 * Number(fontSizeBase)),
+        width: csx.rem(3.75 * Number(fontSizeBase))
       },
       footer: {},
       footerText: {
@@ -216,7 +214,7 @@ export const createThemeConfig = (
         border: "none",
         backgroundColor: themeColors.primary,
         cursor: "pointer",
-        padding: csx.rem(0.3125 * fontSizeBase),
+        padding: csx.rem(0.3125 * Number(fontSizeBase)),
         ...transition,
         ":hover": {
           background: lowlightGradient,

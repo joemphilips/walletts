@@ -1,5 +1,6 @@
-import logo from "../asssets.png";
+import logo from "../assets/logo.png";
 import { ThemeVariable } from "../interfaces/themes";
+import { color, deg, linearGradient } from "csx";
 
 export const createDefaultTheme = (): ThemeVariable => {
   const fontFamily = "Open Sans, sans-serif";
@@ -45,7 +46,12 @@ export const createDefaultTheme = (): ThemeVariable => {
   // 'url(http://saxony-blue.com/data/out/103/6072158-moon-image.jpg) no-repeat center center fixed'
 
   // purple blue and teal gradient
-  const appBg = "linear-gradient(-35deg, #835fac, #00558a, #009db6)";
+  const appBg = linearGradient(
+    deg(-35),
+    color("#835fac"),
+    color("#00558a"),
+    color("#009db6")
+  ); // "linear-gradient(-35deg, #835fac, #00558a, #009db6)";
 
   // appBgSize is mainly for background images
   // for full sized background images, use 'cover'

@@ -32,14 +32,14 @@ interface ThemeVariableObj {
     bold: types.CSSFontWeight;
   };
   readonly appBg: types.CSSColor;
-  readonly appBgSize: FontSize;
+  readonly appBgSize: string;
   readonly themeColors: {
     primary: types.CSSColorSet;
     highlight1: types.CSSColorSet;
     highlight2: types.CSSColorSet;
     lowlight1: types.CSSColorSet;
     lowlight2: types.CSSColorSet;
-    lowlightGradient: types.CSSGradient;
+    lowlightGradient?: string;
     lightBg: types.CSSColorSet;
     light2Bg: types.CSSColorSet;
     mediumBg: types.CSSColorSet;
@@ -163,6 +163,3 @@ export interface ThemeConfigObj {
 
 export type ThemeConfigSource = Partial<ThemeConfigObj>;
 export type ThemeConfig = ThemeConfigObj;
-export const isThemeConfig = (value: any): value is ThemeConfig => {
-  Object.keys(value).some(keyof ThemeConfig);
-};
