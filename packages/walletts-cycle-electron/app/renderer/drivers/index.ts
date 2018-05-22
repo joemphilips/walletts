@@ -9,6 +9,7 @@ import switchPath from "switch-path";
 import storageDriver from "@cycle/storage";
 
 import { Component } from "./interfaces";
+import { createThemeDriver } from "./ThemeDriver";
 
 export type DriverThunk = Readonly<[string, () => any]> & [string, () => any]; // work around readonly
 export type DriverThunkMapper = (t: DriverThunk) => DriverThunk;
@@ -19,7 +20,8 @@ const driverThunks: ReadonlyArray<DriverThunk> = [
   ["HTTP", () => makeHTTPDriver()],
   ["time", () => timeDriver],
   ["history", () => makeHashHistoryDriver()],
-  ["storage", () => storageDriver]
+  ["storage", () => storageDriver],
+  ["theme", () => createThemeDriver()]
 ];
 
 export const buildDrivers = (fn: DriverThunkMapper) =>

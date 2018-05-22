@@ -1,17 +1,29 @@
 import { types } from "typestyle";
 
-export interface ThemeVariable {
-  readonly fontFamily: string;
-  readonly fontSizeBase: types.CSSFontSize;
-  readonly fontSizeSmall: types.CSSFontSize;
-  readonly fontSizeNormal: types.CSSFontSize;
-  readonly fontSizeLarge: types.CSSFontSize;
-  readonly fontSizeH1: types.CSSFontSize;
-  readonly fontSizeH2: types.CSSFontSize;
-  readonly fontSizeH3: types.CSSFontSize;
-  readonly fontSizeH4: types.CSSFontSize;
-  readonly fontSizeH5: types.CSSFontSize;
-  readonly fontSizeH6: types.CSSFontSize;
+type Font = string;
+
+type Height = types.CSSValue<
+  "auto" | types.CSSLength | types.CSSPercentage | types.CSSGlobalValues
+>;
+type Width = types.CSSValue<
+  "auto" | types.CSSLength | types.CSSPercentage | types.CSSGlobalValues
+>;
+// TODO: this is better defined by types
+type FontSize = number | string;
+type OverFlow = string;
+
+interface ThemeVariableObj {
+  readonly fontFamily: Font;
+  readonly fontSizeBase: FontSize;
+  readonly fontSizeSmall: FontSize;
+  readonly fontSizeNormal: FontSize;
+  readonly fontSizeLarge: FontSize;
+  readonly fontSizeH1: FontSize;
+  readonly fontSizeH2: FontSize;
+  readonly fontSizeH3: FontSize;
+  readonly fontSizeH4: FontSize;
+  readonly fontSizeH5: FontSize;
+  readonly fontSizeH6: FontSize;
   readonly fontOpacity: number;
   readonly fontWeights: {
     light: types.CSSFontWeight;
@@ -20,13 +32,14 @@ export interface ThemeVariable {
     bold: types.CSSFontWeight;
   };
   readonly appBg: types.CSSColor;
-  readonly appBgSize: types.CSSFontSize;
+  readonly appBgSize: FontSize;
   readonly themeColors: {
     primary: types.CSSColorSet;
     highlight1: types.CSSColorSet;
     highlight2: types.CSSColorSet;
     lowlight1: types.CSSColorSet;
     lowlight2: types.CSSColorSet;
+    lowlightGradient: types.CSSGradient;
     lightBg: types.CSSColorSet;
     light2Bg: types.CSSColorSet;
     mediumBg: types.CSSColorSet;
@@ -36,7 +49,7 @@ export interface ThemeVariable {
     transparent: types.CSSColorSet;
   };
 
-  readonly borderWidth: types.CSSFontSize;
+  readonly borderWidth: FontSize;
   readonly borderStyle: types.CSSLineStyleSet;
   readonly border1: string;
   readonly border2: string;
@@ -44,53 +57,77 @@ export interface ThemeVariable {
   readonly borderRadius: string;
   readonly smoothTransition: any;
   readonly logoUrl: any;
+  readonly headerHeight: Height;
+  readonly footerHeight: Height;
 }
 
-/** Theme variable which will be the source to define the ThemeConfig
- * new Theme creator should wright his own theme which satisfies this interface
- */
-export type ThemeSource = Partial<ThemeVariable>;
+export type ThemeVariableSource = Partial<ThemeVariableObj>;
 
-/** theme configuration which will be derived from ThemeVariable
- * right now, it is mostly same with the bpanel, but it may change in the future
+/** Theme variable which defines basic look-and-feel
+ * new theme author should satisfiy this interface
  */
-export interface ThemeConfig {
+export type ThemeVariable = ThemeVariableObj;
+
+/** Theme Configuration more detailed than ThemeVariable
+ * right now, it is mostly the same with the bpanel, but it may change in the future
+ * typing is not perfect, but it does a job.
+ */
+export interface ThemeConfigObj {
   app: {
-    container: {};
-    body: {};
-    content: {};
-    sidebarContainer: {};
+    container: {
+      height: Height;
+      overflowY: OverFlow;
+    };
+    body: {
+      color: types.CSSColorSet;
+      background: types.CSSColorSet;
+      backgroundSize: number;
+      height: Height;
+      minHeight: Height;
+      overflowY: OverFlow;
+      fontFamily: Font;
+    };
+    content: {
+      height: Height;
+    };
   };
   sidebar: {
-    container: {};
-    link: {};
-    item: {};
-    itemActive: {};
-    itemIcon: {};
-    logoContainer: {};
-    logoImg: {};
-    footer: {};
-    footerText: {};
+    container: {
+      height: Height;
+      minHeight: Height;
+    };
+    link: {
+      minWidth: Width;
+      width: Width;
+      ":hover": any;
+    };
+    item: any;
+    itemActive: any;
+    itemIcon: any;
+    logoContainer: any;
+    logoImg: any;
+    footer: any;
+    footerText: any;
   };
   headerbar: {
-    container: {};
-    icon: {};
-    networkStatus: {};
-    nodeText: {};
-    text: {};
+    container: any;
+    icon: any;
+    networkStatus: any;
+    nodeText: any;
+    text: any;
   };
   footer: {
-    container: {};
-    progress: {};
-    text: {};
+    container: any;
+    progress: any;
+    text: any;
   };
   button: {
-    primary: {};
-    action: {};
+    primary: any;
+    action: any;
   };
   header: {
     h1: {
-      fontSize: types.CSSFontSize;
+      fontSize: FontSize;
     };
     h2: {
       fontSize: types.CSSFontSize;
@@ -109,17 +146,20 @@ export interface ThemeConfig {
     };
   };
 
-  input: {};
+  input: any;
 
-  link: {};
+  link: any;
 
-  table: {};
+  table: any;
 
-  tableRawStyle: (arg: any) => any;
+  tableRawStyle?: (arg: any) => any;
 
-  expandedRaw: {};
+  expandedRaw?: any;
 
-  tabMenu: {};
+  tabMenu?: any;
 
-  text: {};
+  text?: any;
 }
+
+export type ThemeConfigSource = Partial<ThemeConfigObj>;
+export type ThemeConfig = ThemeConfigObj;

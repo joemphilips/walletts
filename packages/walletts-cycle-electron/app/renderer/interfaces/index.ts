@@ -5,7 +5,7 @@ import { HTTPSource, RequestOptions } from "@cycle/http";
 import { TimeSource } from "@cycle/time";
 import { RouterSource, HistoryAction } from "cyclic-router";
 import { ThemeConfig } from "./themes";
-export { ThemeSource } from "./themes";
+export { ThemeVariable } from "./themes";
 export { ThemeConfig } from "./themes";
 
 export type Component<So extends BaseSources, Si extends BaseSinks> = (
