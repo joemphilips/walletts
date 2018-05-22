@@ -163,3 +163,6 @@ export interface ThemeConfigObj {
 
 export type ThemeConfigSource = Partial<ThemeConfigObj>;
 export type ThemeConfig = ThemeConfigObj;
+export const isThemeConfig = (value: any): value is ThemeConfig => {
+  Object.keys(value).some(keyof ThemeConfig);
+};

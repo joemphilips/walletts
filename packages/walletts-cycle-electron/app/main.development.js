@@ -1,4 +1,11 @@
-const { app, BrowserWindow, Menu, shell } = require('electron');
+const {
+    app,
+    BrowserWindow,
+    Menu,
+    shell,
+    ipcMain
+} = require('electron');
+const fs = require("fs")
 
 let menu;
 let template;
@@ -56,7 +63,10 @@ app.on('ready', () =>
         if (process.env.NODE_ENV === 'development') {
             mainWindow.openDevTools();
             mainWindow.webContents.on('context-menu', (e, props) => {
-                const { x, y } = props;
+                const {
+                    x,
+                    y
+                } = props;
 
                 Menu.buildFromTemplate([{
                     label: 'Inspect element',
@@ -66,6 +76,14 @@ app.on('ready', () =>
                 }]).popup(mainWindow);
             });
         }
+
+        //  define event handler from renderer
+        ipcMain.on("loadFile", (fileName) => {
+            const themePath = path.join([app.getAppPath(), "themes", fileName])
+            console.debug("going to read file from", themePath)
+            const theme = require(themePath)
+            ipcMain.send("theme-loaded", theme)
+        })
 
         if (process.platform === 'darwin') {
             template = [{
@@ -149,36 +167,34 @@ app.on('ready', () =>
                 },
                 {
                     label: 'View',
-                    submenu: process.env.NODE_ENV === 'development' ?
-                        [{
-                                label: 'Reload',
-                                accelerator: 'Command+R',
-                                click() {
-                                    mainWindow.webContents.reload();
-                                }
-                            },
-                            {
-                                label: 'Toggle Full Screen',
-                                accelerator: 'Ctrl+Command+F',
-                                click() {
-                                    mainWindow.setFullScreen(!mainWindow.isFullScreen());
-                                }
-                            },
-                            {
-                                label: 'Toggle Developer Tools',
-                                accelerator: 'Alt+Command+I',
-                                click() {
-                                    mainWindow.toggleDevTools();
-                                }
+                    submenu: process.env.NODE_ENV === 'development' ? [{
+                            label: 'Reload',
+                            accelerator: 'Command+R',
+                            click() {
+                                mainWindow.webContents.reload();
                             }
-                        ] :
-                        [{
+                        },
+                        {
                             label: 'Toggle Full Screen',
                             accelerator: 'Ctrl+Command+F',
                             click() {
                                 mainWindow.setFullScreen(!mainWindow.isFullScreen());
                             }
-                        }]
+                        },
+                        {
+                            label: 'Toggle Developer Tools',
+                            accelerator: 'Alt+Command+I',
+                            click() {
+                                mainWindow.toggleDevTools();
+                            }
+                        }
+                    ] : [{
+                        label: 'Toggle Full Screen',
+                        accelerator: 'Ctrl+Command+F',
+                        click() {
+                            mainWindow.setFullScreen(!mainWindow.isFullScreen());
+                        }
+                    }]
                 },
                 {
                     label: 'Window',
@@ -253,36 +269,34 @@ app.on('ready', () =>
                 },
                 {
                     label: '&View',
-                    submenu: process.env.NODE_ENV === 'development' ?
-                        [{
-                                label: '&Reload',
-                                accelerator: 'Ctrl+R',
-                                click() {
-                                    mainWindow.webContents.reload();
-                                }
-                            },
-                            {
-                                label: 'Toggle &Full Screen',
-                                accelerator: 'F11',
-                                click() {
-                                    mainWindow.setFullScreen(!mainWindow.isFullScreen());
-                                }
-                            },
-                            {
-                                label: 'Toggle &Developer Tools',
-                                accelerator: 'Alt+Ctrl+I',
-                                click() {
-                                    mainWindow.toggleDevTools();
-                                }
+                    submenu: process.env.NODE_ENV === 'development' ? [{
+                            label: '&Reload',
+                            accelerator: 'Ctrl+R',
+                            click() {
+                                mainWindow.webContents.reload();
                             }
-                        ] :
-                        [{
+                        },
+                        {
                             label: 'Toggle &Full Screen',
                             accelerator: 'F11',
                             click() {
                                 mainWindow.setFullScreen(!mainWindow.isFullScreen());
                             }
-                        }]
+                        },
+                        {
+                            label: 'Toggle &Developer Tools',
+                            accelerator: 'Alt+Ctrl+I',
+                            click() {
+                                mainWindow.toggleDevTools();
+                            }
+                        }
+                    ] : [{
+                        label: 'Toggle &Full Screen',
+                        accelerator: 'F11',
+                        click() {
+                            mainWindow.setFullScreen(!mainWindow.isFullScreen());
+                        }
+                    }]
                 },
                 {
                     label: 'Help',
@@ -318,5 +332,4 @@ app.on('ready', () =>
             menu = Menu.buildFromTemplate(template);
             mainWindow.setMenu(menu);
         }
-    })
-);
+    }));

@@ -2,6 +2,7 @@ import * as csstips from "csstips";
 import { style, classes, fontFace } from "typestyle";
 import { createDefaultTheme } from "./defaultThemeVariable";
 import { createThemeConfig } from "./defaultThemeConfig";
+import { ThemeConfig } from "../interfaces";
 
 export const flexHorizontalGreen = style(csstips.flex);
 
@@ -41,3 +42,9 @@ export namespace defaultStyle {
 }
 
 export const defaultTheme = createThemeConfig(createDefaultTheme());
+
+export const isThemeConfig = (value: any): value is ThemeConfig => {
+  return Object.keys(value).some(v =>
+    Object.keys(defaultTheme).some(defaultV => v === defaultV)
+  );
+};
