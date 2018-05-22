@@ -347,6 +347,10 @@
   version "3.3.0"
   resolved "http://localhost:4873/@cycle%2fisolate/-/isolate-3.3.0.tgz#f23c9dfe0ac604240addf915693c4e78fef2fd28"
 
+"@cycle/isolate@^2.1.0":
+  version "2.1.0"
+  resolved "http://localhost:4873/@cycle%2fisolate/-/isolate-2.1.0.tgz#8db1c6a068dc1d3fc709d5adbe838083577ad0e0"
+
 "@cycle/run@*", "@cycle/run@4.1.0", "@cycle/run@^4.1.0":
   version "4.1.0"
   resolved "http://localhost:4873/@cycle%2frun/-/run-4.1.0.tgz#b164a83792e85db3c184236f4b3800a4c9bf6f76"
@@ -454,6 +458,15 @@
   resolved "http://localhost:4873/@sinonjs%2fformatio/-/formatio-2.0.0.tgz#84db7e9eb5531df18a8c5e0bfb6e449e55e654b2"
   dependencies:
     samsam "1.3.0"
+
+"@sunny-g/cycle-utils@^0.2.4":
+  version "0.2.4"
+  resolved "http://localhost:4873/@sunny-g%2fcycle-utils/-/cycle-utils-0.2.4.tgz#9b382e21c5ef71dd76fa69bcffc8b58b2c784dac"
+  dependencies:
+    "@cycle/isolate" "^2.1.0"
+    "@types/ramda" "0.0.4"
+    is-plain-object "^2.0.1"
+    ramda "^0.23.0"
 
 "@types/bigi@*":
   version "1.4.1"
@@ -581,6 +594,10 @@
 "@types/node@8", "@types/node@^8.0.2", "@types/node@^8.0.24", "@types/node@^8.9.4":
   version "8.10.14"
   resolved "http://localhost:4873/@types%2fnode/-/node-8.10.14.tgz#a24767cfa22023f1bf7e751c0ead56a14c07ed45"
+
+"@types/ramda@0.0.4":
+  version "0.0.4"
+  resolved "http://localhost:4873/@types%2framda/-/ramda-0.0.4.tgz#4921b5f72c28dc5ddad4b1d2e27f9ce1e42949f6"
 
 "@types/react-hot-loader@^3.0.4":
   version "3.0.6"
@@ -3274,9 +3291,15 @@ csstype@^2.2.0:
   version "2.5.0"
   resolved "http://localhost:4873/csstype/-/csstype-2.5.0.tgz#53e1c242f422d5d976b81f42707bd9b8934492ee"
 
-csstype@^2.4.0:
+csstype@^2.4.0, csstype@^2.5.1:
   version "2.5.2"
   resolved "http://localhost:4873/csstype/-/csstype-2.5.2.tgz#4534308476ceede8fbe148b9b99f9baf1c80fa06"
+
+csx@^9.0.0:
+  version "9.0.0"
+  resolved "http://localhost:4873/csx/-/csx-9.0.0.tgz#490ea99eac6834a8c90ecfc555e5e77e7eb00a03"
+  dependencies:
+    csstype "^2.5.1"
 
 cuint@^0.2.1:
   version "0.2.2"
@@ -9092,6 +9115,10 @@ raf@^3.3.0:
   resolved "http://localhost:4873/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
     performance-now "^2.1.0"
+
+ramda@^0.23.0:
+  version "0.23.0"
+  resolved "http://localhost:4873/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
 randomatic@^3.0.0:
   version "3.0.0"

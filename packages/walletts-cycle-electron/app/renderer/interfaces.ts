@@ -15,6 +15,7 @@ export interface BaseSources {
   readonly time: TimeSource;
   readonly router: RouterSource;
   readonly storage: StorageSource;
+  readonly theme: ThemeSource;
 }
 
 export interface BaseSinks {

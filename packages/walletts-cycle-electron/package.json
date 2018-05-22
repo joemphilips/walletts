@@ -108,6 +108,7 @@
   ],
   "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
   "devDependencies": {
+    "@sunny-g/cycle-utils": "^0.2.4",
     "@types/bitcoinjs-lib": "^3.3.3",
     "@types/history": "^4.5.2",
     "@types/jest": "^22.0.0",
