@@ -4,6 +4,9 @@ import { StorageSource, StorageRequest } from "@cycle/storage";
 import { HTTPSource, RequestOptions } from "@cycle/http";
 import { TimeSource } from "@cycle/time";
 import { RouterSource, HistoryAction } from "cyclic-router";
+import { ThemeConfig } from "./themes";
+export { ThemeSource } from "./themes";
+export { ThemeConfig } from "./themes";
 
 export type Component<So extends BaseSources, Si extends BaseSinks> = (
   s: So
@@ -15,7 +18,7 @@ export interface BaseSources {
   readonly time: TimeSource;
   readonly router: RouterSource;
   readonly storage: StorageSource;
-  readonly theme: ThemeSource;
+  readonly theme: ThemeConfig;
 }
 
 export interface BaseSinks {

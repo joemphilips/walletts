@@ -1,5 +1,7 @@
 import * as csstips from "csstips";
 import { style, classes, fontFace } from "typestyle";
+import { createDefaultTheme } from "./defaultThemeVariable";
+import { createThemeConfig } from "./createThemeConfig";
 
 export const flexHorizontalGreen = style(csstips.flex);
 
@@ -37,3 +39,5 @@ export namespace defaultStyle {
     fontWeight: 400
   });
 }
+
+const defaultTheme = createThemeConfig(createDefaultTheme());

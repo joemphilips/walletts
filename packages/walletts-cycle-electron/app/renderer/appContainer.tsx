@@ -8,7 +8,7 @@ import { Sidebar } from "walletts-components";
 import { Stream } from "xstream";
 import { div, VNode } from "@cycle/dom";
 import { IconType } from "cycle-semantic-ui";
-import { defaultStyle as Style } from "./styles/common";
+import { defaultStyle as Style } from "./styles";
 
 export interface Sources extends AppSources {}
 

@@ -4,7 +4,7 @@ import xs, { Stream } from "xstream";
 import { MyWalletCoin } from "walletts-core";
 import { BaseSinks, BaseSources } from "../../interfaces";
 import { HistoryAction } from "cyclic-router";
-import { defaultStyle as Style } from "../../styles/common";
+import { defaultStyle as Style } from "../../styles";
 
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
