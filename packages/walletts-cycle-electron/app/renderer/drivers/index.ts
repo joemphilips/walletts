@@ -8,7 +8,7 @@ import storageify from "cycle-storageify";
 import switchPath from "switch-path";
 import storageDriver from "@cycle/storage";
 
-import { Component } from "./interfaces";
+import { Component } from "../interfaces";
 import { createThemeDriver } from "./ThemeDriver";
 
 export type DriverThunk = Readonly<[string, () => any]> & [string, () => any]; // work around readonly
