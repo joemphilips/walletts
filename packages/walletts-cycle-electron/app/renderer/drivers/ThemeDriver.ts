@@ -3,7 +3,7 @@ import { ThemeConfig } from "../interfaces";
 import xs, { MemoryStream, Stream } from "xstream";
 import fromEvent from "xstream/extra/fromEvent";
 import { defaultTheme, isThemeConfig } from "../styles";
-const ipcRenderer = require("electron").ipcRenderer;
+import { ipcRenderer } from "electron";
 
 export const createThemeDriver = () => {
   const ThemeDriver = (
