@@ -28,7 +28,8 @@ interface ClassNameToRoute {
 const classNameToRoute: ClassNameToRoute = {
   navigateToTutorial: "/tutorial",
   navigateToWallet: "/wallet",
-  navigateToPage2: "/p2"
+  navigateToPage2: "/p2",
+  navigateToConfig: "/config"
 };
 const createRouter = (DOM: DOMSource): Stream<HistoryAction> => {
   return DOM.select('[data-action="navigate"]')
@@ -95,6 +96,13 @@ function view(state$: Stream<State>): Stream<VNode> {
           props: { className: "navigateToTutorial" }
         },
         "take tutorial"
+      ),
+      button(
+        {
+          attrs: { "data-action": "navigate" },
+          props: { className: "navigateToConfig" }
+        },
+        "see my config"
       )
     ])
   );
