@@ -6,6 +6,7 @@ import { defaultTheme, isThemeConfig } from "../styles";
 import { ipcRenderer } from "electron";
 
 export const createThemeDriver = () => {
+  console.log(`ipcRenderer is ${ipcRenderer}`);
   const ThemeDriver = (
     themeName$: Stream<string>
   ): MemoryStream<ThemeConfig | Error> => {

@@ -81,8 +81,15 @@ app.on('ready', () =>
         ipcMain.on("loadFile", (fileName) => {
             const themePath = path.join([app.getAppPath(), "themes", fileName])
             console.debug("going to read file from", themePath)
-            const theme = require(themePath)
-            ipcMain.send("theme-loaded", theme)
+            fs.readFile(themePath, 'utf8', (err, data) => {
+              if (err) {throw err}
+              try {
+                const themeObj = JSON.parse(data)
+                ipcMain.send("theme-loaded", themeObj)
+              } catch(e) {
+                ipcMain.send("theme-loaded", "failed to load theme, error message is " + e.toString())
+              }
+            })
         })
 
         if (process.platform === 'darwin') {
