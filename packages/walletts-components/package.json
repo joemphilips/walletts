@@ -57,6 +57,7 @@
   "dependencies": {
     "@cycle/dom": "^20.4.0",
     "csstips": "^0.3.0",
+    "csstype": "^2.5.2",
     "csx": "^9.0.0",
     "cycle-semantic-ui": "^0.3.16",
     "typestyle": "^2.0.0",

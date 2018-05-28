@@ -1,5 +1,5 @@
 import { ThemeConfig } from "../interfaces";
-import { ThemeVariable } from "../interfaces/themes";
+import { ThemeVariable } from "walletts-components";
 import * as csx from "csx";
 
 export const createThemeConfig = (

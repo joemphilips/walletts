@@ -1,11 +1,13 @@
-import { div, VNode, nav } from '@cycle/dom';
+import { div, nav, VNode } from '@cycle/dom';
 import * as csstips from 'csstips';
 import * as csx from 'csx';
 import { IconType } from 'cycle-semantic-ui';
 import { style } from 'typestyle';
+import { ThemeConfig } from '../../themes';
 
 export namespace Sidebar {
   export interface SideBarContents {
+    readonly theme: ThemeConfig;
     readonly items: ReadonlyArray<SideBarItemProps>;
     readonly customSideBarHeader?: VNode;
     readonly beforeNav: ReadonlyArray<any>;

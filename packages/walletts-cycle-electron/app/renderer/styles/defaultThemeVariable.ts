@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import { ThemeVariable } from "../interfaces/themes";
+import { ThemeVariable } from "walletts-components";
 import { color, deg, linearGradient } from "csx";
 
 export const createDefaultTheme = (): ThemeVariable => {

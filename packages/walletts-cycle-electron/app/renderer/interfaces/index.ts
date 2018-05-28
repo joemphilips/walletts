@@ -4,9 +4,9 @@ import { StorageSource, StorageRequest } from "@cycle/storage";
 import { HTTPSource, RequestOptions } from "@cycle/http";
 import { TimeSource } from "@cycle/time";
 import { RouterSource, HistoryAction } from "cyclic-router";
-import { ThemeConfig } from "./themes";
-export { ThemeVariable } from "./themes";
-export { ThemeConfig } from "./themes";
+import { ThemeConfig } from "walletts-components";
+export { ThemeVariable } from "walletts-components";
+export { ThemeConfig } from "walletts-components";
 
 export type Component<So extends BaseSources, Si extends BaseSinks> = (
   s: So
