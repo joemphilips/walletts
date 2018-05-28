@@ -1,8 +1,8 @@
 {
-  "name": "walletts-cycle-electron",
-  "productName": "walletts-cycle-electron",
+  "name": "walletts-app",
+  "productName": "walletts-app",
   "version": "0.10.0",
-  "description": "yet another bitcoin wallet powered by cyclejs and electron",
+  "description": "more than yet another bitcoin wallet",
   "main": "main.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test node --trace-warnings ./test/runTests.js",
@@ -103,8 +103,9 @@
   },
   "keywords": [
     "electron",
-    "cyclejs",
-    "webpack"
+    "react",
+    "webpack",
+    "bitcoin"
   ],
   "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
   "devDependencies": {
