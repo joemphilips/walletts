@@ -108,8 +108,6 @@ module.exports = merge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
 
-    new ExtractTextPlugin('style.css'),
-
     new HtmlWebpackPlugin({
       filename: '../app.html',
       template: 'app/app.html',
