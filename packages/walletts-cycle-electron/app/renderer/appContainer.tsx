@@ -4,7 +4,7 @@ import {
   Sources as AppSources,
   Sinks as AppSinks
 } from "./app";
-import { Sidebar } from "walletts-components";
+import { Sidebar, defaultTheme } from "walletts-components";
 import { Stream } from "xstream";
 import { div, VNode } from "@cycle/dom";
 import { IconType } from "cycle-semantic-ui";
@@ -19,6 +19,7 @@ export interface State extends AppState {
 }
 const defaultState: State = {
   sidebarContents: {
+    theme: defaultTheme,
     beforeNav: [],
     items: [
       {

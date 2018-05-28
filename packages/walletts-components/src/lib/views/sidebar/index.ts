@@ -7,7 +7,7 @@ import { ThemeConfig } from '../../themes';
 
 export namespace Sidebar {
   export interface SideBarContents {
-    readonly theme: ThemeConfig;
+    readonly theme: ThemeConfig | any;
     readonly items: ReadonlyArray<SideBarItemProps>;
     readonly customSideBarHeader?: VNode;
     readonly beforeNav: ReadonlyArray<any>;

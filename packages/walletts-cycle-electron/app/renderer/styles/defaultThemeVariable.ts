@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 import { ThemeVariable } from "walletts-components";
 import { color, deg, linearGradient } from "csx";
 
-export const createDefaultTheme = (): ThemeVariable => {
+export const createDefaultTheme = (): ThemeVariable | any => {
   const fontFamily = "Open Sans, sans-serif";
 
   // Font Size

@@ -4,7 +4,7 @@ import * as csx from "csx";
 
 export const createThemeConfig = (
   themeVariable: ThemeVariable
-): ThemeConfig => {
+): ThemeConfig | any => {
   const {
     /// *****
     /// FONTS
