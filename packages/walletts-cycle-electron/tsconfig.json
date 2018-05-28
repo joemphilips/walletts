@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
-    "jsxFactory": "Snabbdom.createElement",
     "lib": ["dom", "es6", "dom.iterable", "scripthost"],
 
     "alwaysStrict": true,
@@ -24,7 +23,7 @@
 
     "outDir": "dist"
   },
-  "files": ["app/renderer/index.ts"],
+  "files": ["app/renderer/index.tsx"],
   "include": [
     "./custom-typings.d.ts",
     "./bitcoin-core-typings.d.ts",
