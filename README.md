@@ -5,11 +5,12 @@ The bitcoin-blockchain sdk for typescript and applications for managing your fin
 includes following packages
 
 * `walletts-core` primitive for working with your own wallet.
-* `walletts-cycle-electron` copay-style wallet and crowdfunding application powered by electron and cyclejs
+* `walletts-app` copay-style wallet and crowdfunding application powered by electron and react-redux
 * `blockchain-driver` cyclejs driver for interacting with the bitcoin blockchain
-* `walletts-components` reusable cyclejs components used in the app. It follows semantics in [semantic-ui](https://semantic-ui.com/)
+(used in app by [redux-cycles](https://github.com/cyclejs-community/redux-cycles))
+* `walletts-components` reusable components used in the app.
 
-components which represents whole page (e.g. `CrowdFundingProjectView`) must be under `wallets-cycle-electron` package instead of `walletts-components`
+components which represents whole page (e.g. `CrowdFundingProjectView`) must be under `wallets-app` package instead of `walletts-components`
 
 ## development
 
