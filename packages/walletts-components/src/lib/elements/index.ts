@@ -1,1 +1,1 @@
-export * from './WalletsTabBar';
+export * from './AccountsTabBar';

@@ -3,8 +3,8 @@
  */
 import { CommunityID, UserID } from './identity';
 
-export interface OtherUser {
-  readonly kind: 'otherUser';
+export interface User {
+  readonly kind: 'User';
   readonly id: UserID;
   readonly name: string;
   readonly knownAddresses: ReadonlyArray<string>;
@@ -25,17 +25,16 @@ export interface PublicDomain {
   readonly knownAddresses: ReadonlyArray<string>;
   readonly nextAddressToPay: string;
 }
-
-export function isOtherUser(entity: OuterEntity): entity is OtherUser {
-  return entity.kind === 'otherUser';
+export function isUser(entity: Entity): entity is User {
+  return entity.kind === 'User';
 }
 
-export function iSCommunity(entity: OuterEntity): entity is Community {
+export function iSCommunity(entity: Entity): entity is Community {
   return entity.kind === 'community';
 }
 
-export function PublicDomain(entity: OuterEntity): entity is OuterEntity {
+export function PublicDomain(entity: Entity): entity is PublicDomain {
   return entity.kind === 'publicDomain';
 }
 
-export type OuterEntity = OtherUser | Community | PublicDomain;
+export type Entity = User | Community | PublicDomain;
