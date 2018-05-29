@@ -10616,6 +10616,10 @@ typeforce@^1.11.3:
   version "1.12.0"
   resolved "http://localhost:4873/typeforce/-/typeforce-1.12.0.tgz#ca40899919f1466d7819e37be039406beb912a2e"
 
+typesafe-actions@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/typesafe-actions/-/typesafe-actions-2.0.4.tgz#31c8f8df3566d549eb52edb64a75997e970c17d0"
+
 typescript@2.7, typescript@2.7.2:
   version "2.7.2"
   resolved "http://localhost:4873/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
