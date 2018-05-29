@@ -9,7 +9,7 @@ export interface SidebarProps extends SEM.SidebarProps {
 export class Sidebar extends React.PureComponent<SidebarProps> {
   public render(): React.ReactNode {
     return (
-      <SEM.Sidebar {...this.props} direction="left" width="thin">
+      <SEM.Sidebar direction="left" width="thin">
         <AccountsTabBar accountsInfo={this.props.accountsInfo} />
       </SEM.Sidebar>
     );

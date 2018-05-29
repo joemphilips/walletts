@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Menu } from "semantic-ui-react";
 import Sidebar from "./Sidebar";
 import * as typestyle from "typestyle";
 import * as CSS from "csstips";
@@ -11,12 +10,7 @@ class App extends React.Component<any, IState> {
   render() {
     return (
       <div className={appStyle}>
-        <Sidebar
-          as={Menu}
-          accountsInfo={this.props.accountsInfo}
-          vertical
-          inverted
-        />
+        <Sidebar accountsInfo={this.props.accountsInfo} vertical inverted />
         <div>{this.props.children}</div>
       </div>
     );
