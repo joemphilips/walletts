@@ -31,7 +31,10 @@ const installExtensions = () => {
     if (process.env.NODE_ENV === 'development') {
         const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
 
-        const extensions = ['CYCLEJS_DEVTOOL'];
+        const extensions = [
+            'REACT_DEVELOPER_TOOLS',
+            'REDUX_DEVTOOLS'
+        ];
         const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
         return Promise.all(
             extensions.map(name => installer.default(installer[name], forceDownload))
@@ -82,13 +85,13 @@ app.on('ready', () =>
             const themePath = path.join([app.getAppPath(), "themes", fileName])
             console.debug("going to read file from", themePath)
             fs.readFile(themePath, 'utf8', (err, data) => {
-              if (err) {throw err}
-              try {
-                const themeObj = JSON.parse(data)
-                ipcMain.send("theme-loaded", themeObj)
-              } catch(e) {
-                ipcMain.send("theme-loaded", "failed to load theme, error message is " + e.toString())
-              }
+                if (err) { throw err }
+                try {
+                    const themeObj = JSON.parse(data)
+                    ipcMain.send("theme-loaded", themeObj)
+                } catch (e) {
+                    ipcMain.send("theme-loaded", "failed to load theme, error message is " + e.toString())
+                }
             })
         })
 
