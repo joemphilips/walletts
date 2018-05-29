@@ -3,12 +3,18 @@ import * as React from 'react';
 import { Account } from 'walletts-core';
 
 export interface Props {
-  readonly hoge?: any;
   readonly accountsInfo: ReadonlyArray<Account>;
 }
 
-export class AccountsTabBar extends React.Component<Props> {
+export class AccountsTabBar extends React.PureComponent<Props> {
   public render(): React.ReactNode {
-    return <div> This is WalletsTabBar !</div>;
+    const { accountsInfo } = this.props;
+
+    const aList = accountsInfo ? (
+      accountsInfo.map((a: Account) => <li key={a.id}> hoge </li>)
+    ) : (
+      <li> default Accounts Info</li>
+    );
+    return <ul> {aList} </ul>;
   }
 }
