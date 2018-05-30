@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import * as typestyle from "typestyle";
 import * as CSS from "csstips";
 import { connect } from "react-redux";
-import { IState } from "../reducers";
+import { IState } from "../store/reducers";
 const appStyle = typestyle.style(CSS.flexRoot);
 
 export interface AppProps extends IState {}

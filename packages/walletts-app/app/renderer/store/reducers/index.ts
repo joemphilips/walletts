@@ -13,9 +13,4 @@ export interface IState {
   accountsInfo: ReadonlyArray<AccountUIData>;
 }
 
-export const defaultState: IState = {
-  counter: 0,
-  accountsInfo: []
-};
-
 export default rootReducer;

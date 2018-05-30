@@ -1,6 +1,6 @@
 import { Sidebar } from "walletts-components";
 import { SidebarProps } from "walletts-components";
-import { IState } from "../reducers";
+import { IState } from "../store/reducers";
 import { Dispatch, connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as SidebarAcitons from "../actions/sidebar";
