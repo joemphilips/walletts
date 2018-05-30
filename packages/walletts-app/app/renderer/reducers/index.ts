@@ -1,6 +1,6 @@
 import { combineReducers, Reducer } from "redux";
 import { routerReducer as routing } from "react-router-redux";
-import { Account } from "walletts-core";
+import { AccountUIData } from "walletts-components";
 import counter, { TState as TCounterState } from "./counter";
 
 const rootReducer = combineReducers({
@@ -10,7 +10,12 @@ const rootReducer = combineReducers({
 
 export interface IState {
   counter: TCounterState;
-  accountsInfo: ReadonlyArray<Account>;
+  accountsInfo: ReadonlyArray<AccountUIData>;
 }
+
+export const defaultState: IState = {
+  counter: 0,
+  accountsInfo: []
+};
 
 export default rootReducer;

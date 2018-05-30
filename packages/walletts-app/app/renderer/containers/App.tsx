@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { IState } from "../reducers";
 const appStyle = typestyle.style(CSS.flexRoot);
 
-class App extends React.Component<any, IState> {
+export interface AppProps extends IState {}
+class App extends React.Component<AppProps> {
   render() {
     return (
       <div className={appStyle}>
@@ -17,4 +18,9 @@ class App extends React.Component<any, IState> {
   }
 }
 
-export default connect(state => state)(App);
+export default connect((s: IState): AppProps => {
+  return {
+    accountsInfo: s.accountsInfo,
+    counter: s.counter
+  };
+})(App);
