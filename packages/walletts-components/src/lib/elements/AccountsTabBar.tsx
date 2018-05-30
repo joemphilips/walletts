@@ -1,9 +1,9 @@
 import * as React from 'react';
-// tslint:disable-next-line
-import { Account } from 'walletts-core';
+import { AccountItem } from '../collections/AccountItem';
+import { AccountUIData } from '../common/account';
 
 export interface Props {
-  readonly accountsInfo: ReadonlyArray<Account>;
+  readonly accountsInfo: ReadonlyArray<AccountUIData>;
 }
 
 export class AccountsTabBar extends React.PureComponent<Props> {
@@ -11,7 +11,9 @@ export class AccountsTabBar extends React.PureComponent<Props> {
     const { accountsInfo } = this.props;
 
     const aList = accountsInfo ? (
-      accountsInfo.map((a: Account) => <li key={a.id}> hoge </li>)
+      accountsInfo.map((a: AccountUIData) => (
+        <AccountItem {...a}> hoge </AccountItem>
+      ))
     ) : (
       <li> default Accounts Info</li>
     );
