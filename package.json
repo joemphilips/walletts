@@ -8,8 +8,10 @@
   "scripts": {
     "test": "docker-compose down && docker-compose up -d && npm run test:run",
     "test:run": "lerna run test --stream",
+    "clean": "lerna clean --parallel",
+    "bootstrap": "lerna bootstrap --parallel",
     "build": "lerna run build --stream",
-    "dev": "lerna run dev --scope=walletts-cycle-electron --scope=walletts-components --parallel"
+    "dev": "lerna run dev --scope=walletts-* --parallel"
   },
   "private": true,
 	"devDependencies": {
