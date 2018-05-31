@@ -3,24 +3,24 @@ import Sidebar from "./Sidebar";
 import * as typestyle from "typestyle";
 import * as CSS from "csstips";
 import { connect } from "react-redux";
-import { IState } from "../store/reducers";
+import { IState } from "../store";
 const appStyle = typestyle.style(CSS.flexRoot);
 
 export interface AppProps extends IState {}
-class App extends React.Component<AppProps> {
-  render() {
-    return (
-      <div className={appStyle}>
-        <Sidebar accountsInfo={this.props.accountsInfo} vertical inverted />
-        <div>{this.props.children}</div>
-      </div>
-    );
-  }
-}
-
-export default connect((s: IState): AppProps => {
+const App: React.StatelessComponent<AppProps> = props => {
+  console.log(`app props were`, props);
+  return (
+    <div className={appStyle}>
+      <Sidebar accounts={props.accounts.accounts} vertical inverted />
+      <div>{props.children}</div>
+    </div>
+  );
+};
+const mapStateToProps = (s: IState): AppProps => {
+  console.log(s.accounts);
   return {
-    accountsInfo: s.accountsInfo,
+    accounts: s.accounts,
     counter: s.counter
   };
-})(App);
+};
+export default connect(mapStateToProps)(App);

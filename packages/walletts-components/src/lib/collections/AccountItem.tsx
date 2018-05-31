@@ -1,11 +1,17 @@
 import * as React from 'react';
+import { AccountID } from 'walletts-core';
 import { AccountUIData } from '../common/account';
 
-export const AccountItem = (info: AccountUIData) => {
+export interface AccountItemProps {
+  readonly key: AccountID;
+  readonly info: AccountUIData;
+}
+
+export const AccountItem: React.SFC<AccountItemProps> = ({ key, info }) => {
   const icon = info.iconUrl ? (
     <img src={info.iconUrl} />
   ) : (
     <i className="fa fa-wallet" />
   );
-  return <li key={info.id}> {icon} </li>;
+  return <li key={key}> {icon} </li>;
 };

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { AccountID } from 'walletts-core';
 import { AccountItem } from '../collections/AccountItem';
 import { AccountUIData } from '../common/account';
 
 export interface Props {
-  readonly accountsInfo: ReadonlyArray<AccountUIData>;
+  readonly accountsInfo: Record<AccountID, AccountUIData>;
 }
 
 export class AccountsTabBar extends React.PureComponent<Props> {
@@ -11,8 +12,8 @@ export class AccountsTabBar extends React.PureComponent<Props> {
     const { accountsInfo } = this.props;
 
     const aList = accountsInfo ? (
-      accountsInfo.map((a: AccountUIData) => (
-        <AccountItem {...a}> hoge </AccountItem>
+      Object.entries(accountsInfo).forEach(([id, a]) => (
+        <AccountItem key={id} info={a} />
       ))
     ) : (
       <li> default Accounts Info</li>

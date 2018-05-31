@@ -7,6 +7,8 @@ import { defaultState } from "./store";
 
 const { configureStore, history } = require("./store/configureStore");
 const store = configureStore(defaultState);
+console.log("state is");
+console.log(store.getState());
 
 render(
   <AppContainer>

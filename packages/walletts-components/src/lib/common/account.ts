@@ -1,9 +1,11 @@
 import { DOMElement } from 'react';
-import { Account, Entity } from 'walletts-core';
+import { Entity, EntityID, Satoshi } from 'walletts-core';
 
-export interface AccountUIData extends Account {
-  readonly icon: string;
+export interface AccountUIData {
   readonly webview: null | DOMElement<any, any>;
-  readonly member: ReadonlyArray<Entity>;
+  readonly member: Record<EntityID, Entity>;
+  readonly owners: Record<EntityID, Entity>;
+  readonly balance: Satoshi;
+  readonly isActive: boolean;
   readonly iconUrl?: string;
 }

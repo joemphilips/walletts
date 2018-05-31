@@ -1,13 +1,13 @@
 import { Sidebar } from "walletts-components";
 import { SidebarProps } from "walletts-components";
-import { IState } from "../store/reducers";
+import { IState } from "../store";
 import { Dispatch, connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as SidebarAcitons from "../actions/sidebar";
+import * as SidebarAcitons from "../store/account/actions/sidebar";
 
 function mapStateToProps(state: IState): Partial<SidebarProps> {
   return {
-    accountsInfo: state.accountsInfo
+    accountsInfo: state.accounts.accounts
   };
 }
 

@@ -4,7 +4,7 @@ import { createHashHistory } from "history";
 import { routerMiddleware, push } from "react-router-redux";
 import { Reducer } from "redux";
 import { createLogger } from "redux-logger";
-import rootReducer from "./reducers";
+import rootReducer from "./root";
 
 import * as counterActions from "../actions/counter";
 
@@ -50,8 +50,8 @@ export = {
 
     if (module.hot) {
       module.hot.accept(
-        "./reducers",
-        () => store.replaceReducer(require("./reducers")) // eslint-disable-line global-require
+        "./root",
+        () => store.replaceReducer(require("./root")) // eslint-disable-line global-require
       );
     }
 
