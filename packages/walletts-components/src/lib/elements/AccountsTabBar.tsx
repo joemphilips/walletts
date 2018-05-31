@@ -16,7 +16,7 @@ export class AccountsTabBar extends React.PureComponent<Props> {
         <AccountItem key={id} info={a} />
       ))
     ) : (
-      <li> default Accounts Info</li>
+      <li key={'default'}> default Accounts Info</li>
     );
     return <ul> {aList} </ul>;
   }
