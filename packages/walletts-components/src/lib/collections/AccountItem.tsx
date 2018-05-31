@@ -9,9 +9,9 @@ export interface AccountItemProps {
 
 export const AccountItem: React.SFC<AccountItemProps> = ({ key, info }) => {
   const icon = info.iconUrl ? (
-    <img src={info.iconUrl} />
+    <span> this should be icon </span>
   ) : (
     <i className="fa fa-wallet" />
   );
-  return <li key={key}> {icon} </li>;
+  return <li key={key}>{icon}</li>;
 };

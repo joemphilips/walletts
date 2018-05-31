@@ -17,9 +17,8 @@ export const defaultUsers: Record<UserID, User> = {
 export const defaultAccounts: IAccountState = {
   accounts: {
     "default account id": {
-      icon: "defaultIcon",
+      iconUrl: "defaultIcon",
       webview: null,
-      id: "default account id",
       member: defaultUsers,
       owners: defaultUsers,
       balance: Satoshi.fromNumber(1000).value,

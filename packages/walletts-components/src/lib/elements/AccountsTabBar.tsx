@@ -12,7 +12,7 @@ export class AccountsTabBar extends React.PureComponent<Props> {
     const { accountsInfo } = this.props;
 
     const aList = accountsInfo ? (
-      Object.entries(accountsInfo).forEach(([id, a]) => (
+      Object.entries(accountsInfo).map(([id, a]) => (
         <AccountItem key={id} info={a} />
       ))
     ) : (

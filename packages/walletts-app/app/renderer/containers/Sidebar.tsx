@@ -7,7 +7,7 @@ import * as SidebarAcitons from "../store/account/actions/sidebar";
 
 function mapStateToProps(state: IState): Partial<SidebarProps> {
   return {
-    accountsInfo: state.accounts.accounts
+    accounts: state.accounts.accounts
   };
 }
 

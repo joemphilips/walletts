@@ -1,10 +1,8 @@
-import { combineReducers } from "redux";
 import { defaultAccounts, IAccountState } from "../store";
-import { AccountsAction } from "../actions/sidebar";
 
 export const toggleAccount = (
   state = defaultAccounts,
-  action: AccountsAction
+  action: any
 ): IAccountState => {
   switch (action.type) {
     case "TOGGLE_ACCOUNT":
@@ -23,8 +21,4 @@ export const toggleAccount = (
   }
 };
 
-const AccountReducers = combineReducers<IAccountState>({
-  toggleAccount: toggleAccount
-} as any);
-
-export default AccountReducers;
+export default toggleAccount;
