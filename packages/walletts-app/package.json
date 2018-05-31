@@ -1,6 +1,6 @@
 {
-  "name": "walletts-cycle-electron",
-  "productName": "walletts-cycle-electron",
+  "name": "walletts-app",
+  "productName": "walletts-app",
   "version": "0.10.0",
   "description": "yet another bitcoin wallet powered by cyclejs and electron",
   "main": "main.js",
@@ -46,7 +46,7 @@
     ]
   },
   "build": {
-    "productName": "walletts-electron",
+    "productName": "walletts-app",
     "appId": "io.github.irath96.wallettsElectron",
     "dmg": {
       "contents": [

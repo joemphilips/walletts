@@ -35,7 +35,7 @@ export namespace Sidebar {
   const sidebarItemStyle = style({
     $nest: {
       '&:hover': {
-        border: 'medium solid white',
+        border: 'medium white',
         transition: 'border-color .2s linear'
       }
     },
