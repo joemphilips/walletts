@@ -12,7 +12,7 @@ export interface SidebarProps extends SEM.SidebarProps {
   readonly accounts: Record<AccountID, AccountUIData>;
 }
 
-const sidebarStyle = ts.style(CSS.flexRoot, CSS.vertical);
+const sidebarStyle = ts.style(CSS.vertical, CSS.centerJustified);
 
 export class Sidebar extends React.PureComponent<SidebarProps> {
   public render(): React.ReactNode {

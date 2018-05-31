@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { style } from 'typestyle';
 import { AccountID } from 'walletts-core';
 import { AccountItem } from '../collections/AccountItem';
 import { AccountUIData } from '../common/account';
@@ -6,6 +7,8 @@ import { AccountUIData } from '../common/account';
 export interface Props {
   readonly accountsInfo: Record<AccountID, AccountUIData>;
 }
+
+const AccountsTabBarStyle = style({ $nest: { '&:hover': { opacity: 0.98 } } });
 
 export class AccountsTabBar extends React.PureComponent<Props> {
   public render(): React.ReactNode {
@@ -18,6 +21,6 @@ export class AccountsTabBar extends React.PureComponent<Props> {
     ) : (
       <li key={'default'}> default Accounts Info</li>
     );
-    return <ul> {aList} </ul>;
+    return <ul className={AccountsTabBarStyle}> {aList} </ul>;
   }
 }
