@@ -11,6 +11,7 @@ import { sidebarStyle } from './style';
 export interface State {
   readonly theme: ThemeConfig;
   readonly sidebarItems: ReadonlyArray<SidebarItemProps | null>;
+  readonly activeItem?: string;
   readonly customSideBarHeader?: VNode;
   readonly beforeNav?: ReadonlyArray<any>;
   readonly afterNav?: ReadonlyArray<any>;
@@ -33,11 +34,13 @@ export interface Sinks extends BaseSinks {
   readonly onion: Stream<Reducer>;
 }
 export type Reducer = (prev?: State) => State;
-const initReducer: Stream<Reducer> = xs.of(
-  prev => (prev ? prev : defaultState)
-);
-
-// styles
+function model(): Stream<Reducer> {
+  const initReducer$: Stream<Reducer> = xs.of(
+    prev => prev ? prev : defaultState
+  );
+  
+  return xs.merge(initReducer$);
+}
 
 export function Sidebar(sources: Sources): Sinks {
   const sidebarAccountsBarSinks = isolate(SidebarAccountsBar, 'sidebarItems')(
@@ -51,7 +54,7 @@ export function Sidebar(sources: Sources): Sinks {
   });
 
   const reducer$ = xs.merge<Reducer>(
-    initReducer,
+    model(),
     sidebarAccountsBarSinks.onion
   );
   const vdom$ = view(sidebarAccountsBarSinks.DOM, buttonSink.DOM);

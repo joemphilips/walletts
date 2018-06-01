@@ -1,7 +1,8 @@
 import { div, VNode } from '@cycle/dom';
-import { StateSource } from 'cycle-onionify';
+import { makeCollection, StateSource } from 'cycle-onionify';
 import xs, { Stream } from 'xstream';
 import { BaseSinks, BaseSources, SidebarItemProps } from '../..';
+import { AccountsIcon } from '../collections';
 
 export type State = ReadonlyArray<SidebarItemProps>;
 export type Reducer = (prev?: State) => State;
@@ -14,8 +15,14 @@ export interface Sinks extends BaseSinks {
 }
 
 export function SidebarAccountsBar(sources: Sources): Sinks {
-  const vdom$ = view(sources.onion.state$);
+  const Items = makeCollection({
+    item: AccountsIcon,
+    itemKey: (childState, index) => String(index),
+    collectSinks: instances => ({ DOM: instances.pickCombine('DOM') })
+  });
+  const itemsSink = Items(sources);
   const reducer$: Stream<Reducer> = xs.merge(initReducer$);
+  const vdom$ = view(sources.onion.state$);
   return {
     DOM: vdom$,
     onion: reducer$

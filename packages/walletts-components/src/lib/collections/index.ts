@@ -1,0 +1,1 @@
+export {main as AccountsIcon} from './accountsIcon'
