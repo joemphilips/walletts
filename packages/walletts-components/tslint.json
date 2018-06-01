@@ -8,6 +8,7 @@
 
     // settings change for walletts
     "no-namespace": false,
+    "prefer-object-spread": false, // since it has incompatibility issue in webpack
 
     // TODO: allow devDependencies only in **/*.spec.ts files:
     // waiting on https://github.com/palantir/tslint/pull/3708

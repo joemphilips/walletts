@@ -1,5 +1,8 @@
-import { div, VNode } from '@cycle/dom';
+import { div, ul, VNode } from '@cycle/dom';
+import isolate from '@cycle/isolate';
+import * as CSS from 'csstips';
 import { makeCollection, StateSource } from 'cycle-onionify';
+import { style } from 'typestyle';
 import xs, { Stream } from 'xstream';
 import { BaseSinks, BaseSources, SidebarItemProps } from '../..';
 import { AccountsIcon } from '../collections';
@@ -17,18 +20,26 @@ export interface Sinks extends BaseSinks {
 export function SidebarAccountsBar(sources: Sources): Sinks {
   const Items = makeCollection({
     item: AccountsIcon,
-    itemKey: (childState, index) => String(index),
-    collectSinks: instances => ({ DOM: instances.pickCombine('DOM') })
+    itemKey: (_, index) => String(index),
+    collectSinks: instances => ({
+      DOM: instances.pickCombine('DOM').map(d => ul(d))
+    })
   });
-  const itemsSink = Items(sources);
+
+  const itemsSource = Object.assign({}, sources, {
+    props: xs.of({ id: '', mainComponentPath: '' })
+  });
+
+  const itemsSink = isolate(Items)(itemsSource);
   const reducer$: Stream<Reducer> = xs.merge(initReducer$);
-  const vdom$ = view(sources.onion.state$);
+  const vdom$ = view(itemsSink.DOM);
   return {
     DOM: vdom$,
     onion: reducer$
   };
 }
 
-function view(state$: Stream<State>): Stream<VNode> {
-  return state$.mapTo(div(''));
+const tabbarStyle = style(CSS.center);
+function view(childvdom: Stream<VNode>): Stream<VNode> {
+  return childvdom.map(c => div(`.${tabbarStyle}`, c));
 }

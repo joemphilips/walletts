@@ -19,7 +19,12 @@ export interface State {
 }
 const defaultState = {
   theme: defaultTheme,
-  sidebarItems: []
+  sidebarItems: [
+    {
+      name: 'sidebar item 1',
+      iccon: 'hoge'
+    }
+  ]
 };
 
 export interface SidebarItemProps {
@@ -36,9 +41,9 @@ export interface Sinks extends BaseSinks {
 export type Reducer = (prev?: State) => State;
 function model(): Stream<Reducer> {
   const initReducer$: Stream<Reducer> = xs.of(
-    prev => prev ? prev : defaultState
+    prev => (prev ? prev : defaultState)
   );
-  
+
   return xs.merge(initReducer$);
 }
 
@@ -53,10 +58,7 @@ export function Sidebar(sources: Sources): Sinks {
     content$: xs.of('Config')
   });
 
-  const reducer$ = xs.merge<Reducer>(
-    model(),
-    sidebarAccountsBarSinks.onion
-  );
+  const reducer$ = xs.merge<Reducer>(model(), sidebarAccountsBarSinks.onion);
   const vdom$ = view(sidebarAccountsBarSinks.DOM, buttonSink.DOM);
   return {
     DOM: vdom$,
