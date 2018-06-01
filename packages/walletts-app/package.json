@@ -163,7 +163,6 @@
     "bitcoinjs-lib": "^3.3.2",
     "csstips": "^0.2.3",
     "cycle-onionify": "^5.0.0",
-    "cycle-restart": "^0.2.3",
     "cycle-semantic-ui": "^0.3.16",
     "cycle-storageify": "^4.0.1",
     "cyclejs-utils": "^3.1.0",

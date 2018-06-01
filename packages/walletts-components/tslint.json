@@ -1,6 +1,9 @@
 {
   "extends": ["tslint:latest", "tslint-config-prettier", "tslint-immutable"],
   "rules": {
+    // tule for walletts
+    "object-literal-sort-keys": false,
+
     "interface-name": [true, "never-prefix"],
 
     // settings change for walletts

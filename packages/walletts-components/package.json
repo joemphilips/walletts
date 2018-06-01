@@ -56,10 +56,16 @@
   },
   "dependencies": {
     "@cycle/dom": "^20.4.0",
+    "@cycle/http": "^14.9.0",
+    "@cycle/isolate": "^3.3.0",
+    "@cycle/storage": "^5.0.3",
+    "@cycle/time": "^0.13.0",
     "csstips": "^0.3.0",
     "csstype": "^2.5.2",
     "csx": "^9.0.0",
+    "cycle-onionify": "^5.1.0",
     "cycle-semantic-ui": "^0.3.16",
+    "cyclic-router": "^5.1.7",
     "typestyle": "^2.0.0",
     "xstream": "^11.2.0"
   },

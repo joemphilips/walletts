@@ -1,4 +1,4 @@
-import { Component } from "./interfaces";
+import { Component } from "walletts-components";
 import { Counter } from "./pages/counter";
 import { Speaker } from "./pages/speaker";
 import { main as TutorialList } from "./pages/tutorials/TutorialList";

@@ -1,72 +1,94 @@
+import { App, State as AppState } from "./app";
 import {
-  App,
-  State as AppState,
-  Sources as AppSources,
-  Sinks as AppSinks
-} from "./app";
-import { Sidebar, defaultTheme } from "walletts-components";
-import { Stream } from "xstream";
+  Sidebar,
+  State as SidebarState,
+  SidebarItemProps,
+  BaseSinks,
+  BaseSources
+} from "walletts-components";
+import xs, { Stream } from "xstream";
 import { div, VNode } from "@cycle/dom";
-import { IconType } from "cycle-semantic-ui";
-import { defaultStyle as Style } from "./styles";
+import { defaultStyle as Style, defaultTheme } from "./styles";
+import { DomainState, initializeState } from "./domainStates";
+import isolate from "@cycle/isolate";
+import { AccountDomainState, defaultAccount } from "./domainStates/account";
+import { Lens, StateSource } from "cycle-onionify";
 
-export interface Sources extends AppSources {}
-
-export interface Sinks extends AppSinks {}
-
-export interface State extends AppState {
-  readonly sidebarContents: Sidebar.SideBarContents;
+export interface Sources extends BaseSources {
+  onion: StateSource<State>;
 }
-const defaultState: State = {
-  sidebarContents: {
-    theme: defaultTheme,
-    beforeNav: [],
-    items: [
-      {
-        name: "default sidebar content",
-        icon: IconType.Bitcoin
-      },
-      {
-        name: "second default sidebar content",
-        icon: IconType.Bicycle
-      }
-    ],
-    afterNav: []
-  }
+
+export interface Sinks extends BaseSinks {
+  onion: Stream<Reducer>;
+}
+
+export interface State extends DomainState {}
+
+const sidebarLens: Lens<State, SidebarState> = {
+  get: state => ({
+    theme: state && state.theme ? state.theme : defaultTheme,
+    sidebarItems: state && state.theme ? accountToItem(state.account) : []
+  }),
+  set: (state, childState) => state
 };
+
+function accountToItem(a: AccountDomainState): ReadonlyArray<SidebarItemProps> {
+  return Object.keys(a).map(id => ({
+    name: a[id].name,
+    icon: a[id].iconUrl ? a[id].iconUrl : "fa-google-wallet"
+  }));
+}
+
+const appLens: Lens<State, AppState> = {
+  get: (state: any) => ({
+    counter: { count: 0 },
+    speaker: undefined,
+    account: state.account
+  }),
+  set: (state, child) => ({
+    ...(state as State),
+    account: child && child.account ? child.account : defaultAccount
+  })
+};
+
+export type Reducer = (prev?: State) => State;
 
 /**
  * main entry point which wraps app by sidebar (and possibly other things like header, footer)
  * @param sources
  */
 export function AppContainer(sources: Sources): Sinks {
-  const childSink = App(sources);
-  const state = makeState();
-  const sidebar = Sidebar.render(sources, state.sidebarContents);
-  const vdom$ = view(sources, childSink.DOM, sidebar);
+  const appSinks = isolate(App, { onion: appLens })(sources);
+
+  // reducers
+  const initialState = initializeState();
+  const initialReducer$: Stream<Reducer> = xs.of(
+    (prev?: State) => (prev ? prev : initialState)
+  );
+  const sidebarSinks = isolate(Sidebar, { onion: sidebarLens })(sources);
+  const reducer$ = xs.merge<Reducer>(
+    initialReducer$,
+    sidebarSinks.onion,
+    appSinks.onion
+  );
+
+  // view
+  const vdom$ = view(sidebarSinks.DOM, appSinks.DOM);
 
   return {
-    ...childSink,
-    DOM: vdom$
+    DOM: vdom$,
+    onion: reducer$
   };
 }
 
 export function view(
-  sources: Sources,
-  childDom$: Stream<VNode>,
-  sidebarDom: VNode
+  sidebarDOM$: Stream<VNode>,
+  appDOM$: Stream<VNode>
 ): Stream<VNode> {
-  const vdom$ = childDom$.map(main => {
+  const vdom$ = xs.combine(sidebarDOM$, appDOM$).map(([side, app]) => {
     // TODO: return view
-    return div(`.${Style.appContainerStyle}`, [sidebarDom, main]);
+    return div(`.${Style.appContainerStyle}`, [side, app]);
   });
 
   return vdom$;
-}
-
-/**
- * TODO: initialize dynamically
- */
-export function makeState() {
-  return defaultState;
 }

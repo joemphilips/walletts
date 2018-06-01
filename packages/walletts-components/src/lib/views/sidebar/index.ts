@@ -1,59 +1,71 @@
-import { div, nav, VNode } from '@cycle/dom';
-import * as csstips from 'csstips';
-import * as csx from 'csx';
-import { IconType } from 'cycle-semantic-ui';
-import { style } from 'typestyle';
-import { ThemeConfig } from '../../themes';
+import { div, VNode } from '@cycle/dom';
+import isolate from '@cycle/isolate';
+import { StateSource } from 'cycle-onionify';
+import { Button } from 'cycle-semantic-ui';
+import xs, { Stream } from 'xstream';
+import { BaseSinks, BaseSources } from '../../..';
+import { SidebarAccountsBar } from '../../elements/sidebarAccountsBar';
+import { defaultTheme, ThemeConfig } from '../../themes';
+import { sidebarStyle } from './style';
 
-export namespace Sidebar {
-  export interface SideBarContents {
-    readonly theme: ThemeConfig | any;
-    readonly items: ReadonlyArray<SideBarItemProps>;
-    readonly customSideBarHeader?: VNode;
-    readonly beforeNav: ReadonlyArray<any>;
-    readonly afterNav: ReadonlyArray<any>;
-    readonly customSidebarFooter?: VNode;
-  }
+export interface State {
+  readonly theme: ThemeConfig;
+  readonly sidebarItems: ReadonlyArray<SidebarItemProps | null>;
+  readonly customSideBarHeader?: VNode;
+  readonly beforeNav?: ReadonlyArray<any>;
+  readonly afterNav?: ReadonlyArray<any>;
+  readonly customSidebarFooter?: VNode;
+}
+const defaultState = {
+  theme: defaultTheme,
+  sidebarItems: []
+};
 
-  export interface SideBarItemProps {
-    readonly name: string;
-    readonly icon: IconType;
-  }
+export interface SidebarItemProps {
+  readonly name: string;
+  readonly icon: string;
+}
 
-  // styles
-  const sidebarStyle = style(
-    csstips.vertical,
-    csstips.centerCenter,
-    csstips.scroll,
-    csstips.content,
-    csstips.width(csx.rem(10)),
-    csstips.height('100'),
-    {
-      backgroundColor: 'lightgray'
-    }
+export interface Sources extends BaseSources {
+  readonly onion: StateSource<State>;
+}
+export interface Sinks extends BaseSinks {
+  readonly onion: Stream<Reducer>;
+}
+export type Reducer = (prev?: State) => State;
+const initReducer: Stream<Reducer> = xs.of(
+  prev => (prev ? prev : defaultState)
+);
+
+// styles
+
+export function Sidebar(sources: Sources): Sinks {
+  const sidebarAccountsBarSinks = isolate(SidebarAccountsBar, 'sidebarItems')(
+    sources
   );
-  const sidebarItemStyle = style({
-    $nest: {
-      '&:hover': {
-        border: 'medium white',
-        transition: 'border-color .2s linear'
-      }
-    },
-    borderRadius: '3px'
+
+  const buttonSink = Button.run({
+    DOM: sources.DOM,
+    props$: xs.of({ icon: true }),
+    content$: xs.of('Config')
   });
 
-  export function render(sources: any, props: SideBarContents): VNode {
-    // tslint:disable-next-line
-    console.log(`render function received ${sources}`);
-    // tslint:disable-next-line
-    console.log(`going to render ${JSON.stringify(props)}`);
-    // TODO: implement Model, Intent and make reactive
-    return nav(
-      `.${sidebarStyle}`,
-      {},
-      props.items.map(prop =>
-        div(`.${sidebarItemStyle}`, {}, `this is ${prop.name}`)
-      )
-    );
-  }
+  const reducer$ = xs.merge<Reducer>(
+    initReducer,
+    sidebarAccountsBarSinks.onion
+  );
+  const vdom$ = view(sidebarAccountsBarSinks.DOM, buttonSink.DOM);
+  return {
+    DOM: vdom$,
+    onion: reducer$
+  };
+}
+
+function view(
+  accountsTabDOM$: Stream<VNode>,
+  button$: Stream<VNode>
+): Stream<VNode> {
+  return xs
+    .combine(accountsTabDOM$, button$)
+    .map(([a, b]) => div(`.${sidebarStyle}`, {}, [a, b]));
 }

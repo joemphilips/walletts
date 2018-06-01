@@ -1,33 +1,40 @@
 /**
  * Define `Social` Domain entities.
  */
-import { CommunityID, UserID } from './identity';
 
-export interface OtherUser {
-  readonly kind: 'otherUser';
-  readonly id: UserID;
+export interface Individual {
+  readonly kind: 'Individual';
   readonly name: string;
   readonly knownAddresses: ReadonlyArray<string>;
-  readonly nextAddressToPay: string;
+  readonly nextAddressToPay: string | null;
 }
 
 export interface Community {
   readonly kind: 'community';
-  readonly id: CommunityID;
   readonly name: string;
   readonly knownAddresses: ReadonlyArray<string>;
   readonly nextAddressToPay: string;
 }
 
-/* tslint:disable-next-line */
+export enum CommunityStatus {
+  Draft = 0,
+  Open,
+  Failed,
+  Active,
+  Abandoned,
+  Succeeded,
+  NotCommunity
+}
+
+
 export interface PublicDomain {
   readonly kind: 'publicDomain';
   readonly knownAddresses: ReadonlyArray<string>;
   readonly nextAddressToPay: string;
 }
 
-export function isOtherUser(entity: OuterEntity): entity is OtherUser {
-  return entity.kind === 'otherUser';
+export function isIndividual(entity: OuterEntity): entity is Individual {
+  return entity.kind === 'Individual';
 }
 
 export function iSCommunity(entity: OuterEntity): entity is Community {
@@ -38,4 +45,4 @@ export function PublicDomain(entity: OuterEntity): entity is OuterEntity {
   return entity.kind === 'publicDomain';
 }
 
-export type OuterEntity = OtherUser | Community | PublicDomain;
+export type OuterEntity = Individual | Community | PublicDomain;

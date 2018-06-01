@@ -7,7 +7,7 @@ import onionify from "cycle-onionify";
 import storageify from "cycle-storageify";
 import switchPath from "switch-path";
 import storageDriver from "@cycle/storage";
-import { Component } from "../interfaces";
+import { Component } from "walletts-components";
 
 export type DriverThunk = Readonly<[string, () => any]> & [string, () => any]; // work around readonly
 export type DriverThunkMapper = (t: DriverThunk) => DriverThunk;

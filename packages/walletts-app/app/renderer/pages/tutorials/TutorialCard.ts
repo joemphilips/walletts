@@ -2,7 +2,8 @@ import { DOMSource, li, VNode, span, input } from "@cycle/dom";
 import isolate from "@cycle/isolate";
 import { StateSource } from "cycle-onionify";
 import xs, { Stream } from "xstream";
-import { BaseSinks, BaseSources, Component } from "../../interfaces";
+import { BaseSinks, BaseSources } from "../../interfaces";
+import { Component } from "walletts-components";
 
 interface Sources extends BaseSources {
   readonly onion: StateSource<State>;

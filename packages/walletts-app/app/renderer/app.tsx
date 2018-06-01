@@ -3,6 +3,7 @@ import xs, { Stream } from "xstream";
 import { StateSource } from "cycle-onionify";
 import isolate from "@cycle/isolate";
 import { extractSinks } from "cyclejs-utils";
+import { AccountDomainState, defaultAccount } from "./domainStates/account";
 import { BaseSources, BaseSinks } from "./interfaces";
 import { RouteValue, routes } from "./routes";
 import { State as CounterState } from "./pages/counter";
@@ -13,19 +14,21 @@ export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
 }
 export interface Sinks extends BaseSinks {
-  readonly onion?: Stream<Reducer>;
+  readonly onion: Stream<Reducer>;
   readonly DOM: Stream<VNode>;
 }
 
-export type Reducer = (prev?: State) => State | undefined;
+export type Reducer = (prev?: State) => State;
 
 export interface State {
   readonly counter?: CounterState;
   readonly speaker?: SpeakerState;
+  readonly account: AccountDomainState;
 }
 export const defaultState: State = {
   counter: { count: 5 },
-  speaker: undefined // use default state of component
+  speaker: undefined, // use default state of component
+  account: defaultAccount
 };
 
 const initReducer$ = xs.of<Reducer>(
