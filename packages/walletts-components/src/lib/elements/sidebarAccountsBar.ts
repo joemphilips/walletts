@@ -26,9 +26,10 @@ export function SidebarAccountsBar(sources: Sources): Sinks {
     })
   });
 
-  const itemsSource = Object.assign({}, sources, {
+  const itemsSource = {
+    ...sources,
     props: xs.of({ id: '', mainComponentPath: '' })
-  });
+  };
 
   const itemsSink = isolate(Items)(itemsSource);
   const reducer$: Stream<Reducer> = xs.merge(initReducer$);

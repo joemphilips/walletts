@@ -1,4 +1,4 @@
-import { div, li, VNode } from '@cycle/dom';
+import { li, VNode } from '@cycle/dom';
 import xs, { Stream } from 'xstream';
 import { BaseSinks, BaseSources } from '../..';
 
