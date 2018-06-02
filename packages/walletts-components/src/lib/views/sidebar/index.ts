@@ -27,20 +27,12 @@ const defaultState = {
     }
   ]
 };
-
+export type Reducer = (prev?: State) => State;
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;
 }
 export interface Sinks extends BaseSinks {
   readonly onion: Stream<Reducer>;
-}
-export type Reducer = (prev?: State) => State;
-function model(): Stream<Reducer> {
-  const initReducer$: Stream<Reducer> = xs.of(
-    prev => (prev ? prev : defaultState)
-  );
-
-  return xs.merge(initReducer$);
 }
 
 export function Sidebar(sources: Sources): Sinks {
@@ -60,6 +52,14 @@ export function Sidebar(sources: Sources): Sinks {
     DOM: vdom$,
     onion: reducer$
   };
+}
+
+function model(): Stream<Reducer> {
+  const initReducer$: Stream<Reducer> = xs.of(
+    prev => (prev ? prev : defaultState)
+  );
+
+  return xs.merge(initReducer$);
 }
 
 function view(

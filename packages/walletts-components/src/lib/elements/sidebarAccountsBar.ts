@@ -21,7 +21,6 @@ const defaultState: State = {
 };
 
 export type Reducer = (prev?: State) => State;
-
 const initReducer$: Stream<Reducer> = xs.of(
   prev => (prev ? prev : defaultState)
 );
@@ -31,6 +30,7 @@ export interface Sources extends BaseSources {
 export interface Sinks extends BaseSinks {
   readonly onion: Stream<Reducer>;
 }
+
 const Items = makeCollection({
   item: AccountsIcon,
   itemKey: (_, index) => String(index),

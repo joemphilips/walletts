@@ -14,15 +14,14 @@ import isolate from "@cycle/isolate";
 import { AccountDomainState, defaultAccount } from "./domainStates/account";
 import { Lens, StateSource } from "cycle-onionify";
 
+export interface State extends DomainState {}
+export type Reducer = (prev?: State) => State;
 export interface Sources extends BaseSources {
   onion: StateSource<State>;
 }
-
 export interface Sinks extends BaseSinks {
   onion: Stream<Reducer>;
 }
-
-export interface State extends DomainState {}
 
 const sidebarLens: Lens<State, SidebarState> = {
   get: state => ({
@@ -50,8 +49,6 @@ const appLens: Lens<State, AppState> = {
     account: child && child.account ? child.account : defaultAccount
   })
 };
-
-export type Reducer = (prev?: State) => State;
 
 /**
  * main entry point which wraps app by sidebar (and possibly other things like header, footer)
