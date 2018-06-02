@@ -1,6 +1,8 @@
+import { Driver } from '@cycle/run'
 import { adapt } from '@cycle/run/lib/adapt';
 import { NodeClient, WalletClient } from 'bclient';
 import xs, { MemoryStream, Stream } from 'xstream';
+import { BlockchainSource } from './common';
 
 export interface BclientOption {
   readonly apiKey?: string;
@@ -28,14 +30,10 @@ export interface WalletRequest {
   readonly options?: any;
 }
 
-export interface Response {
-  readonly [key: string]: any;
-}
-
-export const makeTrustedBcoinNodeDriver = (opts: BclientOption) => {
+export const makeTrustedBcoinNodeDriver = (opts: BclientOption): Driver<Stream<NodeRequest>, BlockchainSource> => {
   const TrustedBcoinNodeDriver = (
     request$: Stream<NodeRequest>
-  ): MemoryStream<Response> => {
+  ): MemoryStream<BlockchainSource> => {
     const cli = new NodeClient(opts);
     const response$ = request$
       .map(
@@ -52,10 +50,10 @@ export const makeTrustedBcoinNodeDriver = (opts: BclientOption) => {
   return TrustedBcoinNodeDriver;
 };
 
-export const makeTrustedBcoinWalletDriver = (opts: BclientOption) => {
+export const makeTrustedBcoinWalletDriver = (opts: BclientOption): Driver<Stream<WalletRequest>, BlockchainSource> => {
   const TrustedBcoinWalletDriver = (
     request$: Stream<WalletRequest>
-  ): MemoryStream<Response> => {
+  ): MemoryStream<BlockchainSource> => {
     const cli = new WalletClient(opts);
     const response$ = request$
       .map(

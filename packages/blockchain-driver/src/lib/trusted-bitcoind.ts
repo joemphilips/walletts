@@ -1,10 +1,10 @@
+import { Driver } from '@cycle/run';
 /* tslint:disable:no-submodule-imports */
-/* tslint:disable:no-empty */
 import { adapt } from '@cycle/run/lib/adapt';
 import Client, { BatchOption, ClientConstructorOption } from 'bitcoin-core';
 import xs, { MemoryStream, Stream } from 'xstream';
 import buffer from 'xstream/extra/buffer';
-import { BlockchainAgentOptionBase } from './common';
+import { BlockchainAgentOptionBase, BlockchainSource } from './common';
 
 export type BitcoindRPCRequest = BatchOption;
 
@@ -16,7 +16,7 @@ export interface BitcoindAgentOption extends BlockchainAgentOptionBase {
 // TODO: Specify type for sink correctly
 export const makeTrustedBitcoindDriver = (
   clientConstructorOpt?: ClientConstructorOption
-) => {
+): Driver<Stream<BitcoindRPCRequest>, BlockchainSource> => {
   const separator = xs.periodic(100);
   const trustedBitcoindDriver = (
     request$: Stream<BitcoindRPCRequest>
