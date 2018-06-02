@@ -4,6 +4,7 @@ import { StateSource } from 'cycle-onionify';
 import { Button } from 'cycle-semantic-ui';
 import xs, { Stream } from 'xstream';
 import { BaseSinks, BaseSources } from '../../..';
+import { SidebarItemProps } from '../../collections/accountsIcon';
 import { SidebarAccountsBar } from '../../elements/sidebarAccountsBar';
 import { defaultTheme, ThemeConfig } from '../../themes';
 import { sidebarStyle } from './style';
@@ -26,11 +27,6 @@ const defaultState = {
     }
   ]
 };
-
-export interface SidebarItemProps {
-  readonly name: string;
-  readonly icon: string;
-}
 
 export interface Sources extends BaseSources {
   readonly onion: StateSource<State>;

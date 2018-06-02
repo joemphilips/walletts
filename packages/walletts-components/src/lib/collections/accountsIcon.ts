@@ -1,4 +1,4 @@
-import { li, VNode } from '@cycle/dom';
+import { a, li, VNode } from '@cycle/dom';
 import xs, { Stream } from 'xstream';
 import { BaseSinks, BaseSources } from '../..';
 
@@ -7,6 +7,11 @@ export interface Sources extends BaseSources {
     readonly id: string;
     readonly mainComponentPath: string;
   };
+}
+
+export interface SidebarItemProps {
+  readonly name: string;
+  readonly icon: string;
 }
 
 export type SetActiveAction = 'setActive';
@@ -19,9 +24,9 @@ export function main(sources: Sources): Sinks {
 
   const action$ = intent(sources);
   const router$ = action$
-    .filter(a => a === 'setActive')
+    .filter(ac => ac === 'setActive')
     .mapTo(sources.props.mainComponentPath);
-  const vdom$ = view();
+  const vdom$ = view().debug();
 
   return {
     DOM: vdom$,
@@ -30,7 +35,7 @@ export function main(sources: Sources): Sinks {
 }
 
 function view(): Stream<VNode> {
-  return xs.of(li('fa fa-twitter', 'hoge'));
+  return xs.of(li('fa fa-twitter', {}, [a('hoge')]));
 }
 
 function intent(sources: Sources): Stream<Action> {

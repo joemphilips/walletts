@@ -1,1 +1,1 @@
-export {main as AccountsIcon} from './accountsIcon'
+export { main as AccountsIcon, SidebarItemProps } from './accountsIcon';
