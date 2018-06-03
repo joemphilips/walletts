@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IAccountState } from "../store/account/store";
+import { AccountDetail } from "./AccountDetail";
 
 export interface Props extends IAccountState {
   readonly match: any;
@@ -13,9 +14,11 @@ export class AccountPage extends React.Component<Props> {
   }
   render() {
     const { id } = this.props.match.params;
-    const { owners } = this.props.accounts[id];
-    if (Object.keys(owners).length <= 1) {
-      return <div> showing account info {id} </div>;
+    const props = this.props.accounts[id];
+    if (Object.keys(props.owners).length <= 1) {
+      return (
+        <AccountDetail {...props}> showing account info {id} </AccountDetail>
+      );
     } else {
       return <div> showing community account info {id} </div>;
     }

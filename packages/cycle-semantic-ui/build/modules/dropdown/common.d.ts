@@ -1,0 +1,10 @@
+import { Dropdown } from "./index";
+import { EventSelector } from "../../types";
+import { Transition } from "../../modules/transition";
+import { Menu } from "../../collections/menu";
+import { MemoryStream } from "xstream";
+import { VNode } from "@cycle/dom";
+export declare function getClassName(className: string, props: Partial<Dropdown.Props>): string;
+export declare function createTransition$(evt: EventSelector, args: any): MemoryStream<Transition.Transition>;
+export declare function getText<V>(item: Partial<Dropdown.DropdownItem<V>>, props: Partial<Dropdown.Props>, stat?: boolean, filter?: string): VNode;
+export declare function isMenuItem(obj: any): obj is Partial<Menu.MenuItem>;
