@@ -1,8 +1,8 @@
 import { Sidebar } from "walletts-components";
 import { SidebarProps } from "walletts-components";
 import { IState } from "../store";
-import { Dispatch, connect } from "react-redux";
-import { AccountID } from "walletts-core";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 function mapStateToProps(state: IState): Partial<SidebarProps> {
   return {
@@ -10,13 +10,6 @@ function mapStateToProps(state: IState): Partial<SidebarProps> {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch): Partial<SidebarProps> {
-  return {
-    onclick: (id: AccountID) =>
-      dispatch({ type: "TOGGLE_ACCOUNT", payload: { id: id } })
-  };
-}
-
-export default (connect(mapStateToProps, mapDispatchToProps)(
-  Sidebar
+export default (connect(mapStateToProps)(
+  withRouter(Sidebar as any)
 ) as any) as React.StatelessComponent<{}>;

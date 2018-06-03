@@ -1,22 +1,28 @@
 import * as CSS from 'csstips';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 import { AccountUIData } from '../common/account';
 
 export interface AccountItemProps {
   readonly info: AccountUIData;
-  // tslint:disable-next-line:no-mixed-interface
-  readonly onClick: () => any;
 }
 
-const AccountItemStyle = style(CSS.content, { fontSize: 40, opacity: 1 });
+const AccountItemStyle = style(CSS.content, {
+  $nest: {
+    '&:hover': {
+      opacity: 1
+    }
+  },
+  fontSize: 40,
+  opacity: 0.8
+});
 
-export const AccountItem: React.SFC<AccountItemProps> = ({ info, onClick }) => {
+export const AccountItem: React.SFC<AccountItemProps> = ({ info }) => {
   const icon = info.iconUrl ? (
-    <i
-      className={`fa fa-google-wallet fa-fw ${AccountItemStyle}`}
-      onClick={onClick}
-    />
+    <Link to={`/account/${info.id}`}>
+      <i className={`${info.iconUrl} ${AccountItemStyle}`} />
+    </Link>
   ) : (
     <i className="fa fa-twitter" />
   );

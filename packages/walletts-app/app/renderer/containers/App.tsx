@@ -5,7 +5,6 @@ import * as CSS from "csstips";
 const appStyle = typestyle.style(CSS.flexRoot);
 
 const App: React.SFC = props => {
-  console.log(`app props were`, props);
   return (
     <div className={appStyle}>
       <Sidebar />
