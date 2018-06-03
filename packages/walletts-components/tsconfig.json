@@ -13,7 +13,6 @@
     "jsx": "react",
 
     // "strict": true /* Enable all strict type-checking options. */,
-    "no-mixed-interface": false,
 
     /* Strict Type-Checking Options */
     // "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
