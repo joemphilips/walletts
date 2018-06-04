@@ -3,9 +3,12 @@ import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import { Root } from "./containers/Root";
 import "./app.global.scss";
+import { defaultState } from "./store";
 
 const { configureStore, history } = require("./store/configureStore");
-const store = configureStore();
+const store = configureStore(defaultState);
+console.log("state is");
+console.log(store.getState());
 
 render(
   <AppContainer>

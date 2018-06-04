@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
-    "lib": ["dom", "es6", "dom.iterable", "scripthost"],
+    "lib": ["dom", "es2017", "dom.iterable", "scripthost"],
 
     "alwaysStrict": true,
     "strictNullChecks": true,

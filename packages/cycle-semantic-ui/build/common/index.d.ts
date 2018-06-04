@@ -1,0 +1,10 @@
+import { VNode } from "@cycle/dom";
+import { ComponentSources, ContentObj, ComponentSinks, StyleAndContentArgs } from "../types";
+export declare type RenderFn<P, B, C extends ContentObj<B>> = (arg: StyleAndContentArgs<P, B, C>) => VNode;
+export declare type IsBFn<B> = (obj) => obj is B;
+export declare type IsArgsFn<P, B, C extends ContentObj<B>> = (obj) => obj is StyleAndContentArgs<P, B, C>;
+export declare function addClassName(node: VNode, className: string): VNode;
+export declare function renderPropsAndContent<P, B, C extends ContentObj<B>>(renderFn: RenderFn<P, B, C>, isArgs: IsArgsFn<P, B, C>, isB: IsBFn<B>, arg1?: Partial<P> | B | StyleAndContentArgs<P, B, C>, arg2?: B): VNode;
+export declare function runPropsAndContent<P, B, C extends ContentObj<B>>(sources: ComponentSources<P, B, C>, render: RenderFn<P, B, C>, selector: string, scope?: string): ComponentSinks;
+export declare function makeIsArgs<P, B, C extends ContentObj<B>>(isB: IsBFn<B>): IsArgsFn<P, B, C>;
+export declare function isArgs<P, B, C extends ContentObj<B>>(obj: any, isB: IsBFn<B>): obj is StyleAndContentArgs<P, B, C>;

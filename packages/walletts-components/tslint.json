@@ -8,7 +8,7 @@
 
     // TODO: allow devDependencies only in **/*.spec.ts files:
     // waiting on https://github.com/palantir/tslint/pull/3708
-    "no-implicit-dependencies": [true, "dev"],
+    "no-implicit-dependencies": false, // since it doesn't recognize other packages in the monorepo
 
     /* tslint-immutable rules */
     // Recommended built-in rules
@@ -25,13 +25,14 @@
     "no-method-signature": true,
 
     // Functional style rules
-    "no-this": true,
-    "no-class": true,
-    "no-mixed-interface": true,
-    "no-expression-statement": [
+    // "no-this": true,
+    // "no-class": true,
+    "no-mixed-interface": false,
+    /* "no-expression-statement": [
       true,
       { "ignore-prefix": ["console.", "process.exit"] }
-    ],
+    ], */
+
     "no-if-statement": true
     /* end tslint-immutable rules */
   }
