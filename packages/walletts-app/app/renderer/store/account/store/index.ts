@@ -1,5 +1,6 @@
 import { Satoshi, User, AccountID, UserID } from "walletts-core";
-import { AccountUIData } from "walletts-components";
+import { AccountUIData, Channel } from "walletts-components";
+import { createDefaultChannels } from "../../channels/store";
 
 export type IAccountState = {
   accounts: Record<AccountID, AccountUIData>;
@@ -33,7 +34,8 @@ export const defaultAccounts: IAccountState = {
       member: defaultUsers,
       owners: defaultUsers,
       balance: Satoshi.fromNumber(1000).value,
-      isActive: true
+      isActive: true,
+      integratedChannels: createDefaultChannels().map((c: Channel) => c.id)
     } as AccountUIData,
     seconddefaultaccountid: {
       id: "seconddefaultaccountid",
@@ -42,7 +44,8 @@ export const defaultAccounts: IAccountState = {
       member: Object.assign({}, defaultUsers, defaultKnownUsers),
       owners: Object.assign({}, defaultUsers, defaultKnownUsers),
       balance: Satoshi.fromNumber(1000).value as Satoshi,
-      isActive: false
+      isActive: false,
+      integratedChannels: createDefaultChannels().map((c: Channel) => c.id)
     }
   }
 };
