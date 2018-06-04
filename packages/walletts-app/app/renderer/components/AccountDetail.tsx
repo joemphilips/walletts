@@ -2,10 +2,11 @@ import * as React from "react";
 import { AccountUIData } from "walletts-components";
 import * as TS from "typestyle";
 import * as CSS from "csstips";
+import { AccountSidebar } from "./AccountSidebar";
 const ElectronWebview = require("react-electron-web-view");
 console.log(ElectronWebview);
 
-const accountDetailStyle = TS.style(CSS.flex, {
+const accountDetailStyle = TS.style(CSS.horizontal, {
   $nest: { "& .service-webview": { height: "100vh", width: "80%" } } // specify webiview style
 });
 
@@ -13,7 +14,9 @@ export class AccountDetail extends React.PureComponent<AccountUIData> {
   render() {
     return (
       <div className={accountDetailStyle}>
+        <AccountSidebar {...this.props}> </AccountSidebar>
         <ElectronWebview
+          style={{ flexBasis: "100%" }}
           className="service-webview"
           src="https://www.google.com"
           autosize

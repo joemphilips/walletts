@@ -3,7 +3,7 @@ import { AccountUIData } from "walletts-components";
 import * as TS from "typestyle";
 import * as CS from "csstips";
 
-const accountsSidebarStyle = TS.style(CS.vertical, CS.content, {
+const accountsSidebarStyle = TS.style(CS.vertical, CS.flex, {
   width: "10%"
 });
 
