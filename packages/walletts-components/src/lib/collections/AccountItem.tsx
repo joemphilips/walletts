@@ -15,7 +15,7 @@ export interface HandlerProps {
   readonly onclick: (id: string) => any;
 }
 
-export type AccountItemProps = ValueProps & HandlerProps;
+export type Props = ValueProps & HandlerProps;
 
 const AccountItemStyleBase = style(CS.content, {
   $nest: {
@@ -27,7 +27,7 @@ const AccountItemStyleBase = style(CS.content, {
   opacity: 0.8
 });
 
-export const AccountItem: React.SFC<AccountItemProps> = ({ info, onclick }) => {
+export const AccountItem: React.SFC<Props> = ({ info, onclick }) => {
   const activeStyleDiff = info.isActive
     ? style({
         color: CX.color('rgb(249, 199, 224)').toString()

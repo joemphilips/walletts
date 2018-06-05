@@ -1,10 +1,8 @@
 import * as React from "react";
 import { AccountUIData, Channel, ChannelID } from "walletts-components";
 import * as TS from "typestyle";
-import { WebviewWrapper } from "../components/WebviewWrapper";
+import { WebviewWrapper } from "./WebviewWrapper";
 import * as CS from "csstips";
-import { IState } from "../store";
-import { connect } from "react-redux";
 
 const accountsSidebarStyle = TS.style(CS.vertical, CS.flex, {
   width: "10%",
@@ -28,10 +26,13 @@ const svgIconStyle = TS.style(CS.content, {
   maxHeight: "100%"
 });
 
-export type Props = AccountUIData & { allChannel: Record<ChannelID, Channel> };
+export type Props = {
+  account: AccountUIData;
+  allChannel: Record<ChannelID, Channel>;
+};
 
-const ServiceWebviewComponent: React.SFC<Props> = props => {
-  const channelList = props.integratedChannels.map((c: ChannelID) => {
+export const ServiceWebview: React.SFC<Props> = props => {
+  const channelList = props.account.integratedChannels.map((c: ChannelID) => {
     const channelIcon =
       props.allChannel && props.allChannel[c] ? (
         <li className={channelLiStyle} key={props.allChannel[c].id}>
@@ -42,7 +43,7 @@ const ServiceWebviewComponent: React.SFC<Props> = props => {
     return channelIcon;
   });
 
-  const webviewURL = props.allChannel[props.visibleChannel];
+  const webviewURL = props.allChannel[props.account.visibleChannel];
 
   return (
     <div className={serviceWebViewStyle}>
@@ -53,11 +54,3 @@ const ServiceWebviewComponent: React.SFC<Props> = props => {
     </div>
   );
 };
-
-function mapStateToProps(state: IState): Partial<Props> {
-  return {
-    allChannel: state.channels
-  };
-}
-
-export const ServiceWebview = connect(mapStateToProps)(ServiceWebviewComponent);

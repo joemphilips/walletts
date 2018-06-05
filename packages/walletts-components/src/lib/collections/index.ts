@@ -1,1 +1,1 @@
-export * from './AccountItem';
+export { Props as AccountItemProps } from './AccountItem';

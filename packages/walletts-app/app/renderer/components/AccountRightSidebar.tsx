@@ -1,5 +1,10 @@
 import * as React from "react";
-import { AccountUIData, SimpleBalancePane } from "walletts-components";
+import {
+  AccountUIData,
+  SimpleBalancePane,
+  OwnerInfoPane,
+  UserUIData
+} from "walletts-components";
 import * as TS from "typestyle";
 import * as CS from "csstips";
 
@@ -14,10 +19,16 @@ const accountsRightStyle = TS.style(
   }
 );
 
-export const AccountRight: React.SFC<AccountUIData> = props => {
+export interface Props {
+  readonly account: AccountUIData;
+  readonly owners: ReadonlyArray<UserUIData>;
+}
+
+export const AccountRight: React.SFC<Props> = props => {
   return (
     <div className={accountsRightStyle}>
-      <SimpleBalancePane balance={props.balance}> </SimpleBalancePane>
+      <SimpleBalancePane balance={props.account.balance}> </SimpleBalancePane>
+      <OwnerInfoPane users={props.owners}> </OwnerInfoPane>
     </div>
   );
 };
