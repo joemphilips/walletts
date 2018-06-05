@@ -10,7 +10,10 @@
     "test:run": "lerna run test --stream",
     "clean": "lerna clean --parallel",
     "bootstrap": "lerna bootstrap --parallel",
-    "build": "lerna run build --stream",
+    "build": "yarn build-miscs && yarn build-components && yarn build-app",
+    "build-miscs": "lerna run build --stream --ignore=walletts-components --ignore=walletts-app",
+    "build-components": "lerna run build --stream --scope=walletts-components",
+    "build-app": "lerna run build --stream --scope=walletts-app",
     "dev": "lerna run dev --scope=walletts* --parallel"
   },
   "private": true,
