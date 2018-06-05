@@ -28,7 +28,7 @@ export const AccountRight: React.SFC<Props> = props => {
   return (
     <div className={accountsRightStyle}>
       <SimpleBalancePane balance={props.account.balance}> </SimpleBalancePane>
-      <OwnerInfoPane users={props.owners}> </OwnerInfoPane>
+      <OwnerInfoPane admins={props.owners}> </OwnerInfoPane>
     </div>
   );
 };

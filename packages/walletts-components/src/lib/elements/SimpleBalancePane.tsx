@@ -2,16 +2,14 @@ import * as CS from 'csstips';
 import * as React from 'react';
 import * as TS from 'typestyle';
 import { Satoshi } from 'walletts-core';
+import { paneBase } from '../themes';
 
 export interface Props {
   readonly balance: Satoshi;
 }
 
-const BalancePaneStyle = TS.style(CS.flex, CS.padding(16), {
-  alignSelf: 'center',
-  backgroundColor: 'grey',
-  border: 'solid 2px white',
-  borderRadius: '12px'
+const BalancePaneStyle = TS.style(paneBase, CS.flex2, {
+  alignSelf: 'center'
 });
 
 const balanceStyle = TS.style({});
