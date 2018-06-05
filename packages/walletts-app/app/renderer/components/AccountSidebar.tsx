@@ -33,12 +33,6 @@ const AccountSidebarComponent: React.SFC<Props> = props => {
       ) : null;
     return channelInfo;
   });
-  console.log(`integrated channels are`);
-  console.log(props.integratedChannels);
-  console.log(`all channels are`);
-  console.log(props.allChannel);
-  console.log(`channelList is`);
-  console.log(channelList);
 
   return (
     <div className={accountsSidebarStyle}>

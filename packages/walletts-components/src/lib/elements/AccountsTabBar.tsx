@@ -9,7 +9,11 @@ export interface ValueProps {
   readonly accountsInfo: Record<AccountID, AccountUIData>;
 }
 
-export type Props = ValueProps;
+export interface HandlerProps {
+  readonly onclick: (id: string) => any;
+}
+
+export type Props = ValueProps & HandlerProps;
 
 const AccountsTabBarStyle = style(
   CS.flex,
@@ -23,11 +27,11 @@ const AccountsTabBarStyle = style(
 
 export class AccountsTabBar extends React.PureComponent<Props> {
   public render(): React.ReactNode {
-    const { accountsInfo } = this.props;
+    const { accountsInfo, onclick } = this.props;
 
     const aList = accountsInfo ? (
       Object.entries(accountsInfo).map(([id, a]) => (
-        <AccountItem key={id} info={a} />
+        <AccountItem key={id} info={a} onclick={onclick} />
       ))
     ) : (
       <li key={'default'}> default Accounts Info</li>

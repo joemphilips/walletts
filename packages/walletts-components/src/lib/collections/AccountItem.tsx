@@ -7,9 +7,15 @@ import { AccountUIData } from '../common/account';
 
 const listStyle = { listStyleType: 'none' };
 
-export interface AccountItemProps {
+export interface ValueProps {
   readonly info: AccountUIData;
 }
+
+export interface HandlerProps {
+  readonly onclick: (id: string) => any;
+}
+
+export type AccountItemProps = ValueProps & HandlerProps;
 
 const AccountItemStyleBase = style(CS.content, {
   $nest: {
@@ -21,7 +27,7 @@ const AccountItemStyleBase = style(CS.content, {
   opacity: 0.8
 });
 
-export const AccountItem: React.SFC<AccountItemProps> = ({ info }) => {
+export const AccountItem: React.SFC<AccountItemProps> = ({ info, onclick }) => {
   const activeStyleDiff = info.isActive
     ? style({
         color: CX.color('rgb(249, 199, 224)').toString()
@@ -35,5 +41,9 @@ export const AccountItem: React.SFC<AccountItemProps> = ({ info }) => {
   ) : (
     <i className="fa fa-twitter" />
   );
-  return <li className={`${listStyle} fa-li`}>{icon}</li>;
+  return (
+    <li className={`${listStyle} fa-li`} onClick={_ => onclick(info.id)}>
+      {icon}
+    </li>
+  );
 };
