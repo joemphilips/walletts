@@ -21,4 +21,5 @@ export interface AccountUIData {
   readonly isActive: boolean;
   readonly iconUrl?: string;
   readonly integratedChannels: ReadonlyArray<ChannelID>;
+  readonly visibleChannel: ChannelID;
 }

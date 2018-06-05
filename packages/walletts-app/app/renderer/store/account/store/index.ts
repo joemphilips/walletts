@@ -25,6 +25,7 @@ export const defaultKnownUsers: Record<UserID, User> = {
   }
 };
 
+const defaultChannelIDs = Object.keys(createDefaultChannels());
 export const defaultAccounts: IAccountState = {
   accounts: {
     defaultaccountid: {
@@ -35,7 +36,8 @@ export const defaultAccounts: IAccountState = {
       owners: defaultUsers,
       balance: Satoshi.fromNumber(1000).value,
       isActive: true,
-      integratedChannels: Object.keys(createDefaultChannels())
+      integratedChannels: defaultChannelIDs,
+      visibleChannel: defaultChannelIDs[0]
     } as AccountUIData,
     seconddefaultaccountid: {
       id: "seconddefaultaccountid",
@@ -45,7 +47,8 @@ export const defaultAccounts: IAccountState = {
       owners: Object.assign({}, defaultUsers, defaultKnownUsers),
       balance: Satoshi.fromNumber(1000).value as Satoshi,
       isActive: false,
-      integratedChannels: Object.keys(createDefaultChannels())
+      integratedChannels: defaultChannelIDs,
+      visibleChannel: defaultChannelIDs[0]
     }
   }
 };
