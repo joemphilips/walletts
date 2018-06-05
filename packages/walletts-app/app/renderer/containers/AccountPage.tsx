@@ -8,7 +8,9 @@ import { connect } from "react-redux";
 
 function mapStateToProps(state: IState): Partial<Props> {
   return {
-    accounts: state.accounts.accounts
+    accounts: state.accounts.accounts,
+    knownUsers: state.users,
+    knownChannels: state.channels
   };
 }
 
