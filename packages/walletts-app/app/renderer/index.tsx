@@ -4,6 +4,9 @@ import { AppContainer } from "react-hot-loader";
 import { Root } from "./containers/Root";
 import "./app.global.scss";
 import { defaultState } from "./store";
+import { setupPage, normalize } from "csstips";
+setupPage("#root");
+normalize();
 
 const { configureStore, history } = require("./store/configureStore");
 const store = configureStore(defaultState);
