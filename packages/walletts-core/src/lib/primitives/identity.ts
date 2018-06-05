@@ -6,4 +6,4 @@ export type UserID = string;
 
 export type CommunityID = string;
 
-export type EntityID = UserID | CommunityID
+export type EntityID = UserID | CommunityID;

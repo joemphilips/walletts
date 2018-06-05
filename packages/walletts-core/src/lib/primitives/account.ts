@@ -1,7 +1,7 @@
-import { AccountID, Entity, Satoshi } from ".";
+import { AccountID, Entity, Satoshi } from '.';
 
 export interface Account {
-  readonly id: AccountID
-  readonly balance: Satoshi
-  readonly owners: ReadonlyArray<Entity>
+  readonly id: AccountID;
+  readonly balance: Satoshi;
+  readonly owners: ReadonlyArray<Entity>;
 }
