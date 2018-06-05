@@ -1,3 +1,4 @@
+import * as CS from 'csstips';
 import * as React from 'react';
 import { style } from 'typestyle';
 import { AccountID } from 'walletts-core';
@@ -10,7 +11,10 @@ export interface ValueProps {
 
 export type Props = ValueProps;
 
-const AccountsTabBarStyle = style({ $nest: { '&:hover': { opacity: 0.98 } } });
+const AccountsTabBarStyle = style(CS.flex, CS.vertical, {
+  $nest: { '&:hover': { opacity: 0.98 } },
+  listStyleType: 'none'
+});
 
 export class AccountsTabBar extends React.PureComponent<Props> {
   public render(): React.ReactNode {
@@ -23,6 +27,10 @@ export class AccountsTabBar extends React.PureComponent<Props> {
     ) : (
       <li key={'default'}> default Accounts Info</li>
     );
-    return <ul className={AccountsTabBarStyle}> {aList} </ul>;
+    return (
+      <ul className={AccountsTabBarStyle} style={{ listStyleType: 'none' }}>
+        {aList}
+      </ul>
+    );
   }
 }

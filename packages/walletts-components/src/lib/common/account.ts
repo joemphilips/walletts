@@ -9,6 +9,7 @@ export interface Channel {
   readonly url: string;
   readonly iconPng: string;
   readonly iconSVG: string;
+  readonly isActive: boolean;
 }
 
 export interface AccountUIData {

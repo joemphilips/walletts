@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 import { AccountUIData } from '../common/account';
 
+const Style = style({ listStyleType: 'none' });
+
 export interface AccountItemProps {
   readonly info: AccountUIData;
 }
@@ -26,5 +28,5 @@ export const AccountItem: React.SFC<AccountItemProps> = ({ info }) => {
   ) : (
     <i className="fa fa-twitter" />
   );
-  return <li>{icon}</li>;
+  return <li className={Style}>{icon}</li>;
 };
