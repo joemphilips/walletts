@@ -8721,6 +8721,12 @@ react-dom@^16.4.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-electron-web-view@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/react-electron-web-view/-/react-electron-web-view-2.0.1.tgz#984b7bbbeb77e35bcca921dc50120fc8f2b0f27d"
+  dependencies:
+    lodash.camelcase "^4.3.0"
+
 react-hot-loader@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.2.0.tgz#4a2ec79114f872e28ea786e04889d643ad3dfb7c"

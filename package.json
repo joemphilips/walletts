@@ -8,7 +8,7 @@
   "scripts": {
     "test": "docker-compose down && docker-compose up -d && npm run test:run",
     "test:run": "lerna run test --stream",
-    "clean": "lerna clean --parallel",
+    "clean": "lerna clean --parallel --yes",
     "bootstrap": "lerna bootstrap --parallel",
     "build": "yarn build-miscs && yarn build-components && yarn build-app",
     "build-miscs": "lerna run build --stream --ignore=walletts-components --ignore=walletts-app",
