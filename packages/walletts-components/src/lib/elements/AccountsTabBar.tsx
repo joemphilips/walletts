@@ -11,10 +11,15 @@ export interface ValueProps {
 
 export type Props = ValueProps;
 
-const AccountsTabBarStyle = style(CS.flex, CS.vertical, {
-  $nest: { '&:hover': { opacity: 0.98 } },
-  listStyleType: 'none'
-});
+const AccountsTabBarStyle = style(
+  CS.flex,
+  CS.vertical,
+  CS.verticallySpaced(10),
+  {
+    $nest: { '&:hover': { opacity: 0.98 } },
+    listStyleType: 'none'
+  }
+);
 
 export class AccountsTabBar extends React.PureComponent<Props> {
   public render(): React.ReactNode {
