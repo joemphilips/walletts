@@ -28,5 +28,5 @@ export const AccountItem: React.SFC<AccountItemProps> = ({ info }) => {
   ) : (
     <i className="fa fa-twitter" />
   );
-  return <li className={Style}>{icon}</li>;
+  return <li className={`${Style} fa-li`}>{icon}</li>;
 };

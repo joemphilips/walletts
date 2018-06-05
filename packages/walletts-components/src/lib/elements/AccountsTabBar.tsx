@@ -28,7 +28,10 @@ export class AccountsTabBar extends React.PureComponent<Props> {
       <li key={'default'}> default Accounts Info</li>
     );
     return (
-      <ul className={AccountsTabBarStyle} style={{ listStyleType: 'none' }}>
+      <ul
+        className={`${AccountsTabBarStyle} fa-ul`}
+        style={{ listStyleType: 'none' }}
+      >
         {aList}
       </ul>
     );
