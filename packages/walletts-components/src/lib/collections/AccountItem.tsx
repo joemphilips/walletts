@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { classes, style } from 'typestyle';
 import { AccountUIData } from '../common/account';
 
-const listStyle = { listStyleType: 'none' };
+const listStyle = style({ listStyleType: 'none' });
 
 export interface ValueProps {
   readonly info: AccountUIData;
