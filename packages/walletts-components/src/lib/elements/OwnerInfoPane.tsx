@@ -12,7 +12,7 @@ export interface Props {
 const OwnerInfoPaneStyle = TS.style(CS.flex5, paneBase, {});
 
 export const OwnerInfoPane: React.SFC<Props> = props => {
-  const ownerIcons = props.admins.map(admin => (
+  const ownerIcons = props.admins.map((admin: any) => (
     <UserIcon key={admin.id} name={admin.name} />
   ));
   return (
