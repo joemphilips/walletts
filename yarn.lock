@@ -332,6 +332,12 @@
     snabbdom-selector "^3.0.0"
     xstream "11.x"
 
+"@cycle/run@*", "@cycle/run@^4.1.0":
+  version "4.1.0"
+  resolved "http://localhost:4873/@cycle%2frun/-/run-4.1.0.tgz#b164a83792e85db3c184236f4b3800a4c9bf6f76"
+  dependencies:
+    xstream "10.x || 11.x"
+
 "@cycle/run@4.0.0":
   version "4.0.0"
   resolved "http://localhost:4873/@cycle%2frun/-/run-4.0.0.tgz#d48c5133cd783afdf7f9e37ce1c158b570d6c5f1"
@@ -343,12 +349,6 @@
   resolved "https://registry.npmjs.org/@cycle/run/-/run-1.0.0.tgz#67d3d9008f722a6e5c41bddd415abf5e615ce6f8"
   dependencies:
     xstream "10.x"
-
-"@cycle/run@^4.1.0":
-  version "4.1.0"
-  resolved "http://localhost:4873/@cycle%2frun/-/run-4.1.0.tgz#b164a83792e85db3c184236f4b3800a4c9bf6f76"
-  dependencies:
-    xstream "10.x || 11.x"
 
 "@cycle/time@^0.8.0":
   version "0.8.0"
@@ -8984,6 +8984,12 @@ reduce-function-call@^1.0.1:
   resolved "http://localhost:4873/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-cycles@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/redux-cycles/-/redux-cycles-0.4.1.tgz#29d4fc147062cc3a639db03d3a9207d4b5e78626"
+  dependencies:
+    "@cycle/run" "*"
 
 redux-logger@^3.0.6:
   version "3.0.6"
