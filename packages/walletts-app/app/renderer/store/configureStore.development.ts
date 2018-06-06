@@ -1,19 +1,20 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
 import { createHashHistory } from "history";
-import { routerMiddleware, push } from "react-router-redux";
+import { routerMiddleware } from "react-router-redux";
 import { Reducer } from "redux";
 import { createLogger } from "redux-logger";
 import rootReducer, { CycleMain } from "./root";
 import { run } from "@cycle/run";
 import { createCycleMiddleware } from "redux-cycles";
 
-import * as counterActions from "../actions/counter";
+// import * as counterActions from "../actions/counter";
 import { makeHTTPDriver } from "@cycle/http";
 
+/*
 declare const window: Window & {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(a: any): void;
 };
+*/
 
 declare const module: NodeModule & {
   hot?: {
@@ -21,7 +22,7 @@ declare const module: NodeModule & {
   };
 };
 
-const actionCreators = Object.assign({}, counterActions, { push });
+// const actionCreators = Object.assign({}, counterActions, { push });
 
 const logger = (<any>createLogger)({
   level: "info",
@@ -30,6 +31,8 @@ const logger = (<any>createLogger)({
 
 const history = createHashHistory();
 const router = routerMiddleware(history);
+
+// redux-cycles realted stuff
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver } = cycleMiddleware;
 
@@ -40,16 +43,15 @@ run(CycleMain, {
 
 // If Redux DevTools Extension is installed use it, otherwise use Redux compose
 /* eslint-disable no-underscore-dangle */
+/*
 const composeEnhancers: typeof compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Options: http://zalmoxisus.github.io/redux-devtools-extension/API/Arguments.html
       actionCreators
     }) as any)
-  : compose;
+  : compose; */
 /* eslint-enable no-underscore-dangle */
-const enhancer = composeEnhancers(
-  applyMiddleware(thunk, router, logger, cycleMiddleware)
-);
+const enhancer = compose(applyMiddleware(router, logger, cycleMiddleware));
 
 export = {
   history,

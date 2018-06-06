@@ -31,7 +31,9 @@ export interface Sinks {
 }
 
 export function CycleMain(sources: Sources): Sinks {
-  const pong$ = sources.ACTION.mapTo("pong");
+  const pong$ = sources.ACTION.filter(a => a.type === "ping").mapTo({
+    type: "pong"
+  });
   const request$: Stream<RequestOptions> = xs.of({ url: "http://google.com" });
   return {
     ACTION: pong$,
