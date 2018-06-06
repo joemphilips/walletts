@@ -14,7 +14,6 @@ export default class Home extends React.Component {
         <div className={HomeStyle} data-tid="container">
           <h2 className={h2Style}>Home</h2>
           <Link to="/counter">to Counter</Link>
-          <Link to="/account">to Account</Link>
         </div>
       </div>
     );
