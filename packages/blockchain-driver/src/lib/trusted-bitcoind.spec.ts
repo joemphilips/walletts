@@ -8,7 +8,7 @@ interface Sources {
 }
 
 interface Sinks {
-  readonly Blockchain: Stream<any>;
+  readonly Blockchain: Stream<BitcoindRPCRequest>;
 }
 const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec));
@@ -17,7 +17,7 @@ test('ping', async t => {
   t.plan(1);
   const main = (_: Sources): Sinks => {
     return {
-      Blockchain: xs.of({ method: 'ping' })
+      Blockchain: xs.of<BitcoindRPCRequest>({ method: 'ping' })
     };
   };
   /* tslint:disable-next-line:no-expression-statement */
@@ -43,7 +43,7 @@ test('handle error when failed to connect', async t => {
   t.plan(1);
   const main = (_: Sources): Sinks => {
     return {
-      Blockchain: xs.of({ method: 'ping' })
+      Blockchain: xs.of<BitcoindRPCRequest>({ method: 'ping' })
     };
   };
 
@@ -69,7 +69,7 @@ test('getNewAddreess', async t => {
   t.plan(1);
   const main = (_: Sources): Sinks => {
     return {
-      Blockchain: xs.of({ method: 'getNewAddress' })
+      Blockchain: xs.of<BitcoindRPCRequest>({ method: 'getNewAddress' })
     };
   };
   /* tslint:disable-next-line:no-expression-statement */
