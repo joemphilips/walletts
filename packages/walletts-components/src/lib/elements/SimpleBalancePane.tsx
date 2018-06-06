@@ -11,10 +11,13 @@ export interface Props {
 export interface State {
   readonly isModalOpen: boolean;
 }
-const BalancePaneStyle = TS.style(paneBase, CS.flex2, {
+
+const sidebarPaneBase = TS.style(paneBase, {
   alignItems: 'center',
   justifyContent: 'center'
 });
+
+const BalancePaneStyle = TS.classes(sidebarPaneBase, TS.style(CS.flex2));
 
 const balanceStyle = TS.style(CS.flex, {
   alignItems: 'center',

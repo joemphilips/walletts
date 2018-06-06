@@ -9,6 +9,7 @@ import { createCycleMiddleware } from "redux-cycles";
 
 import * as counterActions from "../actions/counter";
 import { makeHTTPDriver } from "@cycle/http";
+import { makeTrustedBitcoindDriver } from "blockchain-driver";
 
 declare const window: Window & {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(a: any): void;
@@ -36,6 +37,7 @@ const { makeActionDriver } = cycleMiddleware;
 
 run(CycleMain, {
   ACTION: makeActionDriver(),
+  Blockchain: makeTrustedBitcoindDriver(),
   HTTP: makeHTTPDriver() as any
 });
 

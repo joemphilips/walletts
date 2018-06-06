@@ -7,6 +7,7 @@ import rootReducer, { CycleMain } from "./root";
 import { createCycleMiddleware } from "redux-cycles";
 import { makeHTTPDriver } from "@cycle/http";
 import { run } from "@cycle/run";
+import { makeTrustedBitcoindDriver } from "blockchain-driver";
 
 const history = createBrowserHistory();
 const router = routerMiddleware(history);
@@ -16,6 +17,7 @@ const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver } = cycleMiddleware;
 run(CycleMain, {
   ACTION: makeActionDriver(),
+  Blockchain: makeTrustedBitcoindDriver(),
   HTTP: makeHTTPDriver() as any
 });
 

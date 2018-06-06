@@ -12,6 +12,7 @@ import { UserState, defaultKnownUsers } from "../user/state";
 import { reducer as UserReducer } from "../user/reducers";
 import { Stream } from "xstream";
 import { BaseSinks, BaseSources } from "../../utils/interfaces";
+import { BitcoindRPCRequest } from "blockchain-driver";
 
 // reducers
 const rootReducer = combineReducers({
@@ -28,15 +29,22 @@ export default rootReducer;
 export interface Sinks extends BaseSinks {
   readonly ACTION: Stream<any>;
   readonly HTTP: Stream<RequestOptions>;
+  readonly Blockchain: Stream<BitcoindRPCRequest>;
 }
 export function CycleMain(sources: BaseSources): Sinks {
   const pong$ = sources.ACTION.filter(a => a.type === "ping").mapTo({
     type: "pong"
   });
   const request$: Stream<RequestOptions> = xs.of({ url: "http://google.com" });
+
+  const bitcoinRequest$ = xs.of<BitcoindRPCRequest>({
+    method: "getblockchaininfo",
+    parameters: []
+  });
   return {
     ACTION: pong$,
-    HTTP: request$
+    HTTP: request$,
+    Blockchain: bitcoinRequest$
   };
 }
 
