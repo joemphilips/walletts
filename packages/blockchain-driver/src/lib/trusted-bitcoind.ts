@@ -1,13 +1,15 @@
 import { Driver } from '@cycle/run';
 /* tslint:disable:no-submodule-imports */
 import { adapt } from '@cycle/run/lib/adapt';
-import Client, { BatchOption, ClientConstructorOption } from 'bitcoin-core';
+import Client, { ClientConstructorOption } from 'bitcoin-core';
 import xs, { MemoryStream, Stream } from 'xstream';
-import buffer from 'xstream/extra/buffer';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
 import { BlockchainAgentOptionBase, BlockchainSource } from './common';
 
-export type BitcoindRPCRequest = BatchOption;
+export interface BitcoindRPCRequest {
+  readonly method: keyof Client;
+  readonly options?: any;
+}
 
 export interface BitcoindAgentOption extends BlockchainAgentOptionBase {
   readonly port: number;
@@ -18,16 +20,19 @@ export interface BitcoindAgentOption extends BlockchainAgentOptionBase {
 export const makeTrustedBitcoindDriver = (
   clientConstructorOpt?: ClientConstructorOption
 ): Driver<Stream<BitcoindRPCRequest>, BlockchainSource> => {
-  const separator = xs.periodic(100);
   const trustedBitcoindDriver = (
     request$: Stream<BitcoindRPCRequest>
   ): MemoryStream<any> => {
-    const client = new Client(clientConstructorOpt ? clientConstructorOpt : {});
+    const cli = new Client(clientConstructorOpt);
 
     // TODO: buffer stream and send request with real batch
     const response$ = request$
-      .compose(buffer(separator))
-      .map(command => xs.fromPromise(client.command(command)))
+      .map(
+        x =>
+          x.options
+            ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
+            : xs.fromPromise(cli[x.method].bind(cli)())
+      )
       .compose(flattenConcurrently);
 
     return adapt(response$);

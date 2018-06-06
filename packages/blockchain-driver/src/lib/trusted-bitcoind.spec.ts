@@ -69,7 +69,7 @@ test('getNewAddreess', async t => {
   t.plan(1);
   const main = (_: Sources): Sinks => {
     return {
-      Blockchain: xs.of({ method: 'getnewaddress' })
+      Blockchain: xs.of({ method: 'getNewAddress' })
     };
   };
   /* tslint:disable-next-line:no-expression-statement */
