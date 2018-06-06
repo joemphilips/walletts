@@ -1,7 +1,8 @@
-import { Driver } from '@cycle/run'
+import { Driver } from '@cycle/run';
 import { adapt } from '@cycle/run/lib/adapt';
 import { NodeClient, WalletClient } from 'bclient';
 import xs, { MemoryStream, Stream } from 'xstream';
+import flattenConcurrently from 'xstream/extra/flattenConcurrently';
 import { BlockchainSource } from './common';
 
 export interface BclientOption {
@@ -30,7 +31,9 @@ export interface WalletRequest {
   readonly options?: any;
 }
 
-export const makeTrustedBcoinNodeDriver = (opts: BclientOption): Driver<Stream<NodeRequest>, BlockchainSource> => {
+export const makeTrustedBcoinNodeDriver = (
+  opts: BclientOption
+): Driver<Stream<NodeRequest>, BlockchainSource> => {
   const TrustedBcoinNodeDriver = (
     request$: Stream<NodeRequest>
   ): MemoryStream<BlockchainSource> => {
@@ -50,7 +53,9 @@ export const makeTrustedBcoinNodeDriver = (opts: BclientOption): Driver<Stream<N
   return TrustedBcoinNodeDriver;
 };
 
-export const makeTrustedBcoinWalletDriver = (opts: BclientOption): Driver<Stream<WalletRequest>, BlockchainSource> => {
+export const makeTrustedBcoinWalletDriver = (
+  opts: BclientOption
+): Driver<Stream<WalletRequest>, BlockchainSource> => {
   const TrustedBcoinWalletDriver = (
     request$: Stream<WalletRequest>
   ): MemoryStream<BlockchainSource> => {
@@ -62,7 +67,7 @@ export const makeTrustedBcoinWalletDriver = (opts: BclientOption): Driver<Stream
             ? xs.fromPromise(cli[x.method].bind(cli)(x.id, x.options))
             : xs.fromPromise(cli[x.method].bind(cli)(x.id))
       )
-      .flatten();
+      .compose(flattenConcurrently);
     return adapt(response$);
   };
   return TrustedBcoinWalletDriver;

@@ -4,6 +4,7 @@ import { adapt } from '@cycle/run/lib/adapt';
 import Client, { BatchOption, ClientConstructorOption } from 'bitcoin-core';
 import xs, { MemoryStream, Stream } from 'xstream';
 import buffer from 'xstream/extra/buffer';
+import flattenConcurrently from 'xstream/extra/flattenConcurrently';
 import { BlockchainAgentOptionBase, BlockchainSource } from './common';
 
 export type BitcoindRPCRequest = BatchOption;
@@ -27,7 +28,7 @@ export const makeTrustedBitcoindDriver = (
     const response$ = request$
       .compose(buffer(separator))
       .map(command => xs.fromPromise(client.command(command)))
-      .flatten();
+      .compose(flattenConcurrently);
 
     return adapt(response$);
   };
