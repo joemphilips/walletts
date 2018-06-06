@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, Reducer } from "redux";
-import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { routerMiddleware } from "react-router-redux";
 import rootReducer, { CycleMain } from "./root";
@@ -11,7 +10,6 @@ import { run } from "@cycle/run";
 
 const history = createBrowserHistory();
 const router = routerMiddleware(history);
-const enhancer = applyMiddleware(thunk, router);
 
 // redux-cycles realted stuff
 const cycleMiddleware = createCycleMiddleware();
@@ -21,6 +19,7 @@ run(CycleMain, {
   HTTP: makeHTTPDriver() as any
 });
 
+const enhancer = applyMiddleware(router, cycleMiddleware);
 export = {
   history,
   configureStore(initialState: Object | void) {
