@@ -1,11 +1,13 @@
 import { Driver } from '@cycle/run';
 import { adapt } from '@cycle/run/lib/adapt';
 import { NodeClient, WalletClient } from 'bclient';
-import xs, { MemoryStream, Stream } from 'xstream';
+import { Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
+import { requestInputToResponse$ } from './common';
 import {
-  BlockchainSource,
+  BcoinResponse,
   nodeMethodName,
+  SupportedBchType,
   walletMethodName
 } from './interfaces';
 
@@ -34,20 +36,14 @@ export interface WalletRequest {
 
 export const makeTrustedBcoinNodeDriver = (
   opts: BclientOption
-): Driver<Stream<NodeRequest>, BlockchainSource> => {
+): Driver<Stream<NodeRequest>, Stream<BcoinResponse>> => {
   const TrustedBcoinNodeDriver = (
     request$: Stream<NodeRequest>
-  ): BlockchainSource => {
+  ): Stream<BcoinResponse> => {
     const cli = new NodeClient(opts);
     const response$ = request$
-      .map(
-        x =>
-          x.options
-            ? xs.fromPromise(cli[x.method].bind(cli)(x.options))
-            : xs.fromPromise(cli[x.method].bind(cli)())
-      )
-      .flatten()
-      .map(r => ({ ...r, type: 'rpc' }));
+      .map(x => requestInputToResponse$(cli, x, SupportedBchType.BCOIN))
+      .flatten();
     return adapt(response$);
   };
 
@@ -56,18 +52,13 @@ export const makeTrustedBcoinNodeDriver = (
 
 export const makeTrustedBcoinWalletDriver = (
   opts: BclientOption
-): Driver<Stream<WalletRequest>, BlockchainSource> => {
+): Driver<Stream<WalletRequest>, Stream<BcoinResponse>> => {
   const TrustedBcoinWalletDriver = (
     request$: Stream<WalletRequest>
-  ): BlockchainSource => {
+  ): Stream<BcoinResponse> => {
     const cli = new WalletClient(opts);
     const response$ = request$
-      .map(
-        x =>
-          x.options
-            ? xs.fromPromise(cli[x.method].bind(cli)(x.id, x.options))
-            : xs.fromPromise(cli[x.method].bind(cli)(x.id))
-      )
+      .map(x => requestInputToResponse$(cli, x, SupportedBchType.BCOIN))
       .compose(flattenConcurrently);
     return adapt(response$);
   };

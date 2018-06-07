@@ -22,7 +22,7 @@ export type nodeMethodName = keyof NodeClient;
 export type walletMethodName = keyof WalletClient;
 export interface BcoinResponse {
   readonly nodeType: SupportedBchType.BCOIN;
-  readonly method: keyof Client | 'websocket';
+  readonly type: nodeMethodName | walletMethodName | keyof Client | 'websocket';
   readonly result: any;
   readonly meta?: any;
 }
