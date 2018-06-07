@@ -4,7 +4,7 @@ import { adapt } from '@cycle/run/lib/adapt';
 import Client, { ClientConstructorOption } from 'bitcoin-core';
 import xs, { MemoryStream, Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
-import { BlockchainAgentOptionBase, BlockchainSource } from './common';
+import { BlockchainAgentOptionBase, BlockchainSource } from './interfaces';
 
 export interface BitcoindRPCRequest {
   readonly method: keyof Client;
@@ -22,7 +22,7 @@ export const makeTrustedBitcoindDriver = (
 ): Driver<Stream<BitcoindRPCRequest>, BlockchainSource> => {
   const trustedBitcoindDriver = (
     request$: Stream<BitcoindRPCRequest>
-  ): MemoryStream<any> => {
+  ): BlockchainSource => {
     const cli = new Client(clientConstructorOpt);
 
     // TODO: buffer stream and send request with real batch

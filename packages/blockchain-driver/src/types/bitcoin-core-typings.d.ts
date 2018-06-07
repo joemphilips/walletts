@@ -17,16 +17,16 @@ declare module 'bitcoin-core' {
     version?: string;
   }
 
-  interface Requester {
+  export interface Requester {
     unsupported?: any[];
     version?: any;
   }
 
-  interface Parser {
+  export interface Parser {
     headers: boolean;
   }
 
-  type ScriptDecoded = {
+  export type ScriptDecoded = {
     asm: string;
     hex: string;
     type: string;
@@ -34,7 +34,7 @@ declare module 'bitcoin-core' {
     addresses: string[];
     ps2h?: string;
   };
-  type FundRawTxOptions = {
+  export type FundRawTxOptions = {
     changeAddress?: string;
     chnagePosition?: number;
     includeWatching?: boolean;
@@ -46,9 +46,9 @@ declare module 'bitcoin-core' {
     estimate_mode: FeeEstimateMode;
   };
 
-  type FeeEstimateMode = 'UNSET' | 'ECONOMICAL' | 'CONSERVATIVE';
+  export type FeeEstimateMode = 'UNSET' | 'ECONOMICAL' | 'CONSERVATIVE';
 
-  type TxStats = {
+  export type TxStats = {
     time: number;
     txcount: number;
     window_final_block_hash?: string;
@@ -58,7 +58,7 @@ declare module 'bitcoin-core' {
     txrate: number;
   };
 
-  type AddedNodeInfo = {
+  export type AddedNodeInfo = {
     addednode: string;
     connected: boolean;
     addresses: {
@@ -67,7 +67,7 @@ declare module 'bitcoin-core' {
     }[];
   };
 
-  type MemoryStats = {
+  export type MemoryStats = {
     locked: {
       used: number;
       free: number;
@@ -78,7 +78,7 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type NetworkInfo = {
+  export type NetworkInfo = {
     version: number;
     subversion: string;
     protocolversion: number;
@@ -104,7 +104,7 @@ declare module 'bitcoin-core' {
     warnings?: string;
   };
 
-  type PeerInfo = {
+  export type PeerInfo = {
     id: number;
     addr: string;
     addrbind: string;
@@ -137,7 +137,7 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type NetTotals = {
+  export type NetTotals = {
     totalbytesrecv: number;
     totalbytessent: number;
     timemlillis: number;
@@ -151,7 +151,7 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type ChainInfo = {
+  export type ChainInfo = {
     chain: string;
     blocks: number;
     headers: number;
@@ -180,7 +180,7 @@ declare module 'bitcoin-core' {
     }[];
     warnings?: string;
   };
-  type ChainTip = {
+  export type ChainTip = {
     height: number;
     hash: string;
     branchlen: number;
@@ -191,8 +191,8 @@ declare module 'bitcoin-core' {
       | 'headers-only'
       | 'invalid';
   };
-  type Outpoint = { id: string; index: number };
-  type UTXO = {
+  export type Outpoint = { id: string; index: number };
+  export type UTXO = {
     height: number;
     value: number;
     scriptPubkey: {
@@ -204,7 +204,7 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type UnspentTxInfo = {
+  export type UnspentTxInfo = {
     txid: string;
     vout: number;
     address: string;
@@ -218,7 +218,7 @@ declare module 'bitcoin-core' {
     safe: boolean;
   };
 
-  type PrevOut = {
+  export type PrevOut = {
     txid: string;
     vout: number;
     scriptPubKey: string;
@@ -226,7 +226,7 @@ declare module 'bitcoin-core' {
     amount: number;
   };
 
-  type UTXOStats = {
+  export type UTXOStats = {
     height: number;
     bestblock: string;
     transactions: number;
@@ -236,7 +236,7 @@ declare module 'bitcoin-core' {
     disk_size: number;
     total_amount: number;
   };
-  type MempoolContent = {
+  export type MempoolContent = {
     [key: string]: {
       size: number;
       fee: number;
@@ -254,7 +254,7 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type DecodedRawTransaction = {
+  export type DecodedRawTransaction = {
     txid: string;
     hash: string;
     size: number;
@@ -265,7 +265,7 @@ declare module 'bitcoin-core' {
     vout: TxOut[];
   };
 
-  interface FetchedRawTransaction extends DecodedRawTransaction {
+  export interface FetchedRawTransaction extends DecodedRawTransaction {
     hex: string;
     blockhash: string;
     confirmations: number;
@@ -273,7 +273,7 @@ declare module 'bitcoin-core' {
     blocktime: number;
   }
 
-  type MiningInfo = {
+  export type MiningInfo = {
     blocks: number;
     currentblockweight: number;
     currentblocktx: number;
@@ -284,7 +284,7 @@ declare module 'bitcoin-core' {
     warnings?: string;
   };
 
-  type MempoolInfo = {
+  export type MempoolInfo = {
     size: number;
     bytes: number;
     usage: number;
@@ -292,7 +292,7 @@ declare module 'bitcoin-core' {
     mempoolminfee: number;
     minrelaytxfee: number;
   };
-  type BlockHeader = {
+  export type BlockHeader = {
     hash: string;
     confirmations: number;
     height: number;
@@ -307,7 +307,7 @@ declare module 'bitcoin-core' {
     chainwork: string;
     previoutsblockchash: string;
   };
-  type Block = {
+  export type Block = {
     hash: string;
     confirmations: number;
     strippedsize: number;
@@ -328,7 +328,7 @@ declare module 'bitcoin-core' {
     previousblockhash: string;
     nextblockchash?: string;
   };
-  type Transaction = {
+  export type Transaction = {
     txid: string;
     hash: string;
     version: number;
@@ -339,7 +339,7 @@ declare module 'bitcoin-core' {
     vout: TxOut[];
   };
 
-  type TxIn = {
+  export type TxIn = {
     txid: string;
     vout: number;
     scriptSig: {
@@ -350,13 +350,13 @@ declare module 'bitcoin-core' {
     sequence: number;
   };
 
-  type TxInForCreateRaw = {
+  export type TxInForCreateRaw = {
     txid: string;
     vout: number;
     sequence?: number;
   };
 
-  type TxOut = {
+  export type TxOut = {
     value: number;
     n: number;
     scriptPubKey: {
@@ -368,12 +368,12 @@ declare module 'bitcoin-core' {
     };
   };
 
-  type TxOutForCreateRaw = {
+  export type TxOutForCreateRaw = {
     address: string;
     data: string;
   };
 
-  type TxOutInBlock = {
+  export type TxOutInBlock = {
     bestblock: string;
     confirmations: number;
     value: number;
@@ -387,7 +387,7 @@ declare module 'bitcoin-core' {
     coinbase: boolean;
   };
 
-  type DecodedScript = {
+  export type DecodedScript = {
     asm: string;
     hex: string;
     type: string;
@@ -396,7 +396,7 @@ declare module 'bitcoin-core' {
     p2sh: string;
   };
 
-  type WalletTransaction = {
+  export type WalletTransaction = {
     amount: number;
     fee: number;
     confirmations: number;
@@ -420,7 +420,7 @@ declare module 'bitcoin-core' {
     hex: string;
   };
 
-  type WalletInfo = {
+  export type WalletInfo = {
     walletname: string;
     walletversion: number;
     balance: number;
@@ -433,9 +433,9 @@ declare module 'bitcoin-core' {
     hdmasterkeyid: string;
   };
 
-  type scriptPubkeyType = string;
+  export type scriptPubkeyType = string;
 
-  type SigHashType =
+  export type SigHashType =
     | 'ALL'
     | 'NONE'
     | 'SINGLE'
@@ -443,7 +443,7 @@ declare module 'bitcoin-core' {
     | 'NONE|ANYONECANPAY'
     | 'SINGLE|ANYONECANPAY';
 
-  type SignRawTxResult = {
+  export type SignRawTxResult = {
     hex: string;
     complete: boolean;
     errors?: {
@@ -455,7 +455,7 @@ declare module 'bitcoin-core' {
     }[];
   };
 
-  type ValidateAddressResult = {
+  export type ValidateAddressResult = {
     isvalid: boolean;
     address?: string;
     scriptPubKey?: string;
@@ -474,7 +474,7 @@ declare module 'bitcoin-core' {
     hdmasterkeyid?: string;
   };
 
-  type ImportMultiRequest = {
+  export type ImportMultiRequest = {
     scriptPubKey: string | { address: string };
     timestamp: number | 'now';
     redeemScript?: string;
@@ -485,7 +485,7 @@ declare module 'bitcoin-core' {
     label?: string;
   };
 
-  type Received = {
+  export type Received = {
     involvesWatchonly?: boolean;
     account: string;
     amount: number;
@@ -493,21 +493,21 @@ declare module 'bitcoin-core' {
     label: string;
   };
 
-  type ListUnspentOptions = {
+  export type ListUnspentOptions = {
     minimumAmount: number | string;
     maximumAmount: number | string;
     maximumCount: number | string;
     minimumSumAmount: number | string;
   };
 
-  type ReceivedByAccount = Received;
+  export type ReceivedByAccount = Received;
 
-  type ReceivedByAddress = {
+  export type ReceivedByAddress = {
     address: string;
     txids: string[];
   } & Received;
 
-  type RestExtension = 'json' | 'bin' | 'hex';
+  export type RestExtension = 'json' | 'bin' | 'hex';
 
   export type MethodNameInLowerCase =
     | 'getbestblockhash'
@@ -615,19 +615,19 @@ declare module 'bitcoin-core' {
     | 'settxfee'
     | 'signmessage';
 
-  type BatchOption = {
+  export type BatchOption = {
     method: MethodNameInLowerCase;
     parameters: any[];
   };
 
-  type BumpFeeOption = {
+  export type BumpFeeOption = {
     confTarget?: number;
     totalFee?: number;
     replaceable?: boolean;
     estimate_mode?: FeeEstimateMode;
   };
 
-  type WalletTxBase = {
+  export type WalletTxBase = {
     account: string;
     address: string;
     category: 'send' | 'receive';
@@ -649,21 +649,21 @@ declare module 'bitcoin-core' {
     to?: string;
   };
 
-  type TransactionInListSinceBlock = {} & WalletTxBase;
+  export type TransactionInListSinceBlock = {} & WalletTxBase;
 
-  type ListSinceBlockResult = {
+  export type ListSinceBlockResult = {
     transactions: TransactionInListSinceBlock[];
     removed?: TransactionInListSinceBlock[];
     lastblock: string;
   };
 
-  type ListTransactionsResult = {
+  export type ListTransactionsResult = {
     trusted: boolean;
     otheraccount?: string;
     abandoned?: boolean;
   } & WalletTxBase;
 
-  type AddressGrouping = [string, number] | [string, number, string];
+  export type AddressGrouping = [string, number] | [string, number, string];
 
   export default class Client {
     private readonly request: any;

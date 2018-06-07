@@ -3,7 +3,11 @@ import { adapt } from '@cycle/run/lib/adapt';
 import { NodeClient, WalletClient } from 'bclient';
 import xs, { MemoryStream, Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
-import { BlockchainSource } from './common';
+import {
+  BlockchainSource,
+  nodeMethodName,
+  walletMethodName
+} from './interfaces';
 
 export interface BclientOption {
   readonly apiKey?: string;
@@ -16,9 +20,6 @@ export interface BclientOption {
   readonly id?: string;
   readonly token?: string;
 }
-
-export type nodeMethodName = keyof NodeClient;
-export type walletMethodName = keyof WalletClient;
 
 export interface NodeRequest {
   readonly method: nodeMethodName;
@@ -36,7 +37,7 @@ export const makeTrustedBcoinNodeDriver = (
 ): Driver<Stream<NodeRequest>, BlockchainSource> => {
   const TrustedBcoinNodeDriver = (
     request$: Stream<NodeRequest>
-  ): MemoryStream<BlockchainSource> => {
+  ): BlockchainSource => {
     const cli = new NodeClient(opts);
     const response$ = request$
       .map(
@@ -58,7 +59,7 @@ export const makeTrustedBcoinWalletDriver = (
 ): Driver<Stream<WalletRequest>, BlockchainSource> => {
   const TrustedBcoinWalletDriver = (
     request$: Stream<WalletRequest>
-  ): MemoryStream<BlockchainSource> => {
+  ): BlockchainSource => {
     const cli = new WalletClient(opts);
     const response$ = request$
       .map(
