@@ -5,7 +5,7 @@ import * as CSS from "csstips";
 import { AccountRight } from "./AccountRightSidebar";
 import { ServiceWebview } from "./ServiceWebview";
 import { UserID } from "walletts-core";
-import { ChannelState } from "../store/channels/store";
+import { ChannelState } from "../store/channels/state";
 
 const accountDetailStyle = TS.style(CSS.horizontal, {
   $nest: { "& .service-webview": { height: "100vh", width: "80%" } } // specify webiview style

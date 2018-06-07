@@ -1,4 +1,4 @@
-import { createDefaultChannels, ChannelState } from "../store";
+import { createDefaultChannels, ChannelState } from "../state";
 import { Actions } from "../actions";
 
 const defaultChannels = createDefaultChannels();

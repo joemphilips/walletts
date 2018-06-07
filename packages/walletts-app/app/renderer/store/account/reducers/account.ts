@@ -1,4 +1,4 @@
-import { defaultAccounts, IAccountState } from "../store";
+import { defaultAccounts, IAccountState } from "../state";
 import { AccountUIData } from "walletts-components";
 import { AccountID } from "walletts-core";
 import { AccountsAction } from "../actions";
