@@ -43,6 +43,8 @@ services:
       - "18555:18555"
       - "18556:18556" # RPC
       - "18558:18558" # Wallet
+      # Socket
+      - "18559:18559" # Wallet
   db:
     image: mongo:latest
     restart: unless-stopped
