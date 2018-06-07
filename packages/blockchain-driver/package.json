@@ -57,6 +57,7 @@
   "dependencies": {
     "@cycle/dom": "^20.2.0",
     "@cycle/run": "^4.1.0",
+    "@types/zeromq": "^4.6.1",
     "bclient": "^0.0.2",
     "bitcoin-core": "^2.0.0",
     "bunyan": "^1.8.12",
@@ -64,7 +65,8 @@
     "cycle": "^1.0.3",
     "rxjs": "^6.0.0",
     "superagent": "^3.8.2",
-    "xstream": "^11.2.0"
+    "xstream": "^11.2.0",
+    "zeromq": "^4.6.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.20",
