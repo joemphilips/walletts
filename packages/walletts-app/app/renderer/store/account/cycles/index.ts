@@ -1,5 +1,5 @@
 import { BaseSources, BaseSinks } from "../../../utils/interfaces";
-import { AccountsAction } from "../actions";
+import { AccountsAction, updateBalance } from "../actions";
 import xs, { Stream } from "xstream";
 
 export interface Sinks extends BaseSinks {
@@ -9,9 +9,13 @@ export interface Sinks extends BaseSinks {
 export function main(sources: BaseSources) {
   const getBalance$ = sources.ACTION.filter(
     a => a.type === "FETCH_BALANCE"
-  ).mapTo({ method: "getbalance" });
+  ).mapTo({ method: "getBalance" });
 
-  const newBalance = sources.Blockchain.filter(resp => resp.);
+  const updateBalance$: Stream<number> = sources.Blockchain.filter(
+    res => res.type === "getBalance"
+  )
+    .map(res => res.result)
+    .map(result => updateBalance());
   const blockchainRequest$ = xs.merge(getBalance$);
   return {
     Blockchain: blockchainRequest$
