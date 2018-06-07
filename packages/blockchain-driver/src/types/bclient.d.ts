@@ -60,8 +60,20 @@ declare module 'bclient' {
     static usingDomains: boolean;
   }
 
+  export interface BclientOption {
+    readonly apiKey?: string;
+    readonly ssl?: boolean;
+    readonly host?: string;
+    readonly port?: number;
+    readonly path?: string;
+    readonly username?: string;
+    readonly password?: string;
+    readonly id?: string;
+    readonly token?: string;
+  }
+
   export class WalletClient {
-    constructor(...args: any[]);
+    constructor(options?: BclientOption);
 
     addSharedKey(...args: any[]): void;
 

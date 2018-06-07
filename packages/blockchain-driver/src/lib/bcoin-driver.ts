@@ -1,6 +1,6 @@
 import { Driver } from '@cycle/run';
 import { adapt } from '@cycle/run/lib/adapt';
-import { NodeClient, WalletClient } from 'bclient';
+import { BclientOption, NodeClient, WalletClient } from 'bclient';
 import { Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
 import { requestInputToResponse$ } from './common';
@@ -10,18 +10,6 @@ import {
   SupportedBchType,
   walletMethodName
 } from './interfaces';
-
-export interface BclientOption {
-  readonly apiKey?: string;
-  readonly ssl?: boolean;
-  readonly host?: string;
-  readonly port?: number;
-  readonly path?: string;
-  readonly username?: string;
-  readonly password?: string;
-  readonly id?: string;
-  readonly token?: string;
-}
 
 export interface NodeRequest {
   readonly method: nodeMethodName;
