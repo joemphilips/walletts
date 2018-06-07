@@ -13,6 +13,7 @@ import { reducer as UserReducer } from "../user/reducers";
 import { Stream } from "xstream";
 import { BaseSinks, BaseSources } from "../../utils/interfaces";
 import { BitcoindRPCRequest } from "blockchain-driver";
+import { BlockchainSource } from "../../../../../blockchain-driver/build/main/lib/interfaces";
 
 // reducers
 const rootReducer = combineReducers({
@@ -38,8 +39,7 @@ export function CycleMain(sources: BaseSources): Sinks {
   const request$: Stream<RequestOptions> = xs.of({ url: "http://google.com" });
 
   const bitcoinRequest$ = xs.of<BitcoindRPCRequest>({
-    method: "getblockchaininfo",
-    parameters: []
+    method: "getBlockchainInfo"
   });
   return {
     ACTION: pong$,

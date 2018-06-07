@@ -7,17 +7,22 @@ export interface Sinks extends BaseSinks {
 }
 
 export function main(sources: BaseSources) {
+  // ACTION ---------> Blockchain
   const getBalance$ = sources.ACTION.filter(
     a => a.type === "FETCH_BALANCE"
   ).mapTo({ method: "getBalance" });
+  const blockchainRequest$ = xs.merge(getBalance$);
 
-  const updateBalance$: Stream<number> = sources.Blockchain.filter(
+  // Blockchain --------> Actoin
+  const updateBalance$: Stream<AccountsAction> = sources.Blockchain.filter(
     res => res.type === "getBalance"
   )
-    .map(res => res.result)
-    .map(result => updateBalance());
-  const blockchainRequest$ = xs.merge(getBalance$);
+    .map(res => [res.meta.walletId, res.result])
+    .map(result => updateBalance(result[0], result[1]));
+
+  const action$ = xs.merge(updateBalance$);
   return {
+    Action: action$,
     Blockchain: blockchainRequest$
   };
 }
