@@ -72,6 +72,32 @@ declare module 'bclient' {
     readonly token?: string;
   }
 
+  export interface Account {
+    name: string;
+    initialized: boolean;
+    witness: boolean;
+    watchOnly: boolean;
+    type: 'pubkeyhash' | 'multisig';
+    m: number;
+    n: number;
+    accountIndex: number;
+    receiveDepth: number;
+    changeDepth: number;
+    nestedDepth: number;
+    lookahead: number;
+    receiveAddress: string;
+    changeAddress: string;
+    nestedAddress: null;
+    accountKey: string;
+    keys: ReadonlyArray<any>;
+    balance: {
+      tx: number;
+      coin: number;
+      unconfirmed: number;
+      confirmed: number;
+    };
+  }
+
   export class WalletClient {
     constructor(options?: BclientOption);
 
