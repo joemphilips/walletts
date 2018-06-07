@@ -13,7 +13,6 @@ import { reducer as UserReducer } from "../user/reducers";
 import { Stream } from "xstream";
 import { BaseSinks, BaseSources } from "../../utils/interfaces";
 import { BitcoindRPCRequest } from "blockchain-driver";
-import { BlockchainSource } from "../../../../../blockchain-driver/build/main/lib/interfaces";
 
 // reducers
 const rootReducer = combineReducers({

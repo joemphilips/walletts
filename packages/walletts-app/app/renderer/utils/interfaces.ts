@@ -1,10 +1,7 @@
 import { Stream } from "xstream";
 import { RequestOptions, HTTPSource } from "@cycle/http";
 import { BitcoindRPCRequest } from "blockchain-driver";
-import {
-  BlockchainSource,
-  BitcoindResponse
-} from "../../../../blockchain-driver/build/main/lib/interfaces";
+import { BitcoindResponse } from "../../../../blockchain-driver/build/main/lib/interfaces";
 
 export type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
 
