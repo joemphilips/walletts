@@ -25,7 +25,8 @@ export function requestInputToResponse$(
   const resp2$ = resp$.map(result => ({
     result,
     type: req.method,
-    nodeType
+    nodeType,
+    meta: req.id ? { walletId: req.id } : {}
   }));
   const resp3$ = adapt(resp2$);
   return resp3$;

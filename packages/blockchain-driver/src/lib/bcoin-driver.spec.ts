@@ -53,7 +53,7 @@ test('bcoin node getInfo', async t => {
 });
 
 test('bcoin wallet getInfo', async t => {
-  t.plan(1);
+  t.plan(2);
   const main = _ => ({
     Blockchain: xs.from<WalletRequest>([
       { id: 'test1', method: 'createWallet' },
@@ -69,6 +69,11 @@ test('bcoin wallet getInfo', async t => {
   const { run, sources } = setup(main, { Blockchain: driver });
   sources.Blockchain.addListener({
     next: resp => {
+      t.is(
+        resp.meta.walletId,
+        'test1',
+        'request to wallet must have `meta` field describing wallet id'
+      );
       t.deepEqual(
         Object.keys(resp.result).sort(),
         [
@@ -89,7 +94,7 @@ test('bcoin wallet getInfo', async t => {
     },
     error: e =>
       e.toString() === 'Error: WDB: Wallet already exists.'
-        ? t.pass()
+        ? [t.pass(), t.pass()]
         : t.fail(e),
     complete: () => t.fail('bcoin driver must not complete')
   });

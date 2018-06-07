@@ -15,7 +15,7 @@ export interface BitcoindResponse {
   readonly nodeType: SupportedBchType.BITCOIN_CORE;
   readonly type: keyof Client | 'zmqtx' | 'zmqblock';
   readonly result: any;
-  readonly meta?: any;
+  readonly meta: any;
 }
 
 export type nodeMethodName = keyof NodeClient;
