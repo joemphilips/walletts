@@ -12,7 +12,8 @@ describe("Account", () => {
 
     // --------- define expected output -------
     const actionsSink = Time.diagram("---a--|", {
-      a: Actions.updateBalance("testWallet", Satoshi.fromNumber(1000))
+      a: Actions.updateBalance("testWallet", Satoshi.fromNumber(1000)
+        .value as Satoshi)
     });
 
     const expected = {
