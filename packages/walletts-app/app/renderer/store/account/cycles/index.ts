@@ -7,7 +7,6 @@ export interface Sinks extends BaseSinks {
 }
 
 export function main(sources: BaseSources) {
-  // ACTION ---------> Blockchain
   const getBalance$ = sources.ACTION.filter(
     a => a.type === "FETCH_BALANCE"
   ).mapTo({ method: "getBalance" });
