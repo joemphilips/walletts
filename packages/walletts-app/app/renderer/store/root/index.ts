@@ -61,6 +61,3 @@ export const defaultState: IState = {
   channels: createDefaultChannels(),
   users: defaultKnownUsers
 };
-
-console.log(`defaultState is`);
-console.log(defaultState);

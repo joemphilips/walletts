@@ -21,8 +21,6 @@ export class AccountPage extends React.Component<Props> {
   render() {
     const { id } = this.props.match.params;
     const currentAccount = this.props.accounts[id];
-    console.log(`going to pass knownUsers to AccountDetail`);
-    console.log(this.props);
 
     if (Object.keys(currentAccount.owners).length <= 1) {
       return (

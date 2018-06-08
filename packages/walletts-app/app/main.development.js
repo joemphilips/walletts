@@ -80,21 +80,6 @@ app.on('ready', () =>
             });
         }
 
-        //  define event handler from renderer
-        ipcMain.on("loadFile", (fileName) => {
-            const themePath = path.join([app.getAppPath(), "themes", fileName])
-            console.debug("going to read file from", themePath)
-            fs.readFile(themePath, 'utf8', (err, data) => {
-                if (err) { throw err }
-                try {
-                    const themeObj = JSON.parse(data)
-                    ipcMain.send("theme-loaded", themeObj)
-                } catch (e) {
-                    ipcMain.send("theme-loaded", "failed to load theme, error message is " + e.toString())
-                }
-            })
-        })
-
         if (process.platform === 'darwin') {
             template = [{
                     label: 'Electron',
