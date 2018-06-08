@@ -3,6 +3,7 @@
  */
 
 const path = require('path');
+const webpack = require('webpack')
 const {
   dependencies: externals
 } = require('./app/package.json');
@@ -36,7 +37,11 @@ module.exports = {
     ]
   },
 
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'global.GENTLY': false
+    })
+  ],
 
   externals: Object.keys(externals || {})
 };

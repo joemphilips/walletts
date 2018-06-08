@@ -60,8 +60,46 @@ declare module 'bclient' {
     static usingDomains: boolean;
   }
 
+  export interface BclientOption {
+    readonly apiKey?: string;
+    readonly ssl?: boolean;
+    readonly host?: string;
+    readonly port?: number;
+    readonly path?: string;
+    readonly username?: string;
+    readonly password?: string;
+    readonly id?: string;
+    readonly token?: string;
+  }
+
+  export interface Account {
+    name: string;
+    initialized: boolean;
+    witness: boolean;
+    watchOnly: boolean;
+    type: 'pubkeyhash' | 'multisig';
+    m: number;
+    n: number;
+    accountIndex: number;
+    receiveDepth: number;
+    changeDepth: number;
+    nestedDepth: number;
+    lookahead: number;
+    receiveAddress: string;
+    changeAddress: string;
+    nestedAddress: null;
+    accountKey: string;
+    keys: ReadonlyArray<any>;
+    balance: {
+      tx: number;
+      coin: number;
+      unconfirmed: number;
+      confirmed: number;
+    };
+  }
+
   export class WalletClient {
-    constructor(...args: any[]);
+    constructor(options?: BclientOption);
 
     addSharedKey(...args: any[]): void;
 

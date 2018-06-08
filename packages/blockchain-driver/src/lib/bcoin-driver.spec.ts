@@ -4,15 +4,16 @@ import xs from 'xstream';
 import {
   makeTrustedBcoinNodeDriver,
   makeTrustedBcoinWalletDriver,
+  NodeRequest,
   WalletRequest
 } from './bcoin-driver';
 import { sleep } from './test-common';
 
 test('bcoin node getInfo', async t => {
-  t.plan(1);
+  t.plan(2);
   const main = _ => {
     return {
-      Blockchain: xs.of({ method: 'getInfo' })
+      Blockchain: xs.of<NodeRequest>({ method: 'getInfo' })
     };
   };
 
@@ -25,8 +26,13 @@ test('bcoin node getInfo', async t => {
 
   sources.Blockchain.addListener({
     next: resp => {
+      t.is(
+        resp.type,
+        'getInfo',
+        "reponse must have member named `type` which specifies it's RpcMethod"
+      );
       t.deepEqual(
-        Object.keys(resp).sort(),
+        Object.keys(resp.result).sort(),
         [
           'version',
           'chain',
@@ -34,8 +40,7 @@ test('bcoin node getInfo', async t => {
           'network',
           'mempool',
           'time',
-          'memory',
-          'type'
+          'memory'
         ].sort(),
         'failed to getInfo'
       );
@@ -48,7 +53,7 @@ test('bcoin node getInfo', async t => {
 });
 
 test('bcoin wallet getInfo', async t => {
-  t.plan(1);
+  t.plan(2);
   const main = _ => ({
     Blockchain: xs.from<WalletRequest>([
       { id: 'test1', method: 'createWallet' },
@@ -64,8 +69,13 @@ test('bcoin wallet getInfo', async t => {
   const { run, sources } = setup(main, { Blockchain: driver });
   sources.Blockchain.addListener({
     next: resp => {
+      t.is(
+        resp.meta.walletId,
+        'test1',
+        'request to wallet must have `meta` field describing wallet id'
+      );
       t.deepEqual(
-        Object.keys(resp).sort(),
+        Object.keys(resp.result).sort(),
         [
           'account',
           'accountDepth',
@@ -82,7 +92,10 @@ test('bcoin wallet getInfo', async t => {
         'failed to getWalletInfo'
       );
     },
-    error: e => t.fail(e),
+    error: e =>
+      e.toString() === 'Error: WDB: Wallet already exists.'
+        ? [t.pass(), t.pass()]
+        : t.fail(e),
     complete: () => t.fail('bcoin driver must not complete')
   });
 

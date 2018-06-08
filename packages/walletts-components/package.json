@@ -63,6 +63,7 @@
     "csstype": "^2.5.2",
     "csx": "^9.0.0",
     "react": "^16.4.0",
+    "react-modal": "^3.4.5",
     "semantic-ui-react": "^0.80.2",
     "typestyle": "^2.0.0"
   },

@@ -1,2 +1,2 @@
 export * from './trusted-bitcoind';
-export * from './bws-driver';
+export * from './bcoin-driver';
