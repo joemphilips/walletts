@@ -1,13 +1,12 @@
 import * as CSS from 'csstips';
 import * as React from 'react';
-import * as SEM from 'semantic-ui-react';
 import * as ts from 'typestyle';
 import { AccountID } from 'walletts-core';
 // tslint:disable-next-line
 import { AccountUIData } from '../common/account';
 import { AccountsTabBar } from '../elements';
 
-export interface ValueProps extends SEM.SidebarProps {
+export interface ValueProps {
   readonly item?: any;
   readonly accounts: Record<AccountID, AccountUIData>;
 }
