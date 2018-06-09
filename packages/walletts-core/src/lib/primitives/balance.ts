@@ -1,9 +1,4 @@
-import { Record } from 'immutable';
-import { BalanceError, WalletError } from '../errors';
-
-const balance = {
-  Amount: 0.0
-};
+import { BalanceError } from '../errors';
 
 const maxSatoshi = 21 * 1e14;
 

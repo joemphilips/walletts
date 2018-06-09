@@ -56,7 +56,6 @@ const defaultWalletDBPath = path.join(defaultDataDir, 'walletdb');
 
 // networks
 const defaultPort = '58011';
-const defaultDebugLevel = 'info';
 
 const defaultMap: Config = {
   // paths

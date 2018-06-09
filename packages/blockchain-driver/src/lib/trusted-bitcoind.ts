@@ -27,7 +27,7 @@ export const makeTrustedBitcoindDriver = (
   const trustedBitcoindDriver = (
     request$: Stream<BitcoindRPCRequest>
   ): Stream<BitcoindResponse> => {
-    const cli = new Client(clientConstructorOpt);
+    const cli = new Client(clientConstructorOpt ? clientConstructorOpt : null);
 
     // TODO: buffer stream and send request with real batch
     const response$ = request$

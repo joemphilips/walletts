@@ -1,8 +1,6 @@
 import * as btc from 'bitcoinjs-lib';
-import { Config } from './config';
 import { AccountID } from './primitives/identity';
 /* tslint:disable no-submodule-imports */
-import { Either, either, left, right } from 'fp-ts/lib/Either';
 
 // KeyRepository work as a visitor pattern mostly for CoinManager
 export default interface KeyRepository {
