@@ -4,16 +4,6 @@ jobs:
     steps:
       - checkout
       - run:
-          command: ./.circleci/install_yarn.sh
+          command: docker-compose up --abort-on-container-exit
           name: install yarn
-      - run:
-          command: [ -s "/opt/circleci/.nvm/nvm.sh" ] && . "/opt/circleci/.nvm/nvm.sh"
-      - run:
-          command: yarn && yarn bootstrap
-          name: bootstrap
-      - run:
-          command: yarn build
-          name: build
-      - run:
-          command: yarn test
 version: 2
