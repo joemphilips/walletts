@@ -4,6 +4,9 @@ jobs:
     steps:
       - checkout
       - run:
+          command: ./.circleci/install_yarn.sh
+          name: install yarn
+      - run:
           command: yarn && yarn bootstrap
           name: bootstrap
       - run:
