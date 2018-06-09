@@ -2,8 +2,7 @@
 
 The bitcoin-blockchain sdk for typescript and applications for managing your financial social participation.
 
-includes following packages
-
+includes following packages 
 * `walletts-core` primitive for working with your own wallet.
 * `walletts-app` copay-style wallet and crowdfunding application powered by electron and react-redux
 * `blockchain-driver` cyclejs driver for interacting with the bitcoin blockchain
@@ -25,3 +24,8 @@ So changes in an arbitrary package will invoke HMR in the app
 
 If you want to restart with clean environment, run
 `yarn clean && yarn bootstrap && yarn build`
+
+## contributing
+
+See [this project page](https://github.com/joemphilips/cycle-walletts/projects/2?add_cards_query=is%3Aopen) for current status
+

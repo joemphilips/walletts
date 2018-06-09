@@ -1,0 +1,15 @@
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          command: docker-compose up
+          name: setup blockchain
+      - run:
+          command: yarn bootstrap
+          name: bootstrap
+      - run: 
+          command: yarn test
+          name: test
+version: 2
