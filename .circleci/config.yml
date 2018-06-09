@@ -7,6 +7,8 @@ jobs:
           command: ./.circleci/install_yarn.sh
           name: install yarn
       - run:
+          command: [ -s "/opt/circleci/.nvm/nvm.sh" ] && . "/opt/circleci/.nvm/nvm.sh"
+      - run:
           command: yarn && yarn bootstrap
           name: bootstrap
       - run:

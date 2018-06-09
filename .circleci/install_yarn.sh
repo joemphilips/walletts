@@ -6,8 +6,10 @@ set -x
 ## install npm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
+set +x
 export NVM_DIR="/opt/circleci/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm + nvm install 8
+set -x
 
 nvm install 8
 nvm alias default 8
