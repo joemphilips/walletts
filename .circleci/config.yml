@@ -14,13 +14,4 @@ jobs:
           name: build
       - run:
           command: yarn test
-dependencies:
-  override:
-    - yarn
-  cache_directories:
-    - ~/.cache/yarn
-test:
-  override:
-    - yarn test
-
 version: 2

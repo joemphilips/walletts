@@ -1,6 +1,7 @@
 #!/bin/bash
 # Choose which version of yarn you want to use
 EXPECTED_YARN_VERSION="0.16.1"
+set -x
 
 ## install node version 8
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
