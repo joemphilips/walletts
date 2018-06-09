@@ -4,8 +4,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: docker-compose up -d
-          name: setup blockchain
+          command: apt install -y yarn
       - run:
           command: yarn bootstrap
           name: bootstrap
