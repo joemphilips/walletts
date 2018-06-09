@@ -4,6 +4,7 @@ EXPECTED_YARN_VERSION="0.16.1"
 set -x
 
 ## install npm
+npm install -g npm
 npm install -g nvm
 nvm install 8
 nvm alias default 8
