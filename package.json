@@ -6,7 +6,7 @@
 		"packages/*"
 	],
   "scripts": {
-    "test": "docker-compose down && docker-compose up -d && npm run test:run",
+    "test": "npm run test:run",
     "test:run": "yarn test-core && yarn test-tools && yarn test-app-e2e",
     "test-core": "lerna run test --stream --scope=walletts-core",
     "test-tools": "lerna run test --stream --scope=walletts-components & cd packages/blockchain-driver && yarn test:integration || yarn test:integration && cd ../..",

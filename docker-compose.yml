@@ -59,8 +59,11 @@ services:
       - "3231:3231"
       - "3380:3380" # for message notification
       - "443:443"
-  core:
+  walletts:
     build:
-      context: packages/walletts-core
+      context: .
       dockerfile: docker/test/Dockerfile
     command: yarn test
+    depends_on:
+      - bcoin
+      - bitcoind

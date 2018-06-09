@@ -18,11 +18,15 @@ clone this repository and run
 
 and
 run `yarn build` to build all packages
-run `yarn test` ro run tests in all packages
-run `yarn dev` to launch application in development mode. this will compile every packages with `tsc -w`.
-So changes in an arbitrary package will invoke HMR in the app
 
-If you want to restart with clean environment, run
+run
+`docker-compose up --abort-on-container-exit walletts`
+to run test in all packages
+
+run `yarn dev` to launch application in development mode. this will compile every packages with `tsc -w`.
+So changes in an every package will invoke HMR in the app
+
+If you want to restart with a clean environment, run
 `yarn clean && yarn bootstrap && yarn build`
 
 ## contributing
