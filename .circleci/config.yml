@@ -4,15 +4,20 @@ jobs:
     steps:
       - checkout
       - run:
-          command: ./.circleci/install_yarn.sh && ./.yarn/bin/yarn
-          name: install yarn
-      - run:
-          command: ./.yarn/bin/yarn bootstrap
+          command: yarn && yarn bootstrap
           name: bootstrap
       - run:
-          command: ./.yarn/bin/yarn build
+          command: yarn build
           name: build
       - run:
-          command: ./.yarn/bin/yarn test
-          name: test
+          command: yarn test
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+test:
+  override:
+    - yarn test
+
 version: 2
