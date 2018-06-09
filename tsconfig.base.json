@@ -2,13 +2,10 @@
   "compilerOptions": {
     "paths": {
       "@walletts/*": [
-        "./packages/*/src"
+        "./packages/**/src"
       ],
       "*": [
-        "./packages/*/src"
-      ],
-      "@cycle/dom": [
-        "./node_modules/@cycle/dom"
+        "./packages/**/src"
       ]
     }
   }
