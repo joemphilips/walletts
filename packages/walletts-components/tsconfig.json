@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es2017",
     "outDir": "build/main",
-    "rootDir": "src",
+    "rootDirs":[ "src", "../walletts-core/src"],
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,
