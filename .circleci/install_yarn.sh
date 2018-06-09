@@ -3,9 +3,10 @@
 EXPECTED_YARN_VERSION="0.16.1"
 set -x
 
-## install node version 8
+## install npm
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs npm
+sudo apt-get update && sudo apt-get install -y nodejs npm
+sudo npm install npm -g
 
 npm install -g nvm
 nvm install 8
