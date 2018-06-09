@@ -9,4 +9,5 @@ COPY package.json /usr/src/app/package.json
 
 RUN yarn --no-progress
 
-COPY ./src ./tsconfig.* ./tslint.* /usr/src/app/
+COPY ./tsconfig.* ./tslint.* /usr/src/app/
+COPY src /usr/src/app/src
