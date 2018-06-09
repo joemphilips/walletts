@@ -4,11 +4,15 @@ jobs:
     steps:
       - checkout
       - run:
-          command: apt install -y yarn
+          command: ./.circleci/install_yarn.sh && ./.yarn/bin/yarn
+          name: install yarn
       - run:
-          command: yarn bootstrap
+          command: ./.yarn/bin/yarn bootstrap
           name: bootstrap
-      - run: 
-          command: yarn test
+      - run:
+          command: ./.yarn/bin/yarn build
+          name: build
+      - run:
+          command: ./.yarn/bin/yarn test
           name: test
 version: 2
