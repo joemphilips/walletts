@@ -11,6 +11,16 @@ COPY ./tsconfig.* ./lerna.json /usr/src/app/
 ## currently, there are no open-source tool for coordinating docker-based testing and monorepo.
 ## so we ended up making one huge docker image which copies all dependency for testing the repo.
 ## yes, this is ugly. But verbose enough to see what is going on when debugging.
+COPY ./packages/walletts-core/package.json \
+  /usr/src/app/packages/walletts-core/package.json
+COPY ./packages/walletts-components/package.json \
+  /usr/src/app/packages/walletts-components/package.json
+COPY ./packages/blockchain-driver/package.json \
+  /usr/src/app/packages/blockchain-driver/package.json
+COPY ./packages/walletts-app/package.json \
+  /usr/src/app/packages/walletts-app/package.json
+
+RUN yarn --no-progress
 
 COPY ./packages/walletts-core \
   /usr/src/app/packages/walletts-core/
@@ -21,5 +31,4 @@ COPY ./packages/blockchain-driver \
 COPY ./packages/walletts-app \
   /usr/src/app/packages/walletts-app/
 
-RUN yarn --no-progress
 RUN yarn build
