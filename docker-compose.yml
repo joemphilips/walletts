@@ -51,7 +51,7 @@ services:
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: yarn test:integration
+    command: yarn test:docker-integration
     depends_on:
       - bcoin
       - bitcoind

@@ -6,11 +6,9 @@
   "packages/*"
  ],
  "scripts": {
-  "test": "npm run test:run",
-  "test:run": "yarn test-core && yarn test-tools && yarn test-app-e2e",
-  "test-core": "lerna run test --stream --scope=walletts-core",
-  "test-tools": "lerna run test --stream --scope=walletts-components & cd packages/blockchain-driver && yarn test:integration || yarn test:integration && cd ../..",
-  "test-app-e2e": "lerna run test-e2e --stream --scope=walletts-app",
+  "test": "lerna run test --parallel --ignore=blockchain-driver",
+  "test:docker-integration": "lerna run test ---parallel && yarn all",
+  "all": "lerna run test-all --scope=walletts-app",
   "clean": "lerna clean --parallel --yes",
   "bootstrap": "lerna bootstrap --parallel",
   "build": "yarn build-core && yarn build-tools && yarn build-app",
