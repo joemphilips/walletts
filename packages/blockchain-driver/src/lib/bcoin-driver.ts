@@ -30,7 +30,8 @@ export const makeTrustedBcoinNodeDriver = (
     const cli = new NodeClient(opts);
     const response$ = request$
       .map(x => requestInputToResponse$(cli, x, SupportedBchType.BCOIN))
-      .flatten();
+      .filter(x => !!x)
+      .compose(flattenConcurrently);
     return adapt(response$);
   };
 
@@ -100,6 +101,7 @@ export const makeTrustedBcoinWalletDriver = (
     const rpcResponse$ = request$
       .filter(req => !isSocketRequest(req))
       .map(x => requestInputToResponse$(cli, x, SupportedBchType.BCOIN))
+      .filter(x => !!x)
       .compose(flattenConcurrently);
 
     const socketResponse$ = request$

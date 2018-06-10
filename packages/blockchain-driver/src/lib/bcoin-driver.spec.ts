@@ -17,6 +17,7 @@ test('bcoin node getInfo', async t => {
     };
   };
 
+  // this must accord to the docker-compose file in root level
   const driver = makeTrustedBcoinNodeDriver({
     apiKey: 'api-key-for-testing',
     port: 18556,
@@ -62,6 +63,7 @@ test('bcoin wallet getInfo', async t => {
     ])
   });
 
+  // this must accord to the docker-compose file in root level
   const driver = makeTrustedBcoinWalletDriver({
     apiKey: 'api-key-for-testing',
     port: 18556,

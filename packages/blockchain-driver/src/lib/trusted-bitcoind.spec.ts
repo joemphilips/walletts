@@ -21,6 +21,8 @@ test('ping', async t => {
       Blockchain: xs.of<BitcoindRPCRequest>({ method: 'ping' })
     };
   };
+
+  // this must accord to the docker-compose file in root level
   /* tslint:disable-next-line:no-expression-statement */
   const driver = makeTrustedBitcoindDriver({
     username: 'foo',
@@ -78,7 +80,8 @@ test('getNewAddreess', async t => {
   const driver = makeTrustedBitcoindDriver({
     username: 'foo',
     password: 'bar',
-    port: 18332
+    port: 18332,
+    host: 'bitcoind'
   });
   const { run, sources } = Cycle.setup(main, { Blockchain: driver });
 

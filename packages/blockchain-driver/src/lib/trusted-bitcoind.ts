@@ -32,6 +32,7 @@ export const makeTrustedBitcoindDriver = (
     // TODO: buffer stream and send request with real batch
     const response$ = request$
       .map(x => requestInputToResponse$(cli, x, SupportedBchType.BITCOIN_CORE))
+      .filter(x => !!x)
       .compose(flattenConcurrently);
 
     return adapt(response$);
