@@ -36,7 +36,6 @@ describe("Account", () => {
 
     const actual = AccountCycle({
       ACTION: acitonSource,
-      HTTP: null,
       Blockchain: blockchainSource
     });
 
