@@ -3,14 +3,14 @@ services:
   bitcoind:
     image: seegno/bitcoind
     restart: unless-stopped
-    ports:
+    expose:
       ## Comment these if they conflict with something else you're running.
       #-- Mainnet
-      - "8333:8333"
-      - "8332:8332" # RPC
+      - "8333"
+      - "8332" # RPC
       #-- Testnet
-      - "18333:18333"
-      - "18332:18332" # RPC
+      - "18333"
+      - "18332" # RPC
     command:
       -printtoconsole
       -regtest=1
@@ -34,36 +34,24 @@ services:
     restart: unless-stopped
     env_file:
       - ./bcoin.env
-    ports:
+    expose:
       # Regtest
-      - "48444:48444"
-      - "48332:48332" # RPC
-      - "48334:48334" # Wallet
+      - "48444"
+      - "48332" # RPC
+      - "48334" # Wallet
       # Simnet
-      - "18555:18555"
-      - "18556:18556" # RPC
-      - "18558:18558" # Wallet
+      - "18555"
+      - "18556" # RPC
+      - "18558" # Wallet
       # Socket
-      - "18559:18559" # Wallet
-  db:
-    image: mongo:latest
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-  bws:
-    image: joemphilips/bws
-    links:
-      - db
-    ports:
-      - "3232:3232"
-      - "3231:3231"
-      - "3380:3380" # for message notification
-      - "443:443"
+      - "18559" # Wallet
   walletts:
+    environment:
+      - CI=1 # since ora will cause error without this
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: yarn test
+    command: yarn test:integration
     depends_on:
       - bcoin
       - bitcoind

@@ -25,7 +25,8 @@ test('ping', async t => {
   const driver = makeTrustedBitcoindDriver({
     username: 'foo',
     password: 'bar',
-    port: 18332
+    port: 18332,
+    host: 'bitcoind'
   });
   const { run, sources } = Cycle.setup(main, { Blockchain: driver });
 

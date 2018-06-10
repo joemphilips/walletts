@@ -19,7 +19,8 @@ test('bcoin node getInfo', async t => {
 
   const driver = makeTrustedBcoinNodeDriver({
     apiKey: 'api-key-for-testing',
-    port: 18556
+    port: 18556,
+    host: 'bcoin'
   });
 
   const { run, sources } = setup(main, { Blockchain: driver });
@@ -63,7 +64,8 @@ test('bcoin wallet getInfo', async t => {
 
   const driver = makeTrustedBcoinWalletDriver({
     apiKey: 'api-key-for-testing',
-    port: 18556
+    port: 18556,
+    host: 'bcoin'
   });
 
   const { run, sources } = setup(main, { Blockchain: driver });
