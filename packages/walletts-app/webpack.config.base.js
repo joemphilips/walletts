@@ -31,7 +31,7 @@ module.exports = {
   // https://webpack.github.io/docs/configuration.html#resolve
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
-    plugins: [new TsconfigPathsPlugin({configFile: "./tsconfig.json"})],
+    plugins: [new TsconfigPathsPlugin({configFile: "./tsconfig.main.json"})],
     modules: [
       path.join(__dirname, 'app'),
       'node_modules',

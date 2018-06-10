@@ -1,0 +1,36 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "es2017", "dom.iterable", "scripthost"],
+
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictFunctionTypes": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "sourceMap": true,
+
+    "outDir": "dist"
+  },
+  "files": ["app/renderer/index.tsx"],
+  "include": [
+    "./custom-typings.d.ts",
+    "./bitcoin-core-typings.d.ts",
+    "app/renderer/**/*.ts",
+    "app/renderer/**/*.tsx",
+    "test/**/*.ts",
+    "test/**/*.tsx",
+    "node_modules/@types/**/*.d.ts"
+  ],
+  "exclude": ["dist"]
+}
