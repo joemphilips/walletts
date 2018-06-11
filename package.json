@@ -6,7 +6,7 @@
   "packages/*"
  ],
  "scripts": {
-  "test": "lerna run test --parallel --ignore=blockchain-driver",
+  "test": "lerna run test --stream --ignore=blockchain-driver",
   "test:docker-integration": "lerna run test ---parallel && yarn all",
   "all": "lerna run test-all --scope=walletts-app",
   "clean": "lerna clean --stream --yes",
