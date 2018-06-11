@@ -24,7 +24,7 @@
     "format": "prettier --single-quote --write './app/**/*.{js,jsx,ts,tsx}'"
   },
   "build": {
-    "productName": "walletts-electron",
+    "productName": "walletts-app",
     "appId": "io.github.irath96.wallettsElectron",
     "dmg": {
       "contents": [
