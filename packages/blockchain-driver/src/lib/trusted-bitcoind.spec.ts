@@ -14,35 +14,6 @@ interface Sinks {
 const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec));
 
-test('ping', async t => {
-  t.plan(1);
-  const main = (_: Sources): Sinks => {
-    return {
-      Blockchain: xs.of<BitcoindRPCRequest>({ method: 'ping' })
-    };
-  };
-
-  // this must accord to the docker-compose file in root level
-  /* tslint:disable-next-line:no-expression-statement */
-  const driver = makeTrustedBitcoindDriver({
-    username: 'foo',
-    password: 'bar',
-    port: 18332,
-    host: 'bitcoind'
-  });
-  const { run, sources } = Cycle.setup(main, { Blockchain: driver });
-
-  sources.Blockchain.addListener({
-    next: _ => t.true(true, 'ping succeeded'),
-    /* tslint:disable-next-line */
-    error: e => t.log(e),
-    complete: () => t.log('blockchain driver has completed')
-  });
-
-  run();
-  await sleep(200);
-});
-
 test('handle error when failed to connect', async t => {
   t.plan(1);
   const main = (_: Sources): Sinks => {
@@ -54,7 +25,8 @@ test('handle error when failed to connect', async t => {
   const driver = makeTrustedBitcoindDriver({
     username: 'wrongUserName',
     password: 'wrongPassword',
-    port: 18332
+    port: 18332,
+    host: 'bitcoind'
   });
 
   const { run, sources } = Cycle.setup(main, { Blockchain: driver });

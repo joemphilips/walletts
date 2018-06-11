@@ -104,5 +104,6 @@ test('bcoin wallet getInfo', async t => {
   });
 
   run();
-  await sleep(2000);
+  await sleep(5000);
+  t.fail('got no response from bcoin');
 });
