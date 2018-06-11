@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AccountUIData, Channel, ChannelID } from "walletts-components";
+import { AccountUIData, Channel, ChannelID } from "@walletts/components";
 import * as TS from "typestyle";
 import { WebviewWrapper } from "./WebviewWrapper";
 import * as CS from "csstips";

@@ -8,10 +8,21 @@ module.exports = {
     "tsx",
     "js"
   ],
+  "globals": {
+    "ts-jest": {
+      // "enableTsDiagnostics": true,
+      "tsConfigFile": "tsconfig.json"
+    }
+  },
   "moduleDirectories": [
     "node_modules",
     "app/node_modules"
   ],
+  "moduleNameMapper": {
+    "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
+    "^[./a-zA-Z0-9$_-]+\\.png$": "<rootDir>/RelativeImageStub.js",
+    "@walletts/(.*)": "<rootDir>/../$1"
+  },
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },

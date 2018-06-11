@@ -1,29 +1,25 @@
 {
-  "repository": "https://github.com/joemphilips/cycle-walletts",
-  "description": "bitcoin wallet suite in typescript",
-  "license": "MIT",
-	"workspaces": [
-		"packages/*"
-	],
-  "scripts": {
-    "test": "docker-compose down && docker-compose up -d && npm run test:run",
-    "test:run": "yarn test-core && yarn test-tools && yarn test-app-e2e",
-    "test-core": "lerna run test --stream --scope=walletts-core",
-    "test-tools": "lerna run test --stream --scope=walletts-components & cd packages/blockchain-driver && yarn test:integration || yarn test:integration && cd ../..",
-    "test-app-e2e": "lerna run test-e2e --stream --scope=walletts-app",
-    "clean": "lerna clean --parallel --yes",
-    "bootstrap": "lerna bootstrap --parallel",
-    "build": "yarn build-core && yarn build-tools && yarn build-app",
-    "build-core": "lerna run build --stream --scope=walletts-core",
-    "build-tools": "lerna run build --stream --scope=walletts-components --scope=blockchain-driver",
-    "build-app": "lerna run build --stream --scope=walletts-app",
-    "dev": "lerna run dev --scope=walletts* --parallel"
-  },
-  "private": true,
-	"devDependencies": {
-		"lerna": "^2.9.0"
-	},
+ "repository": "https://github.com/joemphilips/cycle-walletts",
+ "description": "bitcoin wallet suite in typescript",
+ "license": "MIT",
+ "workspaces": [
+  "packages/*"
+ ],
+ "scripts": {
+  "test": "lerna run test --stream --ignore=blockchain-driver",
+  "test:docker-integration": "lerna run test --stream && echo 'temporary not running yarn all'",
+  "all": "lerna run test-e2e --scope=walletts-app",
+  "clean": "lerna clean --stream --yes",
+  "bootstrap": "lerna bootstrap --stream",
+  "build": "lerna run build --stream",
+  "dev": "lerna run dev --parallel"
+ },
+ "private": true,
+ "devDependencies": {
+  "lerna": "^2.9.0",
+  "typescript": "2.8"
+ },
  "publishConfig": {
-   "access": "public"
+  "access": "public"
  }
 }

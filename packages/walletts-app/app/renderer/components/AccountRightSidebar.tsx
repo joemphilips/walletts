@@ -4,7 +4,7 @@ import {
   SimpleBalancePane,
   OwnerInfoPane,
   UserUIData
-} from "walletts-components";
+} from "@walletts/components";
 import * as TS from "typestyle";
 import * as CS from "csstips";
 

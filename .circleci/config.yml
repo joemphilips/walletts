@@ -1,0 +1,9 @@
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          command: docker-compose up --abort-on-container-exit
+          name: install yarn
+version: 2

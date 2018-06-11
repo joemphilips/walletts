@@ -1,7 +1,7 @@
 /**
  * Base webpack config used across other specific configs
  */
-
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack')
 const {
@@ -31,6 +31,7 @@ module.exports = {
   // https://webpack.github.io/docs/configuration.html#resolve
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
+    plugins: [new TsconfigPathsPlugin({configFile: "./tsconfig.json"})],
     modules: [
       path.join(__dirname, 'app'),
       'node_modules',

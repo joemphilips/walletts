@@ -1,5 +1,5 @@
 import { ActionCreator } from "typesafe-actions/dist/types";
-import { Satoshi } from "walletts-core";
+import { Satoshi } from "@walletts/core";
 
 // actions
 export type AccountsAction =

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { IAccountState } from "../store/account/state";
 import { AccountDetail } from "./AccountDetail";
-import { AccountUIData, UserUIData } from "walletts-components";
-import { UserID, AccountID } from "walletts-core";
+import { AccountUIData, UserUIData } from "@walletts/components";
+import { UserID, AccountID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
 
 export interface Props extends IAccountState {

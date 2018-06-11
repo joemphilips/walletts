@@ -1,10 +1,8 @@
 import { mockTimeSource } from "@cycle/time";
 import xs from "xstream";
-import { assertSourcesSinks } from "../../utils/helpers";
 import { main as AccountCycle } from "../../../app/renderer/store/account/cycles";
 import * as Actions from "../../../app/renderer/store/account/actions";
-import { SupportedBchType } from "../../../../blockchain-driver/build/main/lib/interfaces";
-import { Satoshi } from "walletts-core";
+import { Satoshi } from "@walletts/core";
 
 describe("Account", () => {
   it("fetches the balance information from bwallet and update state", done => {
@@ -24,7 +22,7 @@ describe("Account", () => {
     const blockchainSource = Time.diagram("---b--|", {
       b: {
         type: "getBalance",
-        nodeType: SupportedBchType.BITCOIN_CORE,
+        nodeType: "bitcoin-core",
         result: Satoshi.fromNumber(1000).value as Satoshi,
         meta: {
           walletId: "testWallet"
@@ -38,7 +36,6 @@ describe("Account", () => {
 
     const actual = AccountCycle({
       ACTION: acitonSource,
-      HTTP: null,
       Blockchain: blockchainSource
     });
 

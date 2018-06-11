@@ -1,3 +1,0 @@
-#!/usr/bin/env node
-
-require("../build/main/bin/index.js")
