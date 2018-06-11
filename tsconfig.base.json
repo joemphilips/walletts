@@ -2,22 +2,20 @@
   "compilerOptions": {
     "noErrorTruncation": true,
     "noEmitOnError": true, // do not output result if there were on error while compilation
-    "noImplicitAny": true,
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
       "@walletts/*": [
-        "./packages/*/src"
+        "./packages/*"
       ],
       "*": [
-        "./packages/*/src"
+        "./packages/*"
       ]
     }
   }
