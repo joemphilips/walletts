@@ -7,7 +7,7 @@
  ],
  "scripts": {
   "test": "lerna run test --stream --ignore=blockchain-driver",
-  "test:docker-integration": "lerna run test ---parallel && yarn all",
+  "test:docker-integration": "lerna run test --stream && yarn all",
   "all": "lerna run test-all --scope=walletts-app",
   "clean": "lerna clean --stream --yes",
   "bootstrap": "lerna bootstrap --stream",
