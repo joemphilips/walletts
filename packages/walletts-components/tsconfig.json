@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "es2017",
     "outDir": "build/main",
-    "rootDirs":[ "src", "../walletts-core/src"],
+    "rootDirs":[ "src"],
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,

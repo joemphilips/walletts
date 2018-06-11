@@ -57,15 +57,16 @@
   "dependencies": {
     "@cycle/dom": "^20.2.0",
     "@cycle/run": "^4.1.0",
+    "@walletts/core": "^1.0.0",
     "bclient": "^0.0.2",
     "bitcoin-core": "^2.0.0",
     "bunyan": "^1.8.12",
     "bunyan-prettystream": "^0.1.3",
+    "core": "^1.0.113",
     "cycle": "^1.0.3",
     "rxjs": "^6.0.0",
     "socket.io-client": "^2.1.1",
     "superagent": "^3.8.2",
-    "walletts-core": "^1.0.0",
     "xstream": "^11.2.0"
   },
   "devDependencies": {

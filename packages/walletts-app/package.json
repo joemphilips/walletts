@@ -141,8 +141,10 @@
     "@types/react-router": "^4.0.25",
     "@types/react-router-dom": "^4.2.6",
     "@types/react-router-redux": "^5.0.14",
+    "@walletts/core": "^1.0.0",
     "bitcoinjs-lib": "^3.3.2",
     "blockchain-driver": "^0.0.0",
+    "core": "^1.0.113",
     "csstips": "^0.2.3",
     "electron-debug": "^1.1.0",
     "enzyme": "^3.3.0",
@@ -171,7 +173,6 @@
     "typesafe-actions": "^2.0.4",
     "typestyle": "^1.7.2",
     "walletts-components": "^1.0.0",
-    "walletts-core": "^1.0.0",
     "xstream": "^11.2.0"
   },
   "devEngines": {

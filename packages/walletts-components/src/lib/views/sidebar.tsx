@@ -1,7 +1,7 @@
+import { AccountID } from '@walletts/core';
 import * as CSS from 'csstips';
 import * as React from 'react';
 import * as ts from 'typestyle';
-import { AccountID } from 'walletts-core';
 // tslint:disable-next-line
 import { AccountUIData } from '../common/account';
 import { AccountsTabBar } from '../elements';

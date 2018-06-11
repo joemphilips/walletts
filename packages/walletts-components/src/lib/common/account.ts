@@ -1,5 +1,5 @@
+import { AccountID, EntityID, Satoshi } from '@walletts/core';
 import { DOMElement } from 'react';
-import { AccountID, EntityID, Satoshi } from 'walletts-core';
 import { ChannelID } from './channel';
 
 export interface AccountUIData {

@@ -4,7 +4,7 @@ import * as TS from "typestyle";
 import * as CSS from "csstips";
 import { AccountRight } from "./AccountRightSidebar";
 import { ServiceWebview } from "./ServiceWebview";
-import { UserID } from "walletts-core";
+import { UserID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
 
 const accountDetailStyle = TS.style(CSS.horizontal, {

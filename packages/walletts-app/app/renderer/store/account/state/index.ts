@@ -1,4 +1,4 @@
-import { Satoshi, AccountID } from "walletts-core";
+import { Satoshi, AccountID } from "@walletts/core";
 import { AccountUIData } from "walletts-components";
 import { createDefaultChannels } from "../../channels/state";
 import { defaultUsers, defaultKnownUsers } from "../../user/state";

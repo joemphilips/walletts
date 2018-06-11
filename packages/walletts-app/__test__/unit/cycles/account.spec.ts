@@ -2,7 +2,7 @@ import { mockTimeSource } from "@cycle/time";
 import xs from "xstream";
 import { main as AccountCycle } from "../../../app/renderer/store/account/cycles";
 import * as Actions from "../../../app/renderer/store/account/actions";
-import { Satoshi } from "walletts-core";
+import { Satoshi } from "@walletts/core";
 
 describe("Account", () => {
   it("fetches the balance information from bwallet and update state", done => {

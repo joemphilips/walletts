@@ -1,8 +1,8 @@
+import { Satoshi } from '@walletts/core';
 import * as CS from 'csstips';
 import * as React from 'react';
 import Modal from 'react-modal';
 import * as TS from 'typestyle';
-import { Satoshi } from 'walletts-core';
 import { paneBase } from '../themes';
 
 export interface Props {
