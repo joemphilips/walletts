@@ -22,12 +22,23 @@ export function requestInputToResponse$(
       : xs.fromPromise(cli[req.method].bind(cli)(req.id));
   }
 
-  const resp2$ = resp$.filter(x => !!x).map(result => ({
-    result,
-    type: req.method,
-    nodeType,
-    meta: req.id ? { walletId: req.id } : {}
-  }));
+  const resp2$ = resp$.map(result => {
+    if (result) {
+      return {
+        result,
+        type: req.method,
+        nodeType,
+        meta: req.id ? { walletId: req.id } : {}
+      };
+    } else {
+      return {
+        result: `null`,
+        type: req.method,
+        nodeType,
+        meta: req.id ? { walletId: req.id } : {}
+      };
+    }
+  });
   const resp3$ = adapt(resp2$);
   return resp3$;
 }
