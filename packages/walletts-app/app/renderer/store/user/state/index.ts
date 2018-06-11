@@ -1,5 +1,5 @@
 import { UserID } from "@walletts/core";
-import { UserUIData } from "walletts-components";
+import { UserUIData } from "@walletts/components";
 
 export type UserState = Record<UserID, UserUIData>;
 

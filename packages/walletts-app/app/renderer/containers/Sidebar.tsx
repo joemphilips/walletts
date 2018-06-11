@@ -1,5 +1,4 @@
-import { Sidebar } from "walletts-components";
-import { SidebarProps } from "walletts-components";
+import { Sidebar, SidebarProps } from "@walletts/components";
 import { IState } from "../store";
 import { connect, Dispatch } from "react-redux";
 import { withRouter } from "react-router";
@@ -19,6 +18,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-export default (connect(mapStateToProps, mapDispatchToProps)(
-  withRouter(Sidebar as any)
-) as any) as React.StatelessComponent<{}>;
+export default (connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Sidebar as any)) as any) as React.StatelessComponent<{}>;

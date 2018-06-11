@@ -1,4 +1,4 @@
-import { Channel, ChannelID } from "walletts-components";
+import { Channel, ChannelID } from "@walletts/components";
 const slackSVG = require("../../../../../channels/slack/icon.svg");
 const slackPNG = "../../../../../channels/slack/icon.png";
 

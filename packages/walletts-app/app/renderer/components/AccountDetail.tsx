@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AccountUIData, UserUIData } from "walletts-components";
+import { AccountUIData, UserUIData } from "@walletts/components";
 import * as TS from "typestyle";
 import * as CSS from "csstips";
 import { AccountRight } from "./AccountRightSidebar";

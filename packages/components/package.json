@@ -1,5 +1,5 @@
 {
-  "name": "walletts-components",
+  "name": "@walletts/components",
   "version": "1.0.0",
   "description": "a typescript-starter project",
   "main": "build/main/index.js",
