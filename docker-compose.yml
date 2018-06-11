@@ -50,7 +50,7 @@ services:
       - CI=1 # since ora will cause error without this
     build:
       context: .
-      dockerfile: docker/test/Dockerfile
+      dockerfile: Dockerfile.test
     command: yarn test:docker-integration
     depends_on:
       - bcoin
