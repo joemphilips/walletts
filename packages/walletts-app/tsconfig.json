@@ -28,8 +28,6 @@
     "./bitcoin-core-typings.d.ts",
     "app/renderer/**/*.ts",
     "app/renderer/**/*.tsx",
-    "test/**/*.ts",
-    "test/**/*.tsx",
     "node_modules/@types/**/*.d.ts"
   ],
   "exclude": ["dist"]
