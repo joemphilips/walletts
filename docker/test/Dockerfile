@@ -5,6 +5,8 @@ SHELL ["/bin/sh", "-c"]
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+RUN apk add --no-cache alpine-sdk python # for node-gyp
+
 COPY package.json /usr/src/app/package.json
 COPY ./tsconfig.* ./lerna.json /usr/src/app/
 
