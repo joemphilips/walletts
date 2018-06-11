@@ -20,5 +20,6 @@ COPY packages/blockchain-driver \
 COPY packages/walletts-app \
   /usr/src/app/packages/walletts-app/
 
-RUN yarn --no-progress
+RUN npm install -g lerna
+RUN yarn bootstrap
 RUN yarn build

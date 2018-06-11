@@ -14,7 +14,7 @@ components which represents whole page (e.g. `CrowdFundingProjectView`) must be 
 ## development
 
 clone this repository and run
-`lerna bootstrap`
+`yarn && yarn bootstrap`
 
 and
 run `yarn build` to build all packages
