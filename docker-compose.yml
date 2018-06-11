@@ -49,7 +49,7 @@ services:
     environment:
       - CI=1 # since ora will cause error without this
     build:
-      context: .
+      context: ./
       dockerfile: docker/test/Dockerfile
     command: yarn test:docker-integration
     depends_on:
