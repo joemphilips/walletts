@@ -11,10 +11,7 @@
   "all": "lerna run test-all --scope=walletts-app",
   "clean": "lerna clean --stream --yes",
   "bootstrap": "lerna bootstrap --stream",
-  "build": "yarn build-core && yarn build-tools && yarn build-app",
-  "build-core": "lerna run build --stream --scope=walletts-core",
-  "build-tools": "lerna run build --stream --scope=walletts-components --scope=blockchain-driver",
-  "build-app": "lerna run build --stream --scope=walletts-app",
+  "build": "lerna run build --stream",
   "dev": "lerna run dev --scope=walletts* --parallel"
  },
  "private": true,
