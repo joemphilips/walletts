@@ -14,10 +14,14 @@
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel",
     "semantic-release": "semantic-release",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/config-lerna-scopes": "^7.0.0",
     "commitizen": "^2.10.1",
     "cz-lerna-changelog": "^1.2.1",
     "lerna": "^2.9.0",
