@@ -72,7 +72,6 @@
   "devDependencies": {
     "ava": "^1.0.0-beta.3",
     "codecov": "^3.0.0",
-    "cz-conventional-changelog": "^2.1.0",
     "gh-pages": "^1.0.0",
     "npm-run-all": "^4.1.2",
     "npm-scripts-info": "^0.3.6",
@@ -95,11 +94,6 @@
     "sources": [
       "build/main/**/*.js"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "greenkeeper": {
     "ignore": [
