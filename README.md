@@ -29,6 +29,10 @@ If you want to restart with a clean environment, run
 
 See [this project page](https://github.com/joemphilips/cycle-walletts/projects/2?add_cards_query=is%3Aopen) for current status
 
+Please read instruction below before giving a pull request
+
+* use `yarn cz` instead of `git commit` (except when you `--amend` ing)
+
 ## testing
 
 * `yarn test` ... run unit test in packages
