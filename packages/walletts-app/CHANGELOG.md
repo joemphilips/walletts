@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/joemphilips/walletts/compare/walletts-app@0.0.5-0...walletts-app@0.0.5) (2018-06-13)
+
+
+
+
+**Note:** Version bump only for package walletts-app
+
 <a name="0.0.5-0"></a>
 ## [0.0.5-0](https://github.com/irath96/electron-react-typescript-boilerplate/compare/walletts-app@0.0.4...walletts-app@0.0.5-0) (2018-06-13)
 
