@@ -30,7 +30,7 @@ services:
       context: ./bcoin-docker
       dockerfile: Dockerfile.slim
       args:
-        BCOIN_VERSION: master
+        BCOIN_VERSION: bc07492ebac4143bd449d7bbfae34427d3d32485
     restart: unless-stopped
     env_file:
       - ./bcoin.env
