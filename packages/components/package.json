@@ -104,5 +104,6 @@
     "exclude": [
       "**/*.spec.js"
     ]
-  }
+  },
+  "private": true
 }
