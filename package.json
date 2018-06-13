@@ -23,6 +23,7 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "@commitlint/config-lerna-scopes": "^7.0.0",
+    "@commitlint/prompt": "^7.0.0",
     "commitizen": "^2.10.1",
     "cz-lerna-changelog": "^1.2.1",
     "husky": "^1.0.0-rc.8",
@@ -35,12 +36,12 @@
   "version": "0.0.0-development",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path": "@commitlint/prompt"
     }
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn commitlint"
+      "commit-msg": "yarn commitlint"
     }
   }
 }
