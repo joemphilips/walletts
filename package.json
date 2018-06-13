@@ -14,7 +14,8 @@
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel",
     "cz": "git-cz",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "bump": "lerna publish --conventional-commits --skip-git --skip-npm --cd-version=prerelease --preid=beta --always"
   },
   "private": true,
   "devDependencies": {
