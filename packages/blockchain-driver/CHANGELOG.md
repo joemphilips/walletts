@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/joemphilips/walletts/compare/blockchain-driver@0.0.5-0...blockchain-driver@0.0.5) (2018-06-13)
+
+
+
+
+**Note:** Version bump only for package blockchain-driver
+
+<a name="0.0.5-0"></a>
+## [0.0.5-0](https://github.com/joemphilips/blockchain-driver/compare/blockchain-driver@0.0.4...blockchain-driver@0.0.5-0) (2018-06-13)
+
+
+
+
+**Note:** Version bump only for package blockchain-driver
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/joemphilips/blockchain-driver/compare/blockchain-driver@0.0.3...blockchain-driver@0.0.4) (2018-06-13)
 

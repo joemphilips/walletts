@@ -1,11 +1,11 @@
 {
   "name": "@walletts/components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a typescript-starter project",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/joemphilips/walletts-components",
+  "repository": "https://github.com/joemphilips/walletts",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -57,7 +57,7 @@
     "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@types/react": "^16.3.14",
-    "@walletts/core": "^0.0.4",
+    "@walletts/core": "^0.0.5",
     "cross-env": "^5.1.6",
     "csstips": "^0.3.0",
     "csstype": "^2.5.2",
