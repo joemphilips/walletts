@@ -24,7 +24,7 @@ export interface BcoinResponse {
   readonly nodeType: SupportedBchType.BCOIN;
   readonly type: nodeMethodName | walletMethodName | keyof Client | 'websocket';
   readonly result: any;
-  readonly meta?: any;
+  readonly meta: any;
 }
 
 export type BlockchainSource = Stream<BitcoindResponse | BcoinResponse>;
