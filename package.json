@@ -15,7 +15,8 @@
     "dev": "lerna run dev --parallel",
     "cz": "git-cz",
     "commitlint": "commitlint -e $GIT_PARAMS",
-    "bump": "lerna publish -m 'chore(release): publish' --conventional-commits --cd-version=patch"
+    "bump": "lerna publish -m 'chore(release): publish-manual' --conventional-commits",
+    "bump-ci": "lerna publish -m 'chore(release): publish-ci' --conventional-commits --cd-version=prepatch"
   },
   "private": true,
   "devDependencies": {
