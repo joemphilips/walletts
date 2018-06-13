@@ -35,12 +35,12 @@
   "version": "0.0.0-development",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path":  "./node_modules/cz-lerna-changelog"
     }
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn commitlint"
+      "commit-msg": "yarn commitlint"
     }
   }
 }
