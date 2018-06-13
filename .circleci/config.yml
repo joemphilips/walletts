@@ -1,9 +1,45 @@
+version: 2
 jobs:
-  build:
+  generate_cache:
     machine: true
     steps:
       - checkout
+      - restore_cache:
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "docker-compose.dependency.yml" }}-{{ checksum "bcoin-docker/Dockerfile.slim" }}
+          paths: ~/caches/docker-images-for-dependencies.tar
+      - run:
+          name: create cache for dependencies
+          command: |
+            if [ ! -f ~/caches/docker-images-for-dependencies.tar ]; then
+              docker-compose pull bitcoind bcoin
+              docker-compose build bitcoind bcoin
+              mkdir -p ~/caches
+              docker save $(docker images | awk 'NR>=2 && ! /^<none>/{print $1}') -o ~/caches/docker-images-for-dependencies.tar
+            fi
+      - save_cache:
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "docker-compose.dependency.yml" }}-{{ checksum "bcoin-docker/Dockerfile.slim" }}
+          paths: ~/caches/docker-images-for-dependencies.tar
+  run_test:
+    machine: true
+    steps:
+      - checkout
+      - restore_cache:
+          key: docker-{{ checksum ".circleci/config.yml" }}-{{ checksum "docker-compose.dependency.yml" }}-{{ checksum "bcoin-docker/Dockerfile.slim" }}
+          paths: ~/caches/docker-images-for-dependencies.tar
+      - run:
+          name: Load Docker images
+          command: |
+            if [[ -e ~/caches/docker-images-for-dependencies.tar ]]; then
+              docker load -i ~/caches/docker-images-for-dependencies.tar
+            fi
       - run:
           command: docker-compose up --abort-on-container-exit
-          name: install yarn
-version: 2
+          name: run test with docker-compose
+workflows:
+  version: 2
+  build:
+    jobs:
+      - generate_cache
+      - run_test:
+          requires:
+            - generate_cache

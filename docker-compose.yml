@@ -1,50 +1,13 @@
-version: '3'
+version: '2'
 services:
   bitcoind:
-    image: seegno/bitcoind
-    restart: unless-stopped
-    expose:
-      ## Comment these if they conflict with something else you're running.
-      #-- Mainnet
-      - "8333"
-      - "8332" # RPC
-      #-- Testnet
-      - "18333"
-      - "18332" # RPC
-    command:
-      -printtoconsole
-      -regtest=1
-      -rest
-      -rpcallowip=10.211.0.0/16
-      -rpcallowip=172.17.0.0/16
-      -rpcallowip=192.168.0.0/16
-      -rpcallowip=0.0.0.0/0
-      -rpcuser=foo
-      -rpcpassword=bar
-      -rpcport=18332
-      -server
-      -zmqpubrawblock='tcp://127.0.0.1:288332'
-      -zmqpubrawtx='tcp://127.0.0.1:288332'
+    extends:
+      file: docker-compose.dependency.yml
+      service: bitcoind
   bcoin:
-    build:
-      context: ./bcoin-docker
-      dockerfile: Dockerfile.slim
-      args:
-        BCOIN_VERSION: master
-    restart: unless-stopped
-    env_file:
-      - ./bcoin.env
-    expose:
-      # Regtest
-      - "48444"
-      - "48332" # RPC
-      - "48334" # Wallet
-      # Simnet
-      - "18555"
-      - "18556" # RPC
-      - "18558" # Wallet
-      # Socket
-      - "18559" # Wallet
+    extends:
+      file: docker-compose.dependency.yml
+      service: bcoin
   walletts:
     environment:
       - CI=1 # since ora will cause error without this
