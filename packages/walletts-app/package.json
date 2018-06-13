@@ -68,16 +68,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/irath96/electron-react-typescript-boilerplate.git"
+    "url": "git+https://github.com/joemphilips/walletts"
   },
   "author": {
-    "name": "Alexander Rath",
-    "email": "irath96@gmail.com",
-    "url": "https://github.com/irath96"
+    "name": "joemphilips",
+    "email": "joemphilips@gmail.com",
+    "url": "https://github.com/joemphilips"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/irath96/electron-react-typescript-boilerplate/issues"
+    "url": "https://github.com/joemphilips/walletts/issues"
   },
   "keywords": [
     "electron",
@@ -85,7 +85,7 @@
     "webpack",
     "bitcoin"
   ],
-  "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
+  "homepage": "https://github.com/joemphilips/walletts/tree/master/packages/walletts-app#readme",
   "devDependencies": {
     "@types/bitcoinjs-lib": "^3.3.3",
     "@types/history": "^4.5.2",

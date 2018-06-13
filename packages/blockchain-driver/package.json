@@ -5,9 +5,9 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/joemphilips/blockchain-driver",
+  "repository": "https://github.com/joemphilips/walletts",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["bitcoin", "cyclejs"],
   "scripts": {
     "info": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
