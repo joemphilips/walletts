@@ -13,7 +13,6 @@
     "bootstrap": "lerna bootstrap --stream",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel",
-    "semantic-release": "semantic-release",
     "cz": "git-cz",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
@@ -26,7 +25,6 @@
     "cz-lerna-changelog": "^1.2.1",
     "husky": "^0.14.3",
     "lerna": "^2.9.0",
-    "semantic-release": "^15.5.2",
     "typescript": "2.8"
   },
   "publishConfig": {
