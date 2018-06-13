@@ -1,7 +1,7 @@
 {
   "name": "walletts-app",
   "productName": "walletts-app",
-  "version": "0.10.0",
+  "version": "0.0.4",
   "description": "more than yet another bitcoin wallet",
   "main": "main.js",
   "scripts": {
@@ -141,10 +141,10 @@
     "@types/react-router": "^4.0.25",
     "@types/react-router-dom": "^4.2.6",
     "@types/react-router-redux": "^5.0.14",
-    "@walletts/components": "^1.0.0",
-    "@walletts/core": "^1.0.0",
+    "@walletts/components": "^0.0.4",
+    "@walletts/core": "^0.0.4",
     "bitcoinjs-lib": "^3.3.2",
-    "blockchain-driver": "^0.0.0",
+    "blockchain-driver": "^0.0.4",
     "csstips": "^0.2.3",
     "electron-debug": "^1.1.0",
     "enzyme": "^3.3.0",
@@ -177,5 +177,6 @@
   "devEngines": {
     "node": ">=6.x",
     "npm": ">=3.x"
-  }
+  },
+  "private": true
 }

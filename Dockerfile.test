@@ -22,7 +22,7 @@ COPY packages/blockchain-driver/package.json \
 COPY packages/walletts-app/package.json \
   /usr/src/app/packages/walletts-app/package.json
 
-RUN npm install -g lerna
+RUN yarn
 RUN yarn bootstrap
 
 COPY packages/core \
