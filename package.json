@@ -14,8 +14,8 @@
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel",
     "cz": "git-cz",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "bump": "lerna publish --conventional-commits --skip-git --skip-npm --cd-version=patch --exact"
+    "commitlint": "commitlint -e $GIT_PARAMS",
+    "bump": "lerna publish --skip-git --skip-npm --conventional-commits --cd-version=patch"
   },
   "private": true,
   "devDependencies": {
@@ -24,7 +24,7 @@
     "@commitlint/config-lerna-scopes": "^7.0.0",
     "commitizen": "^2.10.1",
     "cz-lerna-changelog": "^1.2.1",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.8",
     "lerna": "^2.9.0",
     "typescript": "2.8"
   },
@@ -39,7 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn commitmsg"
+      "pre-commit": "yarn commitlint"
     }
   }
 }
