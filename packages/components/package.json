@@ -1,6 +1,6 @@
 {
   "name": "@walletts/components",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "a typescript-starter project",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -59,7 +59,7 @@
     "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@types/react": "^16.3.14",
-    "@walletts/core": "^1.0.0",
+    "@walletts/core": "0.0.1",
     "cross-env": "^5.1.6",
     "csstips": "^0.3.0",
     "csstype": "^2.5.2",
