@@ -15,7 +15,7 @@
     "dev": "lerna run dev --parallel",
     "cz": "git-cz",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "bump": "lerna publish --conventional-commits --skip-git --skip-npm --cd-version=prerelease --preid=beta --always"
+    "bump": "lerna publish --conventional-commits --skip-git --skip-npm --cd-version=patch --exact"
   },
   "private": true,
   "devDependencies": {
