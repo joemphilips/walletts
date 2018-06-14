@@ -2,7 +2,7 @@ import * as CS from 'csstips';
 import * as React from 'react';
 import * as TS from 'typestyle';
 import { UserUIData } from '../..';
-import { UserIcon } from '../collections/UserIcon';
+import { UserIcon } from '../molecules/UserIcon';
 import { paneBase } from '../themes';
 
 export interface Props {

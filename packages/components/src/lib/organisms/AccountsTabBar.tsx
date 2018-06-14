@@ -2,8 +2,8 @@ import { AccountID } from '@walletts/core';
 import * as CS from 'csstips';
 import * as React from 'react';
 import { style } from 'typestyle';
-import { AccountItem } from '../collections/AccountItem';
 import { AccountUIData } from '../common/account';
+import { AccountItem } from '../molecules/AccountItem';
 
 export interface ValueProps {
   readonly accountsInfo: Record<AccountID, AccountUIData>;
