@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ts from 'typestyle';
 // tslint:disable-next-line
 import { AccountUIData } from '../common/account';
-import { AccountsTabBar } from '../elements';
+import { AccountsTabBar } from '../organisms';
 
 export interface ValueProps {
   readonly item?: any;

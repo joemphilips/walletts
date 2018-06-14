@@ -1,4 +1,4 @@
 export * from './lib/views';
-export * from './lib/elements';
+export * from './lib/organisms';
 export * from './lib/common';
-export * from './lib/collections';
+export * from './lib/molecules';
