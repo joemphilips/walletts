@@ -1,7 +1,16 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express';
+import { addMockFunctionsToSchema } from 'graphql-tools';
 import {schema} from '..';
+import { mocks } from '../lib/mocks';
+
+// tslint:disable-next-line
+addMockFunctionsToSchema({
+  schema,
+  mocks,
+  preserveResolvers: true
+})
 
 const app = express();
 
