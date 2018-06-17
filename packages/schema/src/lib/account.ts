@@ -6,6 +6,8 @@ export const typeDef = gql`
     kind: AccountKind!
     balance: Float!
     owners: [Person]!
+    inComingTx: [Transaction]
+    outGoingTx: [Transaction]
   }
 
   type IndividualAccount implements Account {

@@ -25,12 +25,12 @@ export class AccountPage extends React.Component<Props> {
     if (Object.keys(currentAccount.owners).length <= 1) {
       return (
         <AccountDetail
+          id={id}
           account={currentAccount}
           knownUsers={this.props.knownUsers}
           knownChannels={this.props.knownChannels}
         >
-          {" "}
-          showing account info {id}{" "}
+          showing account info {id}
         </AccountDetail>
       );
     } else {

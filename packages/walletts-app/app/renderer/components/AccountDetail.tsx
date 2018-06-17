@@ -4,7 +4,7 @@ import * as TS from "typestyle";
 import * as CSS from "csstips";
 import { AccountRight } from "./AccountRightSidebar";
 import { ServiceWebview } from "./ServiceWebview";
-import { UserID } from "@walletts/core";
+import { UserID, AccountID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
 
 const accountDetailStyle = TS.style(CSS.horizontal, {
@@ -12,6 +12,7 @@ const accountDetailStyle = TS.style(CSS.horizontal, {
 });
 
 export interface Props {
+  id: AccountID;
   account: AccountUIData;
   knownUsers: Record<UserID, UserUIData>;
   knownChannels: ChannelState;
@@ -27,12 +28,8 @@ export class AccountDetail extends React.Component<Props> {
         <ServiceWebview
           account={this.props.account}
           allChannel={this.props.knownChannels}
-        >
-          {" "}
-        </ServiceWebview>
-        <AccountRight account={this.props.account} owners={ownersInfo}>
-          {" "}
-        </AccountRight>
+        />
+        <AccountRight account={this.props.account} owners={ownersInfo} />
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import { withRouter } from "react-router";
 import {
-  AccountPage as AccountPageComponent,
+  AccountDetail as AccountPageComponent,
   Props
-} from "../components/Account";
+} from "../components/AccountDetail";
 import { IState } from "../store";
 import { connect } from "react-redux";
 import { graphql } from "react-apollo";
@@ -10,14 +10,14 @@ import gql from "graphql-tag";
 
 function mapStateToProps(state: IState): Partial<Props> {
   return {
-    accounts: state.accounts.accounts,
+    id: state.accounts.accounts,
     knownUsers: state.users,
     knownChannels: state.channels
   };
 }
 
 const accountDetailQuery = gql`
-  query getAccountDetail(id: ID!): Account
+  query getAccount(id: ID!): Account
 `;
 
 const AccountPageWithData = graphql(accountDetailQuery, {

@@ -5,6 +5,7 @@ import { typeDef as Person } from './person';
 import { typeDef as Project } from './project';
 import { Query } from './query';
 import { typeDef as Scalars } from './scalars';
+import { typeDef as Transaction } from './transaction';
 // tslint:disable no-if-statement
 
 const resolvers = {
@@ -23,9 +24,7 @@ const resolvers = {
 
 // tslint:disable no-empty no-console
 export const schema = makeExecutableSchema({
-  typeDefs: [Query, Account, Person, Project, Scalars, Channel],
+  typeDefs: [Query, Account, Person, Project, Scalars, Channel, Transaction],
   resolvers
 });
 
-console.log(`schema is`);
-console.log(schema);
