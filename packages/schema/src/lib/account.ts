@@ -15,12 +15,16 @@ export const typeDef = gql`
     kind: AccountKind!
     balance: Float!
     owners: [Person]!
+    inComingTx: [Transaction]
+    outGoingTx: [Transaction]
   }
   type CommunityAccount implements Account {
     id: ID!
     kind: AccountKind!
     balance: Float!
     owners: [Person]!
+    inComingTx: [Transaction]
+    outGoingTx: [Transaction]
     integratedChannels: [Channel]!
   }
 
