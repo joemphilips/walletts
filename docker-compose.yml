@@ -8,6 +8,11 @@ services:
     extends:
       file: docker-compose.dependency.yml
       service: bcoin
+  mock:
+    build:
+      context: ./packages/schema
+    expose:
+      - "3001"
   walletts:
     environment:
       - CI=1 # since ora will cause error without this
@@ -18,3 +23,4 @@ services:
     depends_on:
       - bcoin
       - bitcoind
+      - mock
