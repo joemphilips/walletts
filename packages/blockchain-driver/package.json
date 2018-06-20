@@ -56,9 +56,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "@cycle/dom": "^20.2.0",
     "@cycle/run": "^4.1.0",
-    "@cycle/time": "^0.13.0",
     "@walletts/core": "^0.0.5",
     "bclient": "^0.0.2",
     "bitcoin-core": "^2.0.0",
