@@ -6,6 +6,8 @@
     // waiting on https://github.com/palantir/tslint/pull/3708
     "no-implicit-dependencies": [true, "dev"],
 
+    "no-submodule-imports": false,
+
     /* tslint-immutable rules */
     // Recommended built-in rules
     "no-var-keyword": true,
@@ -28,7 +30,7 @@
       true,
       { "ignore-prefix": ["console.", "process.exit"] }
     ],
-    "no-if-statement": true
+    "no-if-statement": false
     /* end tslint-immutable rules */
   }
 }

@@ -50,9 +50,15 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "cross-env": "^5.2.0"
+    "apollo-link": "^1.2.2",
+    "apollo-link-http": "^1.5.4",
+    "cross-env": "^5.2.0",
+    "graphql-tag": "^2.9.2",
+    "xstream": "^11.4.0"
   },
   "devDependencies": {
+    "@cycle/run": "^4.1.0",
+    "@types/node": "^10.3.4",
     "ava": "^1.0.0-beta.5.1",
     "codecov": "^3.0.2",
     "cz-conventional-changelog": "^2.1.0",
