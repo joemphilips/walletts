@@ -8,14 +8,14 @@ export const typeDef = gql`
   }
 
   type TxIn {
-    index: number
+    index: Int
     previousOut: TxOut
     signature: String
   }
 
   type TxOut {
-    amount: number
-    index: number
+    amount: Float
+    index: Int
     address: String
   }
 `
