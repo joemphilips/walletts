@@ -1,5 +1,7 @@
 # walletts
 
+[![CircleCI](https://circleci.com/gh/joemphilips/walletts/tree/master.svg?style=svg)](https://circleci.com/gh/joemphilips/walletts/tree/master)
+
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 The bitcoin-blockchain sdk for typescript and applications for managing your financial social participation.
