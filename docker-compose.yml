@@ -11,8 +11,8 @@ services:
   mock:
     build:
       context: ./packages/schema
-    expose:
-      - "3001"
+    ports:
+      - "3001:3001"
   walletts:
     environment:
       - CI=1 # since ora will cause error without this
