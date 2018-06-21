@@ -1333,6 +1333,12 @@
     scroll "^2.0.3"
     warning "^4.0.1"
 
+"@material-ui/icons@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.1.0.tgz#4d025df7b0ba6ace8d6710079ed76013a4d26595"
+  dependencies:
+    recompose "^0.26.0 || ^0.27.0"
+
 "@mdx-js/loader@^0.10.0":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.10.1.tgz#46771042f5d060a381fe9bc71c67982592a63822"

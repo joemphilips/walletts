@@ -1,21 +1,17 @@
 import * as React from "react";
 import Sidebar from "./Sidebar";
-import * as TS from "typestyle";
-import * as CSS from "csstips";
-
-const appStyle = TS.style(CSS.horizontal, {
-  $nest: { "&>*": { height: "100vh" } }
-});
-const childrenStyle = TS.style(CSS.flex, {
-  $nest: { "&>*": { height: "100vh" } }
-});
+import { Grid } from "@material-ui/core";
 
 const App: React.SFC = props => {
   return (
-    <div className={appStyle}>
-      <Sidebar />
-      <div className={childrenStyle}>{props.children}</div>
-    </div>
+    <Grid container direction="row">
+      <Grid item xs={1}>
+        <Sidebar />
+      </Grid>
+      <Grid item xs={11}>
+        {props.children}
+      </Grid>
+    </Grid>
   );
 };
 

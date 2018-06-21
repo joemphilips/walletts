@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { style } from "typestyle";
 import * as CSS from "csstips";
 import * as csx from "csx";
@@ -13,7 +12,6 @@ export default class Home extends React.Component {
       <div>
         <div className={HomeStyle} data-tid="container">
           <h2 className={h2Style}>Home</h2>
-          <Link to="/counter">to Counter</Link>
         </div>
       </div>
     );

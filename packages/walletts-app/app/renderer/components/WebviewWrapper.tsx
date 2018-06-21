@@ -2,12 +2,12 @@ import * as React from "react";
 const ElectronWebview = require("react-electron-web-view");
 
 export interface Props {
-  readonly url: string;
+  readonly url: string | null;
 }
 
 export class WebviewWrapper extends React.PureComponent<Props> {
   render(): JSX.Element {
-    return (
+    return this.props.url ? (
       <ElectronWebview
         // style must be specified in this way since webview is wrapped
         // in another <div> tag
@@ -16,6 +16,8 @@ export class WebviewWrapper extends React.PureComponent<Props> {
         src={this.props.url}
         autosize
       />
+    ) : (
+      <div> not showing webview</div>
     );
   }
 }
