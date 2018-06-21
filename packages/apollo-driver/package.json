@@ -54,6 +54,7 @@
     "apollo-link-http": "^1.5.4",
     "cross-env": "^5.2.0",
     "cross-fetch": "^2.2.1",
+    "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "xstream": "^11.4.0"
   },

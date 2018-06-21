@@ -32,7 +32,7 @@ test('graphql driver', async t => {
   const driver = {
     Apollo: makeGraphQLDriver({
       customApolloLink: new HttpLink({
-        uri: 'http://localhost:3001/graphql',
+        uri: 'http://mock:3001/graphql',
         fetch
       })
     })
