@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
   enum status {
@@ -9,14 +9,14 @@ export const typeDef = gql`
     abandoned
     succeeded
   }
-type Project {
-  id: ID!
-  status: status
-  owners: [Person]!
-  targetAmount: Int!
-  purpose: String
-  deadline: Date
-  Funders: [Person]
-  transaction: String
-}
-`
+  type Project {
+    id: ID!
+    status: status
+    owners: [Person]!
+    targetAmount: Int!
+    purpose: String
+    deadline: Date
+    Funders: [Person]
+    transaction: String
+  }
+`;

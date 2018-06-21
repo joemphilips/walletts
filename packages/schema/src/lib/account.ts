@@ -37,8 +37,8 @@ export const typeDef = gql`
 
 export const fakeDatas: ReadonlyArray<any> = [
   {
-    id: "fakeaccountdata1",
+    id: 'fakeaccountdata1',
     balance: 0.2,
     owners: []
   }
-]
+];

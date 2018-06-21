@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
   type Transaction {
@@ -18,4 +18,4 @@ export const typeDef = gql`
     index: Int
     address: String
   }
-`
+`;
