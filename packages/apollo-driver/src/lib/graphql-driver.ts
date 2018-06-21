@@ -1,5 +1,5 @@
 import { Driver } from '@cycle/run';
-import { ApolloLink, execute, FetchResult, GraphQLRequest } from 'apollo-link';
+import { ApolloLink, execute, GraphQLRequest, makePromise } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import xs, { Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
@@ -29,15 +29,7 @@ export function makeGraphQLDriver({
   ): GraphQLResponse {
     const host = input$
       .map(input => {
-        return xs.create({
-          start: listener =>
-            execute(link, input).map((result: FetchResult) => {
-              // tslint:disable-next-line no-expression-statement
-              listener.next(result);
-            }),
-          // tslint:disable-next-line
-          stop: () => {}
-        });
+        return xs.fromPromise(makePromise(execute(link, input)));
       })
       .compose(flattenConcurrently);
     return host;
