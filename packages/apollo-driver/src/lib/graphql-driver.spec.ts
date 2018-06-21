@@ -1,6 +1,6 @@
 import { setup } from '@cycle/run';
 import test from 'ava';
-import { gql } from 'graphql-tag'
+import gql from 'graphql-tag';
 import xs from 'xstream';
 import { makeGraphQLDriver } from './graphql-driver';
 
@@ -9,22 +9,34 @@ export const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec));
 
 test('graphql driver', async t => {
-  const query = gql``
-  const main = _ => {
+  t.plan(1);
+  const query = gql`
+    query {
+      getAccount(id: "testAccountId") {
+        id
+        balance
+      }
+    }
+  `;
+  const main = (_: any) => {
     return {
-      Apollo: xs.of()
+      Apollo: xs.of(query)
     };
   };
 
   const driver = {
-    Apollo: makeGraphQLDriver({uri: 'https://api.github.com/graphql'})
+    Apollo: makeGraphQLDriver({ uri: 'http://localhost3001' })
   };
 
   const { run, sources } = setup(main, driver);
 
   sources.Apollo.addListener({
-    next: _ => t.fail()
+    next: (response: any) =>
+      t.is(response, { id: 'testAccountId', balance: 0.1 }),
+    error: (e: any) => t.fail(e.toString()),
+    complete: () => t.fail('apollo-driver must not complete')
   });
 
   run();
+  await sleep(100);
 });

@@ -6,8 +6,8 @@ import flattenConcurrently from 'xstream/extra/flattenConcurrently';
 import { GraphQLResponse } from './interfaces';
 
 export interface DriverConstructorOption {
-  customApolloLink?: ApolloLink;
-  uri?: string;
+  readonly customApolloLink?: ApolloLink;
+  readonly uri?: string;
 }
 export function makeGraphQLDriver({
   customApolloLink,
@@ -32,6 +32,7 @@ export function makeGraphQLDriver({
         return xs.create({
           start: listener =>
             execute(link, input).map((result: FetchResult) => {
+              // tslint:disable-next-line no-expression-statement
               listener.next(result);
             }),
           // tslint:disable-next-line
