@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
-scalar Date
-`
+  scalar Date
+`;

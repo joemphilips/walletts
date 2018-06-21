@@ -5,11 +5,12 @@ module.exports = {
       2, 'always', [
         "meta",
         "core",
+        "apollo-driver",
         "blockchain-driver",
         "app",
         "components",
         "release",
-        "schema"
+        "schema",
       ]
     ]
   }

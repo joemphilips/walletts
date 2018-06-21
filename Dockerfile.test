@@ -19,6 +19,8 @@ COPY packages/blockchain-driver/package.json \
   /usr/src/app/packages/blockchain-driver/package.json
 COPY packages/walletts-app/package.json \
   /usr/src/app/packages/walletts-app/package.json
+COPY packages/apollo-driver/package.json \
+  /usr/src/app/packages/apollo-driver/package.json
 
 RUN yarn
 RUN yarn bootstrap
@@ -31,5 +33,7 @@ COPY packages/blockchain-driver \
   /usr/src/app/packages/blockchain-driver
 COPY packages/walletts-app \
   /usr/src/app/packages/walletts-app/
+COPY packages/apollo-driver \
+  /usr/src/app/packages/apollo-driver
 
 RUN yarn build

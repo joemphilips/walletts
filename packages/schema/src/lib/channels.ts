@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
   type Channel {
@@ -7,4 +7,4 @@ export const typeDef = gql`
     name: String
     url: String
   }
-` 
+`;

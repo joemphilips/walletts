@@ -11,4 +11,3 @@ export const typeDef = gql`
     fundedProject: [Project]
   }
 `;
-

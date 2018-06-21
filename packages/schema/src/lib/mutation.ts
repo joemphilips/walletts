@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const typeDef = gql`
   type Mutation {
@@ -6,4 +6,4 @@ export const typeDef = gql`
     proposeCreateAccount(owners: [Person]!, purpose: String),
     fundProject(id: ID!, amount: Int!)
   }
-`
+`;
