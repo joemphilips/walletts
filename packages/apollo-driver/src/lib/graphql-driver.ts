@@ -3,7 +3,7 @@ import { ApolloLink, execute, GraphQLRequest, makePromise } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import xs, { Stream } from 'xstream';
 import flattenConcurrently from 'xstream/extra/flattenConcurrently';
-import { GraphQLResponse } from './interfaces';
+import { ApolloSource } from './interfaces';
 
 export interface DriverConstructorOption {
   readonly customApolloLink?: ApolloLink;
@@ -12,7 +12,7 @@ export interface DriverConstructorOption {
 export function makeGraphQLDriver({
   customApolloLink,
   uri
-}: DriverConstructorOption): Driver<Stream<any>, Stream<any>> {
+}: DriverConstructorOption): Driver<Stream<GraphQLRequest>, ApolloSource> {
   const link = customApolloLink
     ? customApolloLink
     : uri
@@ -24,9 +24,7 @@ export function makeGraphQLDriver({
     );
   }
 
-  return function graphQLDriver(
-    input$: Stream<GraphQLRequest>
-  ): GraphQLResponse {
+  return function graphQLDriver(input$: Stream<GraphQLRequest>): ApolloSource {
     const host = input$
       .map(input => {
         return xs.fromPromise(makePromise(execute(link, input)));
