@@ -143,6 +143,8 @@
     "@types/react-router-redux": "^5.0.14",
     "@walletts/components": "^0.0.5",
     "@walletts/core": "^0.0.5",
+    "apollo-driver": "^1.0.0",
+    "apollo-link-http": "^1.5.4",
     "bitcoinjs-lib": "^3.3.2",
     "blockchain-driver": "^0.0.5",
     "csstips": "^0.2.3",
