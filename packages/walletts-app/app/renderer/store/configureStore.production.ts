@@ -7,18 +7,30 @@ import rootReducer, { CycleMain } from "./root";
 import { createCycleMiddleware } from "redux-cycles";
 import { makeHTTPDriver } from "@cycle/http";
 import { run } from "@cycle/run";
-import { makeTrustedBitcoindDriver } from "blockchain-driver";
+import {
+  makeTrustedBcoinNodeDriver,
+  makeTrustedBcoinWalletDriver
+} from "blockchain-driver";
+import { makeGraphQLDriver } from "apollo-driver";
+import { ApolloLink } from "apollo-link";
+import { HttpLink } from "apollo-link-http";
+const Config = require("../../config");
 
 const history = createBrowserHistory();
 const router = routerMiddleware(history);
+const customApolloLink = ApolloLink.from([
+  new HttpLink(Config.graphqlEndpointProd)
+]);
 
 // redux-cycles realted stuff
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver } = cycleMiddleware;
 run(CycleMain, {
   ACTION: makeActionDriver(),
-  Blockchain: makeTrustedBitcoindDriver(),
-  HTTP: makeHTTPDriver() as any
+  Blockchain: makeTrustedBcoinNodeDriver(Config.bcoinNodeURL),
+  Wallet: makeTrustedBcoinWalletDriver(Config.bcoinWalletURL),
+  HTTP: makeHTTPDriver(),
+  Apollo: makeGraphQLDriver({ customApolloLink })
 });
 
 const enhancer = applyMiddleware(router, cycleMiddleware);

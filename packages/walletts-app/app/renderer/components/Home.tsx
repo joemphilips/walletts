@@ -1,21 +1,22 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import { style } from "typestyle";
-import * as CSS from "csstips";
-import * as csx from "csx";
+import { createStyles, WithStyles, withStyles } from "@material-ui/core";
 
-const HomeStyle = style(CSS.vertical);
-const h2Style = style({ fontSize: csx.rem(5) });
+const styles = createStyles({ h2: { fontSize: "5rem" } });
 
-export default class Home extends React.Component {
+interface Props extends WithStyles<typeof styles> {}
+
+class RawHome extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <div className={HomeStyle} data-tid="container">
-          <h2 className={h2Style}>Home</h2>
-          <Link to="/counter">to Counter</Link>
-        </div>
+        <h2 className={classes.h2}>Home</h2>
       </div>
     );
   }
 }
+
+export const Home = withStyles(styles)(RawHome);

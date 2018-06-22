@@ -1,22 +1,39 @@
 import * as React from "react";
 import Sidebar from "./Sidebar";
-import * as TS from "typestyle";
-import * as CSS from "csstips";
+import { appInit } from "../store/common/actions";
+import { IState } from "@walletts/walletts-app/app/renderer/store";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-const appStyle = TS.style(CSS.horizontal, {
-  $nest: { "&>*": { height: "100vh" } }
+interface Props {
+  readonly appInit: () => any;
+}
+
+class AppComponent extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    this.props.appInit();
+  }
+
+  render() {
+    return (
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state: IState) => state;
+const mapDispatchToProps = (dispatch: Dispatch<IState>) => ({
+  appInit: () => dispatch(appInit())
 });
-const childrenStyle = TS.style(CSS.flex, {
-  $nest: { "&>*": { height: "100vh" } }
-});
 
-const App: React.SFC = props => {
-  return (
-    <div className={appStyle}>
-      <Sidebar />
-      <div className={childrenStyle}>{props.children}</div>
-    </div>
-  );
-};
-
-export default App;
+export const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppComponent);

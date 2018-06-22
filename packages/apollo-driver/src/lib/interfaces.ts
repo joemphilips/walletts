@@ -1,5 +1,7 @@
 import { Stream } from 'xstream';
 
-export type GraphQLResponse = Stream<{
+export interface GraphQLResponse {
   readonly [key: string]: any;
-}>;
+}
+
+export type ApolloSource = Stream<GraphQLResponse>;

@@ -11,3 +11,4 @@ declare module "react-electron-web-view" {
 declare var Snabbdom: any; //Automaticly imported into every file
 
 declare module "*.png";
+declare module "config";

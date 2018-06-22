@@ -9,8 +9,6 @@ export function requestInputToResponse$(
   nodeType: SupportedBchType
 ): BlockchainSource {
   let resp$;
-  console.log('going to sending request with');
-  console.log(req);
 
   if (!req.id) {
     resp$ = req.options

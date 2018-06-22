@@ -1333,6 +1333,12 @@
     scroll "^2.0.3"
     warning "^4.0.1"
 
+"@material-ui/icons@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-1.1.0.tgz#4d025df7b0ba6ace8d6710079ed76013a4d26595"
+  dependencies:
+    recompose "^0.26.0 || ^0.27.0"
+
 "@mdx-js/loader@^0.10.0":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.10.1.tgz#46771042f5d060a381fe9bc71c67982592a63822"
@@ -1460,6 +1466,10 @@
 "@types/cheerio@*":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.7.tgz#4a92eafedfb2b9f4437d3a4410006d81114c66ce"
+
+"@types/classnames@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.4.tgz#d3ee9ebf714aa34006707b8f4a58fd46b642305a"
 
 "@types/connect@*":
   version "3.4.32"
@@ -3625,7 +3635,7 @@ class-validator@^0.8.5:
   dependencies:
     validator "9.2.0"
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 

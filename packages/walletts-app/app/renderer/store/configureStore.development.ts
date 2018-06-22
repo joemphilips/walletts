@@ -9,7 +9,14 @@ import { createCycleMiddleware } from "redux-cycles";
 
 import * as counterActions from "../actions/counter";
 import { makeHTTPDriver } from "@cycle/http";
-import { makeTrustedBitcoindDriver } from "blockchain-driver";
+import {
+  makeTrustedBcoinNodeDriver,
+  makeTrustedBcoinWalletDriver
+} from "blockchain-driver";
+import { ApolloLink } from "apollo-link";
+import { HttpLink } from "apollo-link-http";
+import { makeGraphQLDriver } from "apollo-driver";
+const Config = require("../../config");
 
 declare const window: Window & {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(a: any): void;
@@ -34,11 +41,16 @@ const router = routerMiddleware(history);
 // redux-cycles realted stuff
 const cycleMiddleware = createCycleMiddleware();
 const { makeActionDriver } = cycleMiddleware;
+const customApolloLink = ApolloLink.from([
+  new HttpLink(Config.graphqlEndpointDev)
+]);
 
 run(CycleMain, {
-  ACTION: makeActionDriver(),
-  Blockchain: makeTrustedBitcoindDriver(),
-  HTTP: makeHTTPDriver() as any
+  ACTION: makeActionDriver() as any,
+  Blockchain: makeTrustedBcoinNodeDriver(Config.bcoinNodeURL),
+  Wallet: makeTrustedBcoinWalletDriver(Config.bcoinWalletURL),
+  HTTP: makeHTTPDriver() as any,
+  Apollo: makeGraphQLDriver({ customApolloLink }) as any
 });
 
 // If Redux DevTools Extension is installed use it, otherwise use Redux compose
