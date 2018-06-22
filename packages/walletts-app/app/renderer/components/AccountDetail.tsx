@@ -9,15 +9,34 @@ import { AccountRight } from "./AccountRightSidebar";
 import { ChannelsSidebar } from "./ChannelsSidebar";
 import { UserID, AccountID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
-import { Grid, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import { createStyles, WithStyles, withStyles } from "@material-ui/core";
 import { WebviewWrapper } from "@walletts/walletts-app/app/renderer/components/WebviewWrapper";
 
 const styles = createStyles({
   root: {
-    width: "100%"
+    display: "flex",
+    width: "100%",
+    flexDirection: "row"
   },
-  item: {
-    height: "100vh"
+  sidebar: {
+    display: "flex",
+    flex: 0,
+    height: "100vh",
+    width: "16%",
+    border: "solid 1px grey"
+  },
+  webview: {
+    display: "flex",
+    flex: 1,
+    height: "100vh",
+    border: "solid 1px grey"
+  },
+  rightSidebar: {
+    flex: 0,
+    display: "flex",
+    height: "100vh",
+    width: "30%",
+    border: "solid 1px grey"
   }
 });
 
@@ -49,23 +68,23 @@ class RawAccountDetail extends React.Component<Props, State> {
     );
     const { classes, account, knownChannels } = this.props;
     return (
-      <Grid container direction="row" className={classes.root}>
-        <Grid item xs={1} className={classes.item}>
+      <div className={classes.root}>
+        <div className={classes.sidebar}>
           <ChannelsSidebar
             account={account}
             allChannel={knownChannels}
             onChannelClick={this.onChannelClick}
           />
-        </Grid>
-        <Grid item xs={9} className={classes.item}>
+        </div>
+        <div className={classes.webview}>
           <WebviewWrapper
             url={this.state.activeChannel ? this.state.activeChannel.url : null}
           />
-        </Grid>
-        <Grid item xs={2} className={classes.item}>
+        </div>
+        <div className={classes.rightSidebar}>
           <AccountRight account={account} owners={ownersInfo} />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     );
   }
 }

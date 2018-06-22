@@ -10,7 +10,8 @@ import {
 
 const styles = createStyles({
   root: {
-    height: "100vh"
+    height: "100vh",
+    width: "100%"
   },
   cardItem: {
     height: "40%",
