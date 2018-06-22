@@ -1,42 +1,50 @@
 import * as React from "react";
 import { AccountUIData, Channel, ChannelID } from "@walletts/components";
 import * as Icons from "@material-ui/icons";
-import { Grid, createStyles, WithStyles, withStyles } from "@material-ui/core";
+import {
+  createStyles,
+  WithStyles,
+  withStyles,
+  List,
+  ListItem
+} from "@material-ui/core";
 
 const styles = createStyles({
   root: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center"
   },
-  icon: {
-    margin: "10px"
+  listItem: {
+    padding: "10px"
+  },
+  icon: {},
+  iconActive: {
+    backgroundColor: "blue"
   }
 });
 
 export interface Props extends WithStyles<typeof styles> {
   account: AccountUIData;
   allChannel: Record<ChannelID, Channel>;
-  onChannelClick: (channelID) => void;
+  activeChannelID: ChannelID;
+  onChannelClick: (channelID: ChannelID) => void;
 }
 
 export const RawChannelsSidebar: React.SFC<Props> = props => {
-  const { classes, account } = props;
+  const { classes, account, activeChannelID } = props;
   const IconsDom = account.integratedChannels.map(c => (
-    <Grid item key={c}>
+    <ListItem key={c} className={classes.listItem}>
       <Icons.Home
         style={{ fontSize: 36 }}
         onClick={() => props.onChannelClick(c)}
-        className={classes.icon}
+        className={activeChannelID === c ? classes.iconActive : classes.icon}
       />
-    </Grid>
+    </ListItem>
   ));
 
-  return (
-    <Grid container direction="column" className={classes.root}>
-      {IconsDom}
-    </Grid>
-  );
+  return <List className={classes.root}>{IconsDom}</List>;
 };
 
 export const ChannelsSidebar = withStyles(styles)(RawChannelsSidebar);

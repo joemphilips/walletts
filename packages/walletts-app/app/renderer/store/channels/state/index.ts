@@ -10,8 +10,12 @@ export const createDefaultChannels = (): ChannelState => ({
     name: "slack",
     url: "https://campfirejp.slack.com/messages/C024JD5EC/",
     iconPng: slackPNG,
-    iconSVG: slackSVG,
-    isActive: true
+    iconSVG: slackSVG
+  },
+  secondDefaultChannelID: {
+    id: "secondDefaultChannelID",
+    name: "messenger",
+    url: "https://www.messenger.com/"
   }
 });
 

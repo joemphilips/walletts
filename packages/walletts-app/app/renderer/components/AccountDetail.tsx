@@ -11,6 +11,7 @@ import { UserID, AccountID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
 import { createStyles, WithStyles, withStyles } from "@material-ui/core";
 import { WebviewWrapper } from "@walletts/walletts-app/app/renderer/components/WebviewWrapper";
+const config = require("../../config");
 
 const styles = createStyles({
   root: {
@@ -32,10 +33,8 @@ const styles = createStyles({
     border: "solid 1px grey"
   },
   rightSidebar: {
-    flex: 0,
-    display: "flex",
+    flex: "0 1 20%",
     height: "100vh",
-    width: "30%",
     border: "solid 1px grey"
   }
 });
@@ -48,17 +47,24 @@ export interface Props extends WithStyles<typeof styles> {
 }
 
 export interface State {
-  activeChannel?: Channel;
+  activeChannel: Channel;
 }
 
 class RawAccountDetail extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.onChannelClick.bind(this);
+    this.state = {
+      activeChannel: Object.values(props.knownChannels).filter(
+        (v: any) => v.name === config.defaultChannel
+      )[0] as Channel
+    };
+    this.onChannelClick = this.onChannelClick.bind(this);
   }
   onChannelClick(id: ChannelID) {
     const channel = this.props.knownChannels[id];
+    console.log("set active Channel to");
+    console.log(channel);
+
     this.setState({ activeChannel: channel });
   }
 
@@ -74,12 +80,11 @@ class RawAccountDetail extends React.Component<Props, State> {
             account={account}
             allChannel={knownChannels}
             onChannelClick={this.onChannelClick}
+            activeChannelID={this.state.activeChannel.id}
           />
         </div>
         <div className={classes.webview}>
-          <WebviewWrapper
-            url={this.state.activeChannel ? this.state.activeChannel.url : null}
-          />
+          <WebviewWrapper url={this.state.activeChannel.url} />
         </div>
         <div className={classes.rightSidebar}>
           <AccountRight account={account} owners={ownersInfo} />
