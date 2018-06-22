@@ -9,7 +9,10 @@ import { createCycleMiddleware } from "redux-cycles";
 
 import * as counterActions from "../actions/counter";
 import { makeHTTPDriver } from "@cycle/http";
-import { makeTrustedBitcoindDriver } from "blockchain-driver";
+import {
+  makeTrustedBcoinNodeDriver,
+  makeTrustedBcoinWalletDriver
+} from "blockchain-driver";
 import { ApolloLink } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { makeGraphQLDriver } from "apollo-driver";
@@ -43,8 +46,9 @@ const customApolloLink = ApolloLink.from([
 ]);
 
 run(CycleMain, {
-  ACTION: makeActionDriver(),
-  Blockchain: makeTrustedBitcoindDriver(),
+  ACTION: makeActionDriver() as any,
+  Blockchain: makeTrustedBcoinNodeDriver(Config.bcoinNodeURL),
+  Wallet: makeTrustedBcoinWalletDriver(Config.bcoinWalletURL),
   HTTP: makeHTTPDriver() as any,
   Apollo: makeGraphQLDriver({ customApolloLink }) as any
 });
