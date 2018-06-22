@@ -1,8 +1,5 @@
 import { withRouter } from "react-router";
-import {
-  AccountPage as AccountPageComponent,
-  Props
-} from "../components/Account";
+import { AccountChannelWrapper, Props } from "../components/Account";
 import { IState } from "../store";
 import { connect } from "react-redux";
 
@@ -14,6 +11,6 @@ function mapStateToProps(state: IState): Partial<Props> {
   };
 }
 
-export const AccountPage = withRouter(connect(mapStateToProps)(
-  AccountPageComponent
+export const AccountComponent = withRouter(connect(mapStateToProps)(
+  AccountChannelWrapper
 ) as any);

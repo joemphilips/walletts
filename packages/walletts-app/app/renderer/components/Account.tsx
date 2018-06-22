@@ -1,9 +1,10 @@
 import * as React from "react";
 import { IAccountState } from "../store/account/state";
-import { AccountDetail } from "./AccountDetail";
+import { AccountChannel } from "./AccountChannel";
 import { AccountUIData, UserUIData } from "@walletts/components";
 import { UserID, AccountID } from "@walletts/core";
 import { ChannelState } from "../store/channels/state";
+import { AccountDetail } from "@walletts/walletts-app/app/renderer/components/AccountDetail";
 
 export interface Props extends IAccountState {
   readonly match: any;
@@ -14,7 +15,7 @@ export interface Props extends IAccountState {
   readonly knownChannels: ChannelState;
 }
 
-export class AccountPage extends React.Component<Props> {
+export class AccountChannelWrapper extends React.Component<Props> {
   constructor(props: Props, context: any) {
     super(props, context);
   }
@@ -22,19 +23,19 @@ export class AccountPage extends React.Component<Props> {
     const { id } = this.props.match.params;
     const currentAccount = this.props.accounts[id];
 
-    if (Object.keys(currentAccount.owners).length <= 1) {
+    if (Object.keys(currentAccount.owners).length > 1) {
       return (
-        <AccountDetail
+        <AccountChannel
           id={id}
           account={currentAccount}
           knownUsers={this.props.knownUsers}
           knownChannels={this.props.knownChannels}
         >
           showing account info {id}
-        </AccountDetail>
+        </AccountChannel>
       );
     } else {
-      return <div> showing community account info {id} </div>;
+      return <AccountDetail />;
     }
   }
 }

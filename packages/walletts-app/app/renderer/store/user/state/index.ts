@@ -22,5 +22,13 @@ export const defaultKnownUsers: UserState = {
     name: "Alice",
     knownAddresses: [],
     nextAddressToPay: "btc11111111111111111"
+  },
+  seconddefaultfriendid: {
+    kind: "User",
+    id: "defaultfriendid",
+    isMe: false,
+    name: "Bob",
+    knownAddresses: [],
+    nextAddressToPay: "btc11111111111111111"
   }
 };
