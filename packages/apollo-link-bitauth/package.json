@@ -18,7 +18,7 @@
     "fix:tslint": "tslint --fix --project .",
     "test": "run-s build test:*",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
-    "test:unit": "nyc --silent ava",
+    "test:unit": "cross-env CI=1 nyc --silent ava",
     "watch": "run-s clean build:main && run-p \"build:main -- -w\" \"test:unit -- --watch\"",
     "cov": "run-s build test:unit cov:html && opn coverage/index.html",
     "cov:html": "nyc report --reporter=html",
@@ -44,7 +44,6 @@
     "cov": "Rebuild, run tests, then create and open the coverage report",
     "doc": "Generate HTML API documentation and open it in a browser",
     "doc:json": "Generate API documentation in typedoc JSON format",
-    "version": "Bump package.json version, update CHANGELOG.md, tag release",
     "reset": "Delete all untracked files and reset the repo to the last commit",
     "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
   },
@@ -61,7 +60,6 @@
     "nyc": "^12.0.2",
     "opn-cli": "^3.1.0",
     "prettier": "^1.13.4",
-    "standard-version": "^4.4.0",
     "trash-cli": "^1.4.0",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
@@ -77,11 +75,6 @@
     "sources": [
       "build/main/**/*.js"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "prettier": {
     "singleQuote": true

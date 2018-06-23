@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { GraphQLRequest } from "apollo-link";
 export const createAccountsQuery = (accountName): GraphQLRequest => ({
   query: gql`
-    query Account($accountName: accountName) {
+    query Account($accountName: String!) {
       account(aid: $accountName)
         @rest(type: BWalletAccount, path: "/:wid/account/:aid") {
         name

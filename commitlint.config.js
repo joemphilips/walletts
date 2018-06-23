@@ -11,6 +11,7 @@ module.exports = {
         "components",
         "release",
         "schema",
+        "apollo-link-bitauth"
       ]
     ]
   }

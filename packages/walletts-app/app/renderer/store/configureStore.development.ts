@@ -46,11 +46,11 @@ const customApolloLink = ApolloLink.from([
 ]);
 
 run(CycleMain, {
-  ACTION: makeActionDriver() as any,
+  ACTION: makeActionDriver(),
   Blockchain: makeTrustedBcoinNodeDriver(Config.bcoinNodeURL),
   Wallet: makeTrustedBcoinWalletDriver(Config.bcoinWalletURL),
-  HTTP: makeHTTPDriver() as any,
-  Apollo: makeGraphQLDriver({ customApolloLink }) as any
+  HTTP: makeHTTPDriver(),
+  Apollo: makeGraphQLDriver({ customApolloLink })
 });
 
 // If Redux DevTools Extension is installed use it, otherwise use Redux compose
