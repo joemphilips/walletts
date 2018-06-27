@@ -18,6 +18,7 @@ export const typeDef = gql`
     inComingTx: [Transaction]
     outGoingTx: [Transaction]
   }
+
   type CommunityAccount implements Account {
     id: ID!
     kind: AccountKind!
@@ -26,6 +27,7 @@ export const typeDef = gql`
     inComingTx: [Transaction]
     outGoingTx: [Transaction]
     integratedChannels: [Channel]!
+    isOpen: Boolean!
   }
 
   enum AccountKind {
