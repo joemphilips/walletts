@@ -35,7 +35,7 @@ See [this project page](https://github.com/joemphilips/cycle-walletts/projects/2
 
 Please read instruction below before giving a pull request
 
-* use `yarn cz` instead of `git commit` (except when you `--amend` ing)
+* use `yarn commit` instead of `git commit` (except when you `--amend` ing)
 * scope of the commit must be one of its sub-package's name (see `commitlint.conig.json` for exact name), or `meta` for change which affects more than 2 packages.
 
 ## testing

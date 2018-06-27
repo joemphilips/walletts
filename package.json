@@ -13,7 +13,7 @@
     "bootstrap": "lerna bootstrap --stream",
     "build": "lerna run build --stream",
     "dev": "lerna run dev --parallel",
-    "cz": "git-cz",
+    "commit": "git-cz",
     "commitlint": "commitlint -e $GIT_PARAMS",
     "bump": "lerna publish -m 'chore(release): publish-manual' --conventional-commits",
     "bump-ci": "lerna publish -m 'chore(release): publish-ci' --conventional-commits --cd-version=prepatch"
